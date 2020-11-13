@@ -72,7 +72,7 @@
                     <li class="nav-item {{ request()->routeIs(['why_duma']) ? 'active' : '' }} my-3 my-md-0">
                         <a class="nav-link" href="{{ route('why_duma') }}">Mengapa Duma?</a>
                     </li>
-                    <li class="nav-item mb-3 mb-md-0 dropdown">
+                    <li class="nav-item mb-3 mb-md-0 dropdown {{ request()->routeIs(['product.*']) ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle hover-show" href="#" id="product_projects_nav_dropdown"
                            role="button"
                            aria-haspopup="true" aria-expanded="false">
@@ -87,7 +87,7 @@
                                 </a>
                                 <div class="dropdown-menu keep-open rounded-0 ml-0 p-0"
                                      aria-labelledby="product_nav_dropdown">
-                                    <a class="dropdown-item nav-link" href="{{ route('product.duma_panel') }}">
+                                    <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_panel']) ? 'active' : '' }}" href="{{ route('product.duma_panel') }}">
                                         Duma Panel
                                     </a>
                                     <a class="dropdown-item nav-link" href="#">
@@ -106,13 +106,13 @@
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item mb-3 mb-md-0">
+                    <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['pricelist']) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('pricelist') }}">Daftar Harga & Dokumen Lain</a>
                     </li>
-                    <li class="nav-item mb-3 mb-md-0">
+                    <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['posts.*']) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('posts.index') }}">Berita & Acara</a>
                     </li>
-                    <li class="nav-item mb-3 mb-md-0">
+                    <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['distributor']) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('distributor') }}">Distributor</a>
                     </li>
                     <li class="nav-item mb-3 mb-md-0">
