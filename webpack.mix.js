@@ -1,12 +1,14 @@
 const mix = require('laravel-mix');
-require('./laravel-mix-jigsaw');
 
-mix.disableSuccessNotifications();
-mix.setPublicPath('source/assets');
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel applications. By default, we are compiling the CSS
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
 
-mix.jigsaw()
-   .sass('source/_assets/sass/app.scss', 'css')
-   .options({
-       processCssUrls: false
-   })
-   .version();
+mix.sass('resources/sass/app.scss', 'public/css');
