@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="banner mb-5">
-        <img src="images/banner-pricelist.png" alt="" class="img-fluid w-100">
+        <img src="{{ asset('images/banner-pricelist.png') }}" alt="" class="img-fluid w-100">
     </section>
     <div class="container">
         <div class="text-center">
@@ -22,7 +22,7 @@
             @foreach(range(1, 9) as $post)
                 <div class="col-md-4">
                     <a href="" class="d-block mb-4">
-                        <img src="images/carousel-link.jpg" alt="" class="img-fluid">
+                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid">
                     </a>
                 </div>
             @endforeach

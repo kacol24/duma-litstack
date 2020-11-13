@@ -41,7 +41,7 @@
 
 @section('content')
     <section class="banner mb-5">
-        <img src="images/banner-why-duma.png" alt="" class="img-fluid w-100">
+        <img src="{{ asset('images/banner-why-duma.png') }}" alt="" class="img-fluid w-100">
     </section>
     <div class="container">
         <div class="text-center">
@@ -54,7 +54,7 @@
                 @foreach($benefits as $icon => $benefit)
                     <div class="col-md-3">
                         <figure class="w-100 figure text-center">
-                            <img src="images/icons/{{ $icon }}"
+                            <img src="{{ asset('images/icons/' . $icon) }}"
                                  alt="icon {{ $benefit[0] }}"
                                  class="img-fluid figure-img">
                             <figcaption class="figure-caption">
@@ -73,7 +73,7 @@
                 <li class="{{ !$loop->last ? 'mb-3' : '' }}">
                     <div class="row justify-content-between">
                         <div class="col-md-3">
-                            <img src="images/why-duma-{{ $loop->iteration }}.jpg" alt="" class="img-fluid w-100">
+                            <img src="{{ asset('images/why-duma-' . $loop->iteration . '.jpg') }}" alt="" class="img-fluid w-100">
                         </div>
                         <div class="col-md-8 border-bottom border-primary-green border-lg {{ $loop->first ? 'border-top' : '' }}">
                             <div class="h-100 border-lg py-3">

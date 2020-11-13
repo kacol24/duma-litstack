@@ -3,16 +3,16 @@
 @section('seo_title', 'Home')
 
 @section('content')
-    <div class="hero-slider" style="background: url(images/bg-hero-slider.png) no-repeat bottom/cover">
+    <div class="hero-slider" style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom/cover">
         <div class="hero-slider__slide">
-            <img src="images/hero-slide.png" alt="" class="img-fluid w-100">
+            <img src="{{ asset('images/hero-slide.png') }}" alt="" class="img-fluid w-100">
         </div>
     </div>
     <section class="intro my-5 py-5">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-md-4">
-                    <img src="images/logo.png" alt="" class="img-fluid">
+                    <img src="{{ asset('images/logo.png') }}" alt="" class="img-fluid">
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
                     DUMA® adalah merek dari lini produk WPC
@@ -31,7 +31,7 @@
                 <div class="col-md-4">
                     <div class="blurb">
                         <div class="blurb__image">
-                            <img src="images/icons/icon-check.png" alt=""
+                            <img src="{{ asset('images/icons/icon-check.png') }}" alt=""
                                  class="img-fluid mx-auto d-block">
                         </div>
                         <h3 class="blurb__title">
@@ -46,7 +46,7 @@
                 <div class="col-md-4">
                     <div class="blurb">
                         <div class="blurb__image">
-                            <img src="images/icons/icon-lightbulb.png" alt=""
+                            <img src="{{ asset('images/icons/icon-lightbulb.png') }}" alt=""
                                  class="img-fluid mx-auto d-block">
                         </div>
                         <h3 class="blurb__title">
@@ -61,7 +61,7 @@
                 <div class="col-md-4">
                     <div class="blurb">
                         <div class="blurb__image">
-                            <img src="images/icons/icon-hourglass.png" alt=""
+                            <img src="{{ asset('images/icons/icon-hourglass.png') }}" alt=""
                                  class="img-fluid mx-auto d-block">
                         </div>
                         <h3 class="blurb__title">
@@ -78,7 +78,7 @@
     </section>
     <section class="why-duma">
         <div class="position-absolute">
-            <img src="images/bg-why-duma.png" alt="" class="w-100 img-fluid">
+            <img src="{{ asset('images/bg-why-duma.png') }}" alt="" class="w-100 img-fluid">
         </div>
         <div class="container py-5 mt-5">
             <div class="row justify-content-between" style="margin-top: 200px;">
@@ -115,12 +115,12 @@
             <div class="row mt-4">
                 <div class="col-md-6">
                     <a href="">
-                        <img src="images/carousel-link.jpg" alt="" class="img-fluid w-100">
+                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid w-100">
                     </a>
                 </div>
                 <div class="col-md-6">
                     <a href="">
-                        <img src="images/carousel-link.jpg" alt="" class="img-fluid w-100">
+                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid w-100">
                     </a>
                 </div>
             </div>

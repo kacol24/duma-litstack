@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="banner">
-        <img src="images/banner-faq.png" alt="" class="img-fluid w-100">
+        <img src="{{ asset('images/banner-faq.png') }}" alt="" class="img-fluid w-100">
     </section>
     <div class="container my-5">
         <div class="row justify-content-center mb-5">

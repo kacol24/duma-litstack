@@ -70,7 +70,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav w-100 justify-content-end text-center">
-                    <li class="nav-item {{ $page->getFilename() == 'mengapa-duma' ? 'active' : '' }} my-3 my-md-0">
+                    <li class="nav-item {{ 'mengapa-duma' == 'mengapa-duma' ? 'active' : '' }} my-3 my-md-0">
                         <a class="nav-link" href="mengapa-duma.html">Mengapa Duma?</a>
                     </li>
                     <li class="nav-item mb-3 mb-md-0 dropdown">
