@@ -1,0 +1,13 @@
+.pricing-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    border-bottom: 2px solid $theme-primary;
+
+    i {
+      color: $theme-primary;
+    }
+  }
+}

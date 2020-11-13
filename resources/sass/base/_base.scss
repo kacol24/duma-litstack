@@ -1,0 +1,13 @@
+* {
+    font-family: 'Helvetica', sans-serif;
+}
+
+a {
+    transition: background-color 200ms, color 200ms;
+    color: $theme-primary;
+
+    &:hover {
+        text-decoration: none;
+        color: darken($theme-primary, 20);
+    }
+}

@@ -1,0 +1,30 @@
+.faq {
+    margin-bottom: 50px;
+
+    &__question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        background-color: $theme-primary;
+        padding: 10px 20px;
+        color: #fff;
+
+        i.fas {
+            color: #7c623e;
+        }
+
+        &.collapsed {
+            i.fas.fa-minus {
+                &:before {
+                    content: '\f067';
+                }
+            }
+        }
+    }
+
+    &__answer {
+        padding: 10px 20px;
+    }
+}

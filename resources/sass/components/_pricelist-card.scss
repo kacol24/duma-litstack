@@ -1,0 +1,13 @@
+.pricelist-card {
+  .card-header {
+    background-color: $theme-primary;
+
+    border-radius: 20px 20px 0 0;
+  }
+
+  .card-body {
+    background-color: #f2f2f2;
+
+    border-radius: 0 0 20px 20px;
+  }
+}

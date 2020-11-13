@@ -1,0 +1,17 @@
+.form-control {
+    &--outline {
+        border: 1px solid $input-border-color;
+        border-left: 0;
+    }
+}
+
+.input-group {
+    &--outline {
+        .input-group-text {
+            background-color: #fff;
+            border: 1px solid $input-border-color;
+            border-right: 0;
+            color: $theme-primary;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+.btn-brown {
+  background-color: $theme-secondary;
+  color: #fff;
+  border-color: $theme-secondary;
+
+  &:hover {
+    border-color: $theme-secondary;
+    background-color: transparent;
+    color: $theme-secondary;
+  }
+}

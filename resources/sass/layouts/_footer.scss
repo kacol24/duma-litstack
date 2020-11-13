@@ -1,0 +1,18 @@
+.site-footer {
+  .copyright {
+    background-color: #93ba5a;
+    color: #fff;
+  }
+
+  a {
+    color: #333;
+
+    &:hover {
+      color: $theme-secondary;
+    }
+  }
+
+  strong {
+    color: $theme-secondary;
+  }
+}

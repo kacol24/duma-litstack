@@ -1,0 +1,92 @@
+.top-bar {
+  background-color: $top-bar-color;
+  padding-top: $top-bar-padding-top;
+  padding-bottom: $top-bar-padding-bottom;
+
+  .nav-link {
+    color: #fff;
+  }
+
+  .search-field {
+    input, .input-group-text {
+      background-color: $top-bar-search-background;
+      border: 0;
+      transition: background-color 200ms;
+    }
+
+    input {
+      color: #fff;
+
+      $placeholder-color: #eee;
+
+      &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $placeholder-color;
+        opacity: 1; /* Firefox */
+      }
+
+      &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: $placeholder-color;
+      }
+
+      &::-ms-input-placeholder { /* Microsoft Edge */
+        color: $placeholder-color;
+      }
+
+      &:focus {
+        background-color: #fff;
+        color: #333;
+        box-shadow: none;
+
+        $placeholder-color: #ccc;
+
+        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+          color: $placeholder-color;
+          opacity: 1; /* Firefox */
+        }
+
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: $placeholder-color;
+        }
+
+        &::-ms-input-placeholder { /* Microsoft Edge */
+          color: $placeholder-color;
+        }
+
+        //~ .input-group-prepend .input-group-text {
+        //  background-color: #fff;
+        //
+        //  i {
+        //    color: $placeholder-color;
+        //  }
+        //}
+      }
+    }
+
+    .input-group-text {
+      i {
+        color: #fff;
+      }
+    }
+  }
+
+  .language-switcher {
+    .nav-link {
+      background-color: $top-bar-language-switcher-bg;
+      color: #fff;
+      min-width: 50px;
+      text-align: center;
+
+      &:hover {
+        background-color: $top-bar-language-switcher-bg--active;
+      }
+    }
+
+    .nav-item {
+      &.active {
+        .nav-link {
+          background-color: $top-bar-language-switcher-bg--active;
+        }
+      }
+    }
+  }
+}

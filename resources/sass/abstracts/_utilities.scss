@@ -1,0 +1,48 @@
+.placeholder-center {
+  &::-webkit-input-placeholder { /* Edge */
+    color: $theme-primary;
+    text-align: center;
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $theme-primary;
+    text-align: center;
+  }
+
+  &::placeholder {
+    color: $theme-primary;
+    text-align: center;
+  }
+}
+
+.bg-primary-green {
+  background-color: $theme-primary !important;
+}
+
+.bg-gray {
+  background-color: #f2f2f2;
+}
+
+.border-primary-green {
+  border-color: $theme-primary !important;
+}
+
+.border-lg {
+  border-width: 3px !important;
+}
+
+.text-color-primary {
+  color: $theme-primary !important;
+}
+
+.text-color-secondary {
+  color: $theme-secondary !important;
+}
+
+.mt-20 {
+  margin-top: 5rem !important;
+}
+
+.mt-40 {
+  margin-top: 10rem !important;
+}
