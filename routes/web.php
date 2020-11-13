@@ -15,14 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'index')
      ->name('home');
-Route::get('mengapa-duma', 'mengapa-duma')
+Route::view('mengapa-duma', 'mengapa-duma')
      ->name('why_duma');
-Route::get('duma-panel', 'duma-panel')
+Route::view('duma-panel', 'duma-panel')
      ->name('product.duma_panel');
-Route::get('daftar-harga-dan-dokumen-lain', 'daftar-harga-dan-dokumen-lain')
+Route::view('daftar-harga-dan-dokumen-lain', 'daftar-harga-dan-dokumen-lain')
      ->name('pricelist');
-Route::get('berita-dan-acara', 'berita-dan-acara')
+Route::view('berita-dan-acara', 'berita-dan-acara')
      ->name('posts.index');
-Route::get('distributor', 'distributor')
+Route::view('distributor', 'distributor')
      ->name('distributor');
-Route::get('tentang-duma', '');
+Route::view('faq', 'faq')
+     ->name('faq');
+Route::view('hubungi-kami', 'hubungi-kami')
+     ->name('contact.index');
+Route::view('kalkulator-biaya-duma', 'kalkulator')
+     ->name('calculator.index');
+Route::view('contoh-proyek', 'proyek')
+     ->name('projects.index');
