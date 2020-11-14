@@ -339,6 +339,11 @@ a:hover {
   background-color: #f2f2f2;
 }
 
+#main_nav .dropdown-item.active,
+#main_nav .dropdown-item:active {
+  background-color: #f2f2f2;
+}
+
 .dropdown-toggle.hover-show:hover + .dropdown-menu {
   display: block;
 }
