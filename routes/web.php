@@ -19,6 +19,8 @@ Route::view('mengapa-duma', 'mengapa-duma')
      ->name('why_duma');
 Route::view('duma-panel', 'duma-panel')
      ->name('product.duma_panel');
+Route::view('duma-lisplank', 'duma-lisplank')
+     ->name('product.duma_lisplank');
 Route::view('daftar-harga-dan-dokumen-lain', 'daftar-harga-dan-dokumen-lain')
      ->name('pricelist');
 Route::view('berita-dan-acara', 'berita-dan-acara')

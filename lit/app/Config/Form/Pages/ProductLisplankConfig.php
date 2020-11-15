@@ -7,7 +7,7 @@ use Ignite\Crud\CrudShow;
 use Lit\Config\Seoable;
 use Lit\Http\Controllers\Form\Pages\ProductPanelController;
 
-class ProductPanelConfig extends FormConfig
+class ProductLisplankConfig extends FormConfig
 {
     use Seoable;
 
@@ -25,7 +25,7 @@ class ProductPanelConfig extends FormConfig
      */
     public function routePrefix()
     {
-        return "pages/product-panel";
+        return "pages/product-lisplank";
     }
 
     /**
@@ -36,7 +36,7 @@ class ProductPanelConfig extends FormConfig
     public function names()
     {
         return [
-            'singular' => 'Duma Panel',
+            'singular' => 'Duma Lisplank',
         ];
     }
 

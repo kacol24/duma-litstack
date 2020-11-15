@@ -89,7 +89,8 @@
                                 </a>
                                 <div class="dropdown-menu keep-open rounded-0 ml-0 p-0"
                                      aria-labelledby="product_nav_dropdown">
-                                    <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_panel']) ? 'active' : '' }}" href="{{ route('product.duma_panel') }}">
+                                    <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_panel']) ? 'active' : '' }}"
+                                       href="{{ route('product.duma_panel') }}">
                                         Duma Panel
                                     </a>
                                     <a class="dropdown-item nav-link" href="#">
@@ -98,7 +99,8 @@
                                     <a class="dropdown-item nav-link" href="#">
                                         Duma Deck
                                     </a>
-                                    <a class="dropdown-item nav-link" href="#">
+                                    <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_lisplank']) ? 'active' : '' }}"
+                                       href="{{ route('product.duma_lisplank') }}">
                                         Duma Lisplank
                                     </a>
                                 </div>

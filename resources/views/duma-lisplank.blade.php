@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('seo_title', 'Mengapa Duma?')
-@php($cms = \Lit\Config\Form\Pages\ProductPanelConfig::load())
+@php($cms = \Lit\Config\Form\Pages\ProductLisplankConfig::load())
 
 @section('content')
     @isset($cms->banner)
@@ -33,6 +33,74 @@
     <div class="container">
         <div class="text-center">
             {!! $cms->spec_description !!}
+            <h2 class="h5">
+                Dua Tipe Duma Lisplank
+            </h2>
+            <img src="{{ asset('images/tipe-emboss.png') }}" alt="" class="img-fluid">
+            <div class="row justify-content-between">
+                <div class="col-md-5">
+                    <figure class="figure text-center">
+                        <figcaption>
+                            Lisplank Polos
+                        </figcaption>
+                        <img src="{{ asset('images/lisplank-polos.png') }}" alt=""
+                             class="figure-img img-fluid">
+                        <div class="mt-3">
+                            <table>
+                                <tr>
+                                    <td>
+                                        Lebar
+                                    </td>
+                                    <td>: 17 cm</td>
+                                </tr>
+                                <tr>
+                                    <td>Lebar (efektif)</td>
+                                    <td>: 15 cm</td>
+                                </tr>
+                                <tr>
+                                    <td>Panjang</td>
+                                    <td>: 3 M</td>
+                                </tr>
+                                <tr>
+                                    <td>Tebal</td>
+                                    <td>: 1,5 cm</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </figure>
+                </div>
+                <div class="col-md-5">
+                    <figure class="figure text-center">
+                        <figcaption>
+                            Lisplank Emboss
+                        </figcaption>
+                        <img src="{{ asset('images/lisplank-emboss.png') }}" alt=""
+                             class="figure-img img-fluid">
+                        <div class="mt-3">
+                            <table>
+                                <tr>
+                                    <td>
+                                        Lebar
+                                    </td>
+                                    <td>: 17 cm</td>
+                                </tr>
+                                <tr>
+                                    <td>Lebar (efektif)</td>
+                                    <td>: 15 cm</td>
+                                </tr>
+                                <tr>
+                                    <td>Panjang</td>
+                                    <td>: 3 M</td>
+                                </tr>
+                                <tr>
+                                    <td>Tebal</td>
+                                    <td>: 1,5 cm</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </figure>
+                </div>
+            </div>
         </div>
         @foreach($cms->content as $content)
             <div class="row justify-content-between">
@@ -115,7 +183,7 @@
             </div>
 
             <h2 class="h5 mt-5">
-                Penanganan & Penyimpanan
+                Penanganan
             </h2>
             <div class="row justify-content-center">
                 @foreach($cms->storage_documents as $document)
