@@ -48,53 +48,108 @@ class ProductPanelConfig extends FormConfig
      */
     public function show(CrudShow $page)
     {
-        $this->seoPage($page, function ($page) {
-            $page->card(function ($form) {
-                $form->block('content')
-                     ->title('Content')
-                     ->repeatables(function ($repeatables) {
-                         // Add as many repeatables as you want.
-                         $repeatables->add('block', function ($form, $preview) {
-                             // The block preview.
-                             $preview->col('{title}');
+        $page->expand();
+        $page->card(function ($form) {
+            $form->block('content')
+                 ->title('Content')
+                 ->repeatables(function ($repeatables) {
+                     // Add as many repeatables as you want.
+                     $repeatables->add('block', function ($form, $preview) {
+                         // The block preview.
+                         $preview->col('{title}');
 
-                             $form->input('title')
-                                  ->title('Title');
-                             $form->input('subtitle')
-                                  ->title('Subtitle');
-                             $form->wysiwyg('description')
-                                  ->title('Description');
-                             
-                             $form->block('items')
-                                  ->title('Items')
-                                  ->repeatables(function ($repeatables) {
-                                      $repeatables->add('simple', function ($form, $preview) {
-                                          $preview->col('{title}');
+                         $form->input('title')
+                              ->title('Title');
+                         $form->input('subtitle')
+                              ->title('Subtitle');
+                         $form->wysiwyg('description')
+                              ->title('Description');
 
-                                          $form->image('image')
-                                               ->translatable()
-                                               ->title('Image')
-                                               ->maxFiles(1);
-                                          $form->input('title')
-                                               ->title('Title');
-                                      });
+                         $form->block('items')
+                              ->title('Items')
+                              ->repeatables(function ($repeatables) {
+                                  $repeatables->add('simple', function ($form, $preview) {
+                                      $preview->col('{title}');
 
-                                      $repeatables->add('full', function ($form, $preview) {
-                                          $preview->col('{title}');
+                                      $form->image('image')
+                                           ->translatable()
+                                           ->title('Image')
+                                           ->expand()
+                                           ->maxFiles(1);
+                                      $form->input('title')
+                                           ->title('Title');
+                                  });
 
-                                          $form->image('image')
-                                               ->translatable()
-                                               ->title('Image')
-                                               ->maxFiles(1);
-                                          $form->input('title')
-                                               ->title('Title');
-                                          $form->wysiwyg('spec')
-                                               ->title('Spec');
-                                      });
-                                  })->blockWidth(4);
-                         });
+                                  $repeatables->add('full', function ($form, $preview) {
+                                      $preview->col('{title}');
+
+                                      $form->image('image')
+                                           ->translatable()
+                                           ->title('Image')
+                                           ->expand()
+                                           ->maxFiles(1);
+                                      $form->input('title')
+                                           ->title('Title');
+                                      $form->wysiwyg('spec')
+                                           ->title('Spec');
+                                  });
+                              })->blockWidth(4);
                      });
-            });
+                 });
         });
+        $page->card(function ($form) {
+            $form->wysiwyg('finishing_description')
+                 ->title('Description');
+            $form->image('finishing_images')
+                 ->title('Images')
+                 ->maxFiles(3);
+        })->title('Finishing');
+
+        $page->card(function ($form) {
+            $form->wysiwyg('installation_description')
+                 ->title('Description');
+            $form->block('installation_documents')
+                 ->title('Documents')
+                 ->repeatables(function ($repeatables) {
+                     $repeatables->add('document', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->input('title')
+                              ->title('Title');
+                         $form->file('file')
+                              ->title('File');
+                     });
+                 })->blockWidth(6);
+        })->title('Pemasangan');
+
+        $page->card(function ($form) {
+            $form->block('storage_documents')
+                 ->title('Documents')
+                 ->repeatables(function ($repeatables) {
+                     $repeatables->add('document', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->input('title')
+                              ->title('Title');
+                         $form->file('file')
+                              ->title('File');
+                     });
+                 })->blockWidth(6);
+        })->title('Storage & Handling');
+
+        $page->card(function ($form) {
+            $form->block('faqs')
+                 ->title('Faq')
+                 ->repeatables(function ($repeatables) {
+                     $repeatables->add('faq', function ($form, $preview) {
+                         $preview->col('{question}');
+
+                         $form->input('question')
+                              ->title('Question');
+                         $form->text('answer')
+                              ->title('Answer');
+                     });
+                 })->blockWidth(6);
+        })->title('FAQs');
     }
 }

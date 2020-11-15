@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('seo_title', 'Mengapa Duma?')
+@php($cms = \Lit\Config\Form\Pages\ProductPanelConfig::load())
 
 @section('content')
     <section class="banner mb-5">
@@ -8,7 +9,7 @@
     </section>
     <div class="container">
         <div class="text-center">
-            <h1 class="h5 mb-3">
+            <h1 class="h4 mb-3">
                 Duma® Panel<br>
                 NATURE COMES AT REASONABLE PRICES
             </h1>
@@ -20,12 +21,12 @@
                 pelapis dinding dan plafon interior bangungn Anda.
             </p>
         </div>
-        <div class="text-center">
-            <h2 class="h5">Fitur & Keunggulan</h2>
-            carousel goes here
-        </div>
+        {{--        <div class="text-center">--}}
+        {{--            <h2 class="h5">Fitur & Keunggulan</h2>--}}
+        {{--            carousel goes here--}}
+        {{--        </div>--}}
     </div>
-    spec banner
+    {{--    spec banner--}}
     <div class="container">
         <div class="text-center">
             <p>
@@ -37,101 +38,120 @@
                 DUMA®:
             </p>
         </div>
-        <div class="row justify-content-between">
-            <div class="col-md-5">
-                <h3 class="h5">Panel Dinding & Plafon</h3>
-                <div class="text-color-secondary">
-                    DUMA® Premium Wall and Ceiling Panel tersedia dengan 5 jenis profil yang berbeda melalui desain unik
-                    dan elegan yang berbe-
+        @foreach($cms->content as $content)
+            <div class="row justify-content-between">
+                <div class="col-md-5">
+                    <h3 class="h5">{{ $content->title }}</h3>
+                    <div class="text-color-secondary">
+                        {{ $content->subtitle }}
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    {!! $content->description !!}
                 </div>
             </div>
-            <div class="col-md-5">
-                DUMA® Wall and Ceiling Panel ideal dan cocok untuk digunakan sebagai pelapis dinding dan plafon segala
-                jenis bangungn.
-                DUMA® dapat diaplikasikan di perumahan/residensial, bangunan komersil (mall, restoran, dll.), bangunan
-                religius (masjid, gereja, vihara, dll.), sekolah dan banungn edukasi lainnya, perkantoran, dan masih
-                banyak lagi.
+            <div class="row">
+                @foreach($content->items as $item)
+                    @if($item->type == 'simple')
+                        <div class="col-md-3">
+                            <figure class="figure text-center">
+                                <img src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid">
+                                <figcaption>
+                                    {{ $item->title }}
+                                </figcaption>
+                            </figure>
+                        </div>
+                    @elseif($item->type == 'full')
+                        <div class="col-md-4">
+                            <figure class="figure figure--full p-3">
+                                <img src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid">
+                                <figcaption class="text-center">
+                                    {{ $item->title }}
+                                </figcaption>
+                                <div class="mt-3">
+                                    {!! $item->spec !!}
+                                </div>
+                            </figure>
+                        </div>
+                    @endif
+                @endforeach
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
+        @endforeach
+        <hr>
+        <div class="text-center">
+            <h2 class="h5">
+                Finishing
+            </h2>
+            {!! $cms->finishing_description !!}
 
+            <h2 class="h5 mt-5">
+                Pemasangan
+            </h2>
+            {!! $cms->installation_description !!}
+            <div class="row justify-content-center">
+                @foreach($cms->installation_documents as $document)
+                    <div class="col-md-6">
+                        <div class="card pricelist-card border-0">
+                            <div class="card-header text-center border-0 pt-4">
+                                <h5 class="card-title m-0">
+                                    {{ $document->title }}
+                                </h5>
+                            </div>
+                            <div class="card-body bg-primary-green mt-n1 pb-4">
+                                <div class="text-center">
+                                    <a href="{{ $document->file->getUrl() }}" target="_blank" class="btn btn-brown">
+                                        Unduh
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-        </div>
-        <div class="row justify-content-between">
-            <div class="col-md-5">
-                <h3 class="h5">Pilihan Warna</h3>
-                <div class="text-color-secondary">
-                    Pilihan warna berikut berlaku untuk semua produk DUMA® Panel.
+
+            <h2 class="h5 mt-5">
+                Penanganan & Penyimpanan
+            </h2>
+            <div class="row justify-content-center">
+                @foreach($cms->storage_documents as $document)
+                    <div class="col-md-6">
+                        <div class="card pricelist-card border-0">
+                            <div class="card-header text-center border-0 pt-4">
+                                <h5 class="card-title m-0">
+                                    {{ $document->title }}
+                                </h5>
+                            </div>
+                            <div class="card-body bg-primary-green mt-n1 pb-4">
+                                <div class="text-center">
+                                    <a href="{{ $document->file->getUrl() }}" target="_blank" class="btn btn-brown">
+                                        Unduh
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <h2 class="h5 mt-5">
+                FAQs
+            </h2>
+            @foreach($cms->faqs as $faq)
+                <div class="faq">
+                    <div class="faq__question collapsed" data-toggle="collapse"
+                         data-target="#faq_{{ $loop->iteration }}">
+                        {{ $faq->question }}
+                        <i class="fas fa-minus"></i>
+                    </div>
+                    <div class="collapse" id="faq_{{ $loop->iteration }}">
+                        <div class="faq__answer">
+                            {!! $faq->answer !!}
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-5">
-                Perlu diperhatikan baha meskipun semua upaya telah dilakukan untuk mengilustrasikan pilihan warna secara
-                akurat, kita tidak dapat menjamin abhwa semua layar monitor komputer atau smart phone dapat menampilkan
-                pilihan warna tersebut secara sempurna persis dengan warna asli produk. Selain itu, perlu diperhatikan
-                juga bahwa warna dari produk
-                DUMA® memiliki toleransi perbedaan hingga 10%.
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-
-            </div>
-        </div>
-        <div class="row justify-content-between">
-            <div class="col-md-5">
-                <h3 class="h5">Lis Plafon</h3>
-                <div class="text-color-secondary">
-                    Pilihan lis plafon yang didesain untuk melengkapi dan menutupi garis pertemuan antara plafon dengan
-                    dinding.
-                </div>
-            </div>
-            <div class="col-md-5">
-                Lis plafon DUMA® dapat digunakan untuk memperhalus transisi antara dinding dan plafon, antara bidang
-                vertikal dan horizontal. Kami menyediakan 3 profil lis plafon yang berbeda:
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-
-            </div>
-        </div>
-        <div class="row justify-content-between">
-            <div class="col-md-5">
-                <h3 class="h5">Lis Tengah</h3>
-                <div class="text-color-secondary">
-                    Memberikan kesan elegan dan sempurna untuk ruang dinding anda.
-                </div>
-            </div>
-            <div class="col-md-5">
-                Untuk melengkapi tampilan dari produk DUMA® Anda, kami juga menyediakan 3 profil list tengah yang
-                berbeda. Lis profil tengah diaplikasikan di antara lis profil plafon dan lis lantai atau lis pllint.
-                Selain itu, lis tengah juga dapat melindungi dinding Anda dari perabotan/furnitur yang ditempatkan
-                bersandaran dengan dinding.
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-
-            </div>
-        </div>
-        <div class="row justify-content-between">
-            <div class="col-md-5">
-                <h3 class="h5">Lis Lantai / Lis Plint</h3>
-                <div class="text-color-secondary">
-                    Lis plint DUMA® dapat diaplikasikan di bagian pertemuan antara lantai dengan dinding.
-                </div>
-            </div>
-            <div class="col-md-5">
-                Lis plint DUMA® tidak hanya berguna untuk melindungi dinding anda dari kerusakan yang diakibatkan oleh
-                perabotan/furnitur, tendangan kaki, maupun abrasi, tapi juga untuk mempercantik estetika ruangan Anda
-                dengan memperhalus transisi antara lantai dengan dinding Anda.
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

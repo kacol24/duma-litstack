@@ -11,3 +11,18 @@ a {
         color: darken($theme-primary, 20);
     }
 }
+
+figure {
+    table {
+        width: 100%;
+    }
+}
+
+.figure--full {
+    background-color: #eeeeee;
+    transition: background-color 200ms;
+
+    &:hover {
+        background-color: $theme-primary;
+    }
+}
