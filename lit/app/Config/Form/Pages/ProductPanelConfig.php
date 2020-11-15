@@ -51,8 +51,17 @@ class ProductPanelConfig extends FormConfig
         $page->expand();
         $page->card(function ($form) {
             $form->image('banner')
-                 ->maxFiles(1)
-                 ->expand();
+                 ->expand()
+                 ->maxFiles(1);
+        });
+        $page->card(function ($form) {
+            $form->image('carousel')
+                 ->maxFiles(99);
+        })->title('Features');
+        $page->card(function ($form) {
+            $form->image('spec_banner')
+                 ->expand()
+                 ->maxFiles(1);
             $form->block('content')
                  ->title('Content')
                  ->repeatables(function ($repeatables) {
@@ -99,7 +108,7 @@ class ProductPanelConfig extends FormConfig
                               })->blockWidth(4);
                      });
                  });
-        });
+        })->title('Specifications');
         $page->card(function ($form) {
             $form->wysiwyg('finishing_description')
                  ->title('Description');

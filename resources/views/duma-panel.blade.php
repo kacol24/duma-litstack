@@ -4,9 +4,11 @@
 @php($cms = \Lit\Config\Form\Pages\ProductPanelConfig::load())
 
 @section('content')
-    <section class="banner mb-5">
-        <img src="{{ asset('images/banner-pricelist.png') }}" alt="" class="img-fluid w-100">
-    </section>
+    @isset($cms->banner)
+        <section class="banner mb-5">
+            <img src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100">
+        </section>
+    @endisset
     <div class="container">
         <div class="text-center">
             <h1 class="h4 mb-3">
@@ -21,12 +23,20 @@
                 pelapis dinding dan plafon interior bangungn Anda.
             </p>
         </div>
-        {{--        <div class="text-center">--}}
-        {{--            <h2 class="h5">Fitur & Keunggulan</h2>--}}
-        {{--            carousel goes here--}}
-        {{--        </div>--}}
+        <div class="text-center">
+            <h2 class="h5">Fitur & Keunggulan</h2>
+            <div class="mt-3" data-slick>
+                @foreach($cms->carousel as $slide)
+                    <div class="slide">
+                        <img src="{{ $slide->getUrl() }}" class="img-fluid">
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
-    {{--    spec banner--}}
+    @if($cms->spec_banner)
+        <img src="{{ $cms->spec_banner->getUrl() }}" alt="" class="img-fluid">
+    @endif
     <div class="container">
         <div class="text-center">
             <p>
