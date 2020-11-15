@@ -96,7 +96,8 @@
                                     <a class="dropdown-item nav-link" href="#">
                                         Duma Door
                                     </a>
-                                    <a class="dropdown-item nav-link" href="#">
+                                    <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_deck']) ? 'active' : '' }}"
+                                       href="{{ route('product.duma_deck') }}">
                                         Duma Deck
                                     </a>
                                     <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_lisplank']) ? 'active' : '' }}"

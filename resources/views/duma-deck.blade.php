@@ -33,74 +33,7 @@
     <div class="container">
         <div class="text-center">
             {!! $cms->spec_description !!}
-            <h2 class="h5">
-                Dua Tipe Duma Lisplank
-            </h2>
-            <img src="{{ asset('images/tipe-emboss.png') }}" alt="" class="img-fluid">
-            <div class="row justify-content-between">
-                <div class="col-md-5">
-                    <figure class="figure text-center">
-                        <figcaption>
-                            Lisplank Polos
-                        </figcaption>
-                        <img src="{{ asset('images/lisplank-polos.png') }}" alt=""
-                             class="figure-img img-fluid">
-                        <div class="mt-3">
-                            <table>
-                                <tr>
-                                    <td>
-                                        Lebar
-                                    </td>
-                                    <td>: 17 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>Lebar (efektif)</td>
-                                    <td>: 15 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>Panjang</td>
-                                    <td>: 3 M</td>
-                                </tr>
-                                <tr>
-                                    <td>Tebal</td>
-                                    <td>: 1,5 cm</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </figure>
-                </div>
-                <div class="col-md-5">
-                    <figure class="figure text-center">
-                        <figcaption>
-                            Lisplank Emboss
-                        </figcaption>
-                        <img src="{{ asset('images/lisplank-emboss.png') }}" alt=""
-                             class="figure-img img-fluid">
-                        <div class="mt-3">
-                            <table>
-                                <tr>
-                                    <td>
-                                        Lebar
-                                    </td>
-                                    <td>: 17 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>Lebar (efektif)</td>
-                                    <td>: 15 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>Panjang</td>
-                                    <td>: 3 M</td>
-                                </tr>
-                                <tr>
-                                    <td>Tebal</td>
-                                    <td>: 1,5 cm</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </figure>
-                </div>
-            </div>
+            <img src="{{ asset('images/teknis-deck.png') }}" alt="" class="img-fluid">
         </div>
         @foreach($cms->content as $content)
             <div class="row justify-content-between">
@@ -145,18 +78,6 @@
         @endforeach
         <hr>
         <div class="text-center">
-            <h2 class="h5">
-                Finishing
-            </h2>
-            {!! $cms->finishing_description !!}
-            <div class="row">
-                @foreach($cms->finishing_images as $image)
-                    <div class="col-md-4">
-                        <img src="{{ $image->getUrl() }}" alt="" class="img-fluid">
-                    </div>
-                @endforeach
-            </div>
-
             <h2 class="h5 mt-5">
                 Pemasangan
             </h2>
