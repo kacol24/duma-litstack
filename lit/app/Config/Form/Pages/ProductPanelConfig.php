@@ -50,6 +50,9 @@ class ProductPanelConfig extends FormConfig
     {
         $page->expand();
         $page->card(function ($form) {
+            $form->image('banner')
+                 ->maxFiles(1)
+                 ->expand();
             $form->block('content')
                  ->title('Content')
                  ->repeatables(function ($repeatables) {

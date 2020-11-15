@@ -3,9 +3,11 @@
 @section('seo_title', 'Mengapa Duma?')
 
 @section('content')
-    <section class="banner mb-5">
-        <img src="{{ asset('images/banner-pricelist.png') }}" alt="" class="img-fluid w-100">
-    </section>
+    @isset($cms->banner)
+        <section class="banner mb-5">
+            <img src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100">
+        </section>
+    @endisset
     <div class="container">
         <div class="text-center">
             <h2 class="h5 mb-3">
