@@ -7,6 +7,7 @@ use Ignite\Application\Navigation\Navigation;
 use Lit\Config\Form\Pages\DistributorConfig;
 use Lit\Config\Form\Pages\PricelistConfig;
 use Lit\Config\Form\Pages\ProductDeckConfig;
+use Lit\Config\Form\Pages\ProductDoorConfig;
 use Lit\Config\Form\Pages\ProductLisplankConfig;
 use Lit\Config\Form\Pages\ProductPanelConfig;
 
@@ -44,6 +45,7 @@ class NavigationConfig extends Config
             $nav->title('Pages'),
             $nav->group('Product', [
                 $nav->preset(ProductPanelConfig::class),
+                $nav->preset(ProductDoorConfig::class),
                 $nav->preset(ProductDeckConfig::class),
                 $nav->preset(ProductLisplankConfig::class),
             ]),
