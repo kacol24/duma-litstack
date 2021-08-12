@@ -64,7 +64,8 @@
             <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ asset('images/logo.png') }}" alt="" class="img-fluid" width="130">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars fa-fw fa-lg"></i>
             </button>
@@ -136,16 +137,18 @@
     <div class="sitemap pt-5 container--full-hd"
          style="background: url({{ asset('images/bg-footer.png') }}) no-repeat top/cover;margin:auto;">
         <div class="container pt-5">
-            <div class="row justify-content-between pt-5">
-                <div class="col-md-4">
+            <div class="row justify-content-between pt-5 pb-3">
+                <div class="col-md">
                     <img src="{{ asset('images/logo.png') }}" alt="" class="img-fluid mb-3" width="130">
-                    <address>
+                    <address class="d-flex">
+                        <i class="fas fa-map-marker-alt fa-lg mt-1 me-2"></i>
                         Jl. Raya Pilang KM 8. No.88
                         Kec. Wonoayu, Sidoarjo, 61273
                         Indonesia.
                     </address>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-auto separator d-none d-md-block"></div>
+                <div class="col-md">
                     <strong>
                         Sitemap
                     </strong>
@@ -197,20 +200,26 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-auto separator d-none d-md-block"></div>
+                <div class="col-md">
                     <strong>
                         Contact Info
                     </strong>
-                    <address class="mt-3">
-                        <a href="tel:62318855588">(031) 8855588</a><br>
-                        <a href="tel:62318855799">(031) 8855799</a>
+                    <address class="mt-3 d-flex align-items-center">
+                        <i class="fas fa-phone fa-lg me-2"></i>
+                        <div>
+                            <a href="tel:62318855588">(031) 8855588</a><br>
+                            <a href="tel:62318855799">(031) 8855799</a>
+                        </div>
                     </address>
-                    <address>
+                    <address class="d-flex align-items-center">
+                        <i class="fas fa-envelope fa-lg me-2"></i>
                         <a href="mailto:marketing@duma.co.id" target="_blank">
                             marketing@duma.co.id
                         </a>
                     </address>
-                    <address>
+                    <address class="d-flex align-items-center">
+                        <i class="fas fa-globe fa-lg me-2"></i>
                         <a href="https://www.sumberdjajaperkasa.com" target="_blank">
                             www.sumberdjajaperkasa.com
                         </a>

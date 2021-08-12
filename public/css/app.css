@@ -116,14 +116,26 @@ figure table {
 
 .site-footer a {
   color: #333;
+  text-decoration: none;
 }
 
 .site-footer a:hover {
   color: #6a4f29;
 }
 
-.site-footer strong {
+.site-footer strong,
+.site-footer i {
   color: #6a4f29;
+}
+
+.site-footer .separator:before {
+  width: 1px;
+  height: 100%;
+  content: "";
+  display: block;
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .top-bar {

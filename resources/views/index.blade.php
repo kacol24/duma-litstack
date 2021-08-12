@@ -3,9 +3,9 @@
 @section('seo_title', 'Home')
 
 @section('content')
-    <div class="hero-slider container--full-hd"
-         style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom center/cover">
-        <div class="container">
+    <div class="hero-slider container--full-hd">
+        <div class="container"
+             style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom center/cover">
             <div class="hero-slider__slide">
                 <img src="{{ asset('images/hero-slide.png') }}" alt="" class="img-fluid w-100">
             </div>
@@ -15,20 +15,22 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-md-4">
-                    <img src="{{ asset('images/logo.png') }}" alt="" class="img-fluid">
+                    <img src="{{ asset('images/logo@3x.png') }}" alt="" class="img-fluid">
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
-                    DUMA® adalah merek dari lini produk WPC
-                    produksi dari PT. Sumber Djaja Perkasa sejak tahun 2003. WPC adalah material yang terbuat dari
-                    campuran serbuk kayu dengan biji plastik.
+                    <div>
+                        DUMA<sup>®</sup> adalah merek dari lini produk WPC
+                        produksi dari PT. Sumber Djaja Perkasa sejak tahun 2003. WPC adalah material yang terbuat dari
+                        campuran serbuk kayu dengan biji plastik.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <section class="features my-5 py-5">
         <div class="container">
-            <h2 class="text-center mb-lg-5">
-                Mengapa DUMA<sup>&reg;</sup>
+            <h2 class="text-center mb-lg-5 fw-bolder">
+                Apa Itu DUMA<sup>&reg;</sup>?
             </h2>
             <div class="row">
                 <div class="col-md-4">
@@ -41,7 +43,7 @@
                             Pengolahan Bahan Ideal
                         </h3>
                         <div class="blurb__content">
-                            Serbuk kayu DUMA® diperoleh dari limbah kayu yang dihasilkan dari produsen kayu, sehingga
+                            Serbuk kayu DUMA<sup>®</sup> diperoleh dari limbah kayu yang dihasilkan dari produsen kayu, sehingga
                             kita hanya menggunakan limbah kayu yang seharusnya akan dibuang di tempat pembuangan sampah.
                         </div>
                     </div>
@@ -56,7 +58,7 @@
                             Campuran Orisinilitas
                         </h3>
                         <div class="blurb__content">
-                            DUMA® menggunakan campuran bahan plastik PVC orisinil dan daur ulang untuk menciptakan
+                            DUMA<sup>®</sup> menggunakan campuran bahan plastik PVC orisinil dan daur ulang untuk menciptakan
                             produk dengan kekuatan dan performa terbaik.
                         </div>
                     </div>
@@ -71,7 +73,7 @@
                             Kualitas Terbaik
                         </h3>
                         <div class="blurb__content">
-                            DUMA® menggunakan campuran bahan plastik PVC orisinil dan daur ulang untuk menciptakan
+                            DUMA<sup>®</sup> menggunakan campuran bahan plastik PVC orisinil dan daur ulang untuk menciptakan
                             produk dengan kekuatan dan performa terbaik.
                         </div>
                     </div>
@@ -92,12 +94,12 @@
                         </div>
                         <div class="col-md-4">
                             <p>
-                                Mengapa DUMA® adalah sebuah material bahan bangunan untuk masa depan dan mengapa
-                                DUMA®
+                                Mengapa DUMA<sup>®</sup> adalah sebuah material bahan bangunan untuk masa depan dan mengapa
+                                DUMA<sup>®</sup>
                                 adalah
                                 pilihan yang tepat untuk Anda.
                             </p>
-                            <a href="#" class="btn btn-brown">
+                            <a href="#" class="btn btn-brown fw-bolder">
                                 Lihat
                             </a>
                         </div>
@@ -116,12 +118,12 @@
                                 </div>
                                 <div class="col-md-4">
                                     <p>
-                                        Mengapa DUMA® adalah sebuah material bahan bangunan untuk masa depan dan mengapa
-                                        DUMA®
+                                        Mengapa DUMA<sup>®</sup> adalah sebuah material bahan bangunan untuk masa depan dan mengapa
+                                        DUMA<sup>®</sup>
                                         adalah
                                         pilihan yang tepat untuk Anda.
                                     </p>
-                                    <a href="#" class="btn btn-brown">
+                                    <a href="#" class="btn btn-brown fw-bolder">
                                         Lihat
                                     </a>
                                 </div>
@@ -137,10 +139,10 @@
             <div class="row">
                 <div class="col-md-4">
                     <h3>
-                        Lebih Dekat Dengan DUMA®?
+                        Lebih Dekat Dengan DUMA<sup>®</sup>?
                     </h3>
                     <p>
-                        Mengapa DUMA® adalah sebuah material bahan bangunan untuk masa depan dan mengapa DUMA® adalah
+                        Mengapa DUMA<sup>®</sup> adalah sebuah material bahan bangunan untuk masa depan dan mengapa DUMA<sup>®</sup> adalah
                         pilihan yang tepat untuk Anda.
                     </p>
                 </div>
