@@ -3,9 +3,12 @@
 @section('seo_title', 'Home')
 
 @section('content')
-    <div class="hero-slider" style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom/cover">
-        <div class="hero-slider__slide">
-            <img src="{{ asset('images/hero-slide.png') }}" alt="" class="img-fluid w-100">
+    <div class="hero-slider container--full-hd"
+         style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom center/cover">
+        <div class="container">
+            <div class="hero-slider__slide">
+                <img src="{{ asset('images/hero-slide.png') }}" alt="" class="img-fluid w-100">
+            </div>
         </div>
     </div>
     <section class="intro my-5 py-5">
@@ -76,30 +79,38 @@
             </div>
         </div>
     </section>
-    <section class="why-duma">
-        <div class="position-absolute">
+    <section class="why-duma position-relative">
+        <div class="container">
             <img src="{{ asset('images/bg-why-duma.png') }}" alt="" class="w-100 img-fluid">
-        </div>
-        <div class="container py-5 mt-5">
-            <div class="row justify-content-between" style="margin-top: 200px;">
-                <div class="col-md-4">
-                    <h2>
-                        Mengapa DUMA<sup>&reg;</sup>
-                    </h2>
-                </div>
-                <div class="col-md-4">
-                    <p>
-                        Mengapa DUMA® adalah sebuah material bahan bangunan untuk masa depan dan mengapa DUMA® adalah
-                        pilihan yang tepat untuk Anda.
-                    </p>
-                    <a href="#" class="btn btn-brown">
-                        Lihat
-                    </a>
+            <div class="position-absolute w-100" style="top: 30px;left: 0;">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <div class="row justify-content-between py-5 my-5">
+                                <div class="col-md-4">
+                                    <h2>
+                                        Mengapa DUMA<sup>&reg;</sup>
+                                    </h2>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        Mengapa DUMA® adalah sebuah material bahan bangunan untuk masa depan dan mengapa
+                                        DUMA®
+                                        adalah
+                                        pilihan yang tepat untuk Anda.
+                                    </p>
+                                    <a href="#" class="btn btn-brown">
+                                        Lihat
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="carousel-links" style="margin-top: 900px">
+    <section class="carousel-links pt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -110,18 +121,6 @@
                         Mengapa DUMA® adalah sebuah material bahan bangunan untuk masa depan dan mengapa DUMA® adalah
                         pilihan yang tepat untuk Anda.
                     </p>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <a href="">
-                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid w-100">
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="">
-                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid w-100">
-                    </a>
                 </div>
             </div>
         </div>
