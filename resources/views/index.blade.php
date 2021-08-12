@@ -82,13 +82,35 @@
     <section class="why-duma position-relative">
         <div class="container">
             <img src="{{ asset('images/bg-why-duma.png') }}" alt="" class="w-100 img-fluid">
-            <div class="position-absolute w-100" style="top: 30px;left: 0;">
+            <div class="row justify-content-center d-block d-md-none">
+                <div class="col-md-10">
+                    <div class="row justify-content-between py-md-5 my-md-5">
+                        <div class="col-md-4">
+                            <h2 class="fw-bolder">
+                                Mengapa DUMA<sup>&reg;</sup>
+                            </h2>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                Mengapa DUMA® adalah sebuah material bahan bangunan untuk masa depan dan mengapa
+                                DUMA®
+                                adalah
+                                pilihan yang tepat untuk Anda.
+                            </p>
+                            <a href="#" class="btn btn-brown">
+                                Lihat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="position-absolute w-100 d-none d-md-block" style="top: 30px;left: 0;">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-10">
-                            <div class="row justify-content-between py-5 my-5">
+                            <div class="row justify-content-between py-md-5 my-md-5">
                                 <div class="col-md-4">
-                                    <h2>
+                                    <h2 class="fw-bolder">
                                         Mengapa DUMA<sup>&reg;</sup>
                                     </h2>
                                 </div>
@@ -121,6 +143,18 @@
                         Mengapa DUMA® adalah sebuah material bahan bangunan untuk masa depan dan mengapa DUMA® adalah
                         pilihan yang tepat untuk Anda.
                     </p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <a href="">
+                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid w-100">
+                    </a>
+                </div>
+                <div class="col-md-6 mt-3 mt-md-0">
+                    <a href="">
+                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid w-100">
+                    </a>
                 </div>
             </div>
         </div>
