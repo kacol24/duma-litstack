@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e190c6cd0e082ddb3dc914775f64a5df",
+    "content-hash": "87fa5dfe84d6d1558b389f6832a600d7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2367,16 +2367,16 @@
         },
         {
             "name": "litstack/litstack",
-            "version": "dev-keep-original-image-format",
+            "version": "v3.7.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kacol24/litstack.git",
-                "reference": "291ba498618c767c693ada31fe9cdb8a9b88b45a"
+                "url": "https://github.com/litstack/litstack.git",
+                "reference": "fbdc91275779a145398b2794a59c928e80efbfd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kacol24/litstack/zipball/291ba498618c767c693ada31fe9cdb8a9b88b45a",
-                "reference": "291ba498618c767c693ada31fe9cdb8a9b88b45a",
+                "url": "https://api.github.com/repos/litstack/litstack/zipball/fbdc91275779a145398b2794a59c928e80efbfd8",
+                "reference": "fbdc91275779a145398b2794a59c928e80efbfd8",
                 "shasum": ""
             },
             "require": {
@@ -2419,20 +2419,7 @@
                     "Ignite\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/php",
-                    "Lit\\": "vendor/orchestra/testbench-dusk/laravel/lit/app"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "rm -rf vendor/orchestra && composer install && php tests/install && vendor/bin/phpunit"
-                ],
-                "fix": [
-                    "vendor/bin/php-cs-fixer fix --allow-risky=yes --config=fixer/.php_cs"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2448,9 +2435,10 @@
             ],
             "description": "Laravel Content-Administration",
             "support": {
-                "source": "https://github.com/kacol24/litstack/tree/keep-original-image-format"
+                "issues": "https://github.com/litstack/litstack/issues",
+                "source": "https://github.com/litstack/litstack/tree/v3.7.9"
             },
-            "time": "2021-02-26T06:04:09+00:00"
+            "time": "2021-07-29T13:53:56+00:00"
         },
         {
             "name": "livewire/livewire",
@@ -9512,9 +9500,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "litstack/litstack": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
