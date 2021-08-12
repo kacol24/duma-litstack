@@ -18,6 +18,12 @@ figure {
     }
 }
 
+.container--full-hd {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .figure--full {
     background-color: #eeeeee;
     transition: background-color 200ms;
