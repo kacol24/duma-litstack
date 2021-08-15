@@ -12,9 +12,9 @@
                         Indonesia.
                     </address>
                 </div>
-                <div class="col-md-auto separator d-none d-md-block"></div>
+                <div class="col-md-1 separator d-none d-md-block"></div>
                 <div class="col-md">
-                    <strong>
+                    <strong class="text-dark text-uppercase">
                         Sitemap
                     </strong>
                     <ul class="list-unstyled mt-3">
@@ -65,9 +65,9 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-auto separator d-none d-md-block"></div>
+                <div class="col-md-1 separator d-none d-md-block"></div>
                 <div class="col-md">
-                    <strong>
+                    <strong class="text-dark text-uppercase">
                         Contact Info
                     </strong>
                     <address class="mt-3 d-flex align-items-center">

@@ -4,16 +4,10 @@
 
 @php($heroSlider = [
     asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
-    asset('images/hero-1-why-duma.png'),
+    asset('images/hero-2-duma-panel.png'),
+    asset('images/hero-3-duma-door.png'),
+    asset('images/hero-4-why-duma-deck.png'),
+    asset('images/hero-5-why-duma-lisplank.png'),
 ])
 
 @section('content')
