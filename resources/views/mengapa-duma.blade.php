@@ -40,9 +40,11 @@
 @endphp
 
 @section('content')
-    <section class="banner mb-5">
-        <img src="{{ asset('images/banner-why-duma.png') }}" alt="" class="img-fluid w-100">
-    </section>
+    <div class="container container--full-hd px-0">
+        <section class="banner mb-5">
+            <img src="{{ asset('images/banner-why-duma.png') }}" alt="" class="img-fluid w-100">
+        </section>
+    </div>
     <div class="container">
         <div class="text-center">
             <h2 class="h5">
