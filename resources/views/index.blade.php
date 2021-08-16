@@ -3,7 +3,7 @@
 @section('seo_title', 'Home')
 
 @php($heroSlider = [
-    asset('images/hero-1-why-duma.png'),
+    route('why_duma') => asset('images/hero-1-why-duma.png'),
     asset('images/hero-2-duma-panel.png'),
     asset('images/hero-3-duma-door.png'),
     asset('images/hero-4-why-duma-deck.png'),
@@ -14,8 +14,8 @@
     <div class="hero-slider container--full-hd"
          style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom center/cover">
         <div class="container px-0" data-slick>
-            @foreach($heroSlider as $slide)
-                <a href="#" class="hero-slider__slide">
+            @foreach($heroSlider as $route => $slide)
+                <a href="{{ is_int($route) ? '#' : $route }}" class="hero-slider__slide">
                     <img src="{{ $slide }}" alt="" class="img-fluid w-100">
                 </a>
             @endforeach
