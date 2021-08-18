@@ -4,11 +4,13 @@
 @php($cms = \Lit\Config\Form\Pages\ProductPanelConfig::load())
 
 @section('content')
-    @isset($cms->banner)
-        <section class="banner mb-5">
-            <img src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100">
-        </section>
-    @endisset
+    <div class="container container--full-hd">
+        @isset($cms->banner)
+            <section class="banner mb-5">
+                <img src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100">
+            </section>
+        @endisset
+    </div>
     <div class="container">
         <div class="text-center">
             <h1 class="h4 mb-3">
