@@ -15,9 +15,6 @@
         }
 
         .nav-item {
-            display: flex;
-            align-items: center;
-
             .nav-link {
                 color: $nav-link-color;
                 padding-left: 1rem;
@@ -91,6 +88,9 @@
 
         .navbar-nav {
             .nav-item {
+                display: flex;
+                align-items: center;
+                
                 & > .nav-link {
                     padding-top: 1.5rem;
                     padding-bottom: 1.5rem;

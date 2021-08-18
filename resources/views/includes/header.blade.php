@@ -48,24 +48,26 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav w-100 justify-content-end text-center">
+                <ul class="navbar-nav w-100 justify-content-end text-start text-lg-center">
                     <li class="nav-item {{ request()->routeIs(['why_duma']) ? 'active' : '' }} my-3 my-md-0">
                         <a class="nav-link" href="{{ route('why_duma') }}">Mengapa Duma?</a>
                     </li>
                     <li class="nav-item mb-3 mb-md-0 dropdown {{ request()->routeIs(['product.*']) ? 'active' : '' }}">
-                        <a class="nav-link dropdown-toggle hover-show" href="#" id="product_projects_nav_dropdown"
+                        <a class="nav-link dropdown-toggle" href="#" id="product_projects_nav_dropdown"
                            role="button"
+                           data-bs-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             Produk & Proyek
                         </a>
-                        <div class="dropdown-menu rounded-0 mt-0 p-0"
+                        <div class="dropdown-menu keep-open rounded-0 mt-0 p-0"
                              aria-labelledby="product_projects_nav_dropdown">
-                            <div class="dropdown-item p-0 dropright">
-                                <a href="#" class="dropdown-toggle hover-show nav-link" aria-haspopup="true"
+                            <div class="dropdown-item p-0 dropend">
+                                <a href="#" class="dropdown-toggle nav-link" aria-haspopup="true"
+                                   data-bs-toggle="dropdown"
                                    id="product_nav_dropdown" aria-expanded="false">
                                     Produk
                                 </a>
-                                <div class="dropdown-menu keep-open rounded-0 ml-0 p-0"
+                                <div class="dropdown-menu keep-open rounded-0 ms-0 p-0"
                                      aria-labelledby="product_nav_dropdown">
                                     <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_panel']) ? 'active' : '' }}"
                                        href="{{ route('product.duma_panel') }}">

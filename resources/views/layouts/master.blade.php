@@ -39,9 +39,6 @@
 @stack('after_scripts')
 
 <script>
-    $('.dropdown-toggle').click(function() {
-        $(this).toggleClass('show').next().toggleClass('show');
-    });
     $('.dropdown-menu.keep-open').click(function(e) {
         e.stopPropagation();
     });
