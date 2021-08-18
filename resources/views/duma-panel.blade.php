@@ -30,7 +30,9 @@
         </div>
     </div>
     @if($cms->spec_banner)
-        <img src="{{ $cms->spec_banner->getUrl() }}" alt="" class="img-fluid">
+        <div class="container container--full-hd">
+            <img src="{{ $cms->spec_banner->getUrl() }}" alt="" class="img-fluid">
+        </div>
     @endif
     <div class="container">
         <div class="text-center">
