@@ -23,7 +23,7 @@
             <div class="mt-3" data-slick>
                 @foreach($cms->carousel as $slide)
                     <div class="slide">
-                        <img src="{{ $slide->getUrl() }}" class="img-fluid">
+                        <img src="{{ $slide->getUrl() }}" class="img-fluid" alt="{{ $slide->title }}">
                     </div>
                 @endforeach
             </div>
@@ -144,9 +144,9 @@
                 FAQs
             </h2>
             @foreach($cms->faqs as $faq)
-                <div class="faq">
-                    <div class="faq__question collapsed" data-toggle="collapse"
-                         data-target="#faq_{{ $loop->iteration }}">
+                <div class="faq text-start">
+                    <div class="faq__question collapsed" data-bs-toggle="collapse"
+                         data-bs-target="#faq_{{ $loop->iteration }}">
                         {{ $faq->question }}
                         <i class="fas fa-minus"></i>
                     </div>
