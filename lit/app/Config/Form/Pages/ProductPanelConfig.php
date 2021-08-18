@@ -43,7 +43,7 @@ class ProductPanelConfig extends FormConfig
     /**
      * Setup form page.
      *
-     * @param \Lit\Crud\CrudShow $page
+     * @param  \Lit\Crud\CrudShow  $page
      * @return void
      */
     public function show(CrudShow $page)
@@ -132,6 +132,7 @@ class ProductPanelConfig extends FormConfig
                          $form->input('title')
                               ->title('Title');
                          $form->file('file')
+                              ->maxFiles(1)
                               ->title('File');
                      });
                  })->blockWidth(6);
@@ -147,6 +148,7 @@ class ProductPanelConfig extends FormConfig
                          $form->input('title')
                               ->title('Title');
                          $form->file('file')
+                              ->maxFiles(1)
                               ->title('File');
                      });
                  })->blockWidth(6);
