@@ -32,6 +32,15 @@ class NavigationConfig extends Config
             $nav->preset('user.user')->icon(fa('users')),
             $nav->preset('permissions'),
         ]);
+
+        $nav->section([
+            $nav->title('Optimizations'),
+
+            $nav->entry('Clear Cache', [
+                'link' => route('lit.cache.clear'),
+                'icon' => fa('database')
+            ])
+        ]);
     }
 
     /**
