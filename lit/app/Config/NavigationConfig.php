@@ -10,13 +10,14 @@ use Lit\Config\Form\Pages\ProductDeckConfig;
 use Lit\Config\Form\Pages\ProductDoorConfig;
 use Lit\Config\Form\Pages\ProductLisplankConfig;
 use Lit\Config\Form\Pages\ProductPanelConfig;
+use Lit\Config\Form\Pages\ProjectConfig;
 
 class NavigationConfig extends Config
 {
     /**
      * Topbar navigation entries.
      *
-     * @param \Ignite\Application\Navigation\Navigation $nav
+     * @param  \Ignite\Application\Navigation\Navigation  $nav
      * @return void
      */
     public function topbar(Navigation $nav)
@@ -36,21 +37,27 @@ class NavigationConfig extends Config
     /**
      * Main navigation entries.
      *
-     * @param \Ignite\Application\Navigation\Navigation $nav
+     * @param  \Ignite\Application\Navigation\Navigation  $nav
      * @return void
      */
     public function main(Navigation $nav)
     {
         $nav->section([
-            $nav->title('Pages'),
+            $nav->title('Main Navigation'),
             $nav->group('Product', [
                 $nav->preset(ProductPanelConfig::class),
                 $nav->preset(ProductDoorConfig::class),
                 $nav->preset(ProductDeckConfig::class),
                 $nav->preset(ProductLisplankConfig::class),
             ]),
+            $nav->preset(ProjectConfig::class),
             $nav->preset(DistributorConfig::class),
             $nav->preset(PricelistConfig::class),
+        ]);
+
+        $nav->section([
+            $nav->title('Contents'),
+            $nav->preset(\Lit\Config\Crud\ProjectConfig::class),
         ]);
     }
 }

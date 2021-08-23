@@ -34,13 +34,13 @@
             <img src="{{ $cms->spec_banner->getUrl() }}" alt="" class="img-fluid">
         </div>
     @endif
-    <div class="container">
+    <div class="container mt-3">
         <div class="text-center">
             {!! $cms->spec_description !!}
         </div>
         @foreach($cms->content as $content)
-            <div class="row justify-content-between">
-                <div class="col-md-5">
+            <div class="row justify-content-between mt-5">
+                <div class="col-md-4">
                     <h3 class="h5">{{ $content->title }}</h3>
                     <div class="text-color-secondary">
                         {{ $content->subtitle }}
@@ -50,24 +50,24 @@
                     {!! $content->description !!}
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3">
                 @foreach($content->items as $item)
                     @if($item->type == 'simple')
-                        <div class="col-md-3">
-                            <figure class="figure text-center">
+                        <div class="col-md-3 mb-4">
+                            <figure class="figure text-center w-100 h-100">
                                 <img src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
                                      class="figure-img img-fluid">
-                                <figcaption>
+                                <figcaption class="mt-5">
                                     {{ $item->title }}
                                 </figcaption>
                             </figure>
                         </div>
                     @elseif($item->type == 'full')
-                        <div class="col-md-4">
-                            <figure class="figure figure--full p-3">
+                        <div class="col-md-4 mb-4">
+                            <figure class="figure figure--full p-3 w-100 h-100">
                                 <img src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
                                      class="figure-img img-fluid">
-                                <figcaption class="text-center">
+                                <figcaption class="text-center mt-5">
                                     {{ $item->title }}
                                 </figcaption>
                                 <div class="mt-3">

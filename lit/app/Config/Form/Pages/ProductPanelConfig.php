@@ -68,9 +68,7 @@ class ProductPanelConfig extends FormConfig
             $form->block('content')
                  ->title('Content')
                  ->repeatables(function ($repeatables) {
-                     // Add as many repeatables as you want.
                      $repeatables->add('block', function ($form, $preview) {
-                         // The block preview.
                          $preview->col('{title}');
 
                          $form->input('title')
@@ -90,6 +88,7 @@ class ProductPanelConfig extends FormConfig
                                            ->translatable()
                                            ->title('Image')
                                            ->expand()
+                                           ->crop(1)
                                            ->maxFiles(1);
                                       $form->input('title')
                                            ->title('Title');
@@ -101,6 +100,7 @@ class ProductPanelConfig extends FormConfig
                                       $form->image('image')
                                            ->translatable()
                                            ->title('Image')
+                                           ->crop(1)
                                            ->expand()
                                            ->maxFiles(1);
                                       $form->input('title')
