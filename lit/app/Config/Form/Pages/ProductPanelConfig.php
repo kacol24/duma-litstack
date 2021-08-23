@@ -166,7 +166,7 @@ class ProductPanelConfig extends FormConfig
                          $form->text('answer')
                               ->title('Answer');
                      });
-                 })->blockWidth(6);
+                 });
         })->title('FAQs');
     }
 }
