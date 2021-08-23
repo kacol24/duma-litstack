@@ -1,4 +1,4 @@
-<footer class="site-footer pt-5 mt-5">
+<footer class="site-footer pt-5 mt-auto">
     <div class="sitemap pt-5 container--full-hd"
          style="background: url({{ asset('images/bg-footer.png') }}) no-repeat top/cover;margin:auto;">
         <div class="container pt-5">
