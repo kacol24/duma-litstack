@@ -53,9 +53,9 @@
             <div class="row mt-3">
                 @foreach($content->items as $item)
                     @if($item->type == 'simple')
-                        <div class="col-md-3 mb-4">
+                        <div class="col-6 col-md-3 mb-4">
                             <figure class="figure text-center w-100 h-100">
-                                <img data-src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
+                                <img data-src="{{ $item->image->getUrl('md') }}" alt="{{ $item->title }}"
                                      class="figure-img img-fluid lazyload">
                                 <figcaption class="mt-5 fw-bolder">
                                     {{ $item->title }}
@@ -65,7 +65,7 @@
                     @elseif($item->type == 'full')
                         <div class="col-md-4 mb-4">
                             <figure class="figure figure--full p-3 w-100 h-100">
-                                <img data-src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
+                                <img data-src="{{ $item->image->getUrl('md') }}" alt="{{ $item->title }}"
                                      class="figure-img img-fluid lazyload">
                                 <figcaption class="text-center mt-5 fw-bolder">
                                     {{ $item->title }}
