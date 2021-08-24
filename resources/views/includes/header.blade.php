@@ -52,7 +52,7 @@
                     <li class="nav-item {{ request()->routeIs(['why_duma']) ? 'active' : '' }} my-3 my-md-0">
                         <a class="nav-link" href="{{ route('why_duma') }}">Mengapa Duma?</a>
                     </li>
-                    <li class="nav-item mb-3 mb-md-0 dropdown {{ request()->routeIs(['product.*']) ? 'active' : '' }}">
+                    <li class="nav-item mb-3 mb-md-0 dropdown {{ request()->routeIs(['product.*', 'projects.*']) ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle" href="#" id="product_projects_nav_dropdown"
                            role="button"
                            data-bs-toggle="dropdown"
