@@ -12,6 +12,9 @@
             border: 1px solid $input-border-color;
             border-right: 0;
             color: $theme-primary;
+            height: 100%;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
         }
     }
 }
