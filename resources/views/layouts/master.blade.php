@@ -16,6 +16,8 @@
     @stack('after_styles')
 
     <title>@yield('seo_title') | @yield('site_title', 'DUMA - Material Bangunan Masa Depan')</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" async></script>
 </head>
 <body class="d-flex flex-column h-100">
 

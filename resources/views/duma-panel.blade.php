@@ -7,7 +7,7 @@
     <div class="container container--full-hd">
         @isset($cms->banner)
             <section class="banner mb-5">
-                <img src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100">
+                <img data-src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
             </section>
         @endisset
     </div>
@@ -23,15 +23,15 @@
             <div class="mt-3" data-slick>
                 @foreach($cms->carousel as $slide)
                     <div class="slide">
-                        <img src="{{ $slide->getUrl() }}" class="img-fluid w-100" alt="{{ $slide->title }}">
+                        <img data-src="{{ $slide->getUrl() }}" class="img-fluid w-100 lazyload" alt="{{ $slide->title }}">
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
     @if($cms->spec_banner)
-        <div class="container container--full-hd">
-            <img src="{{ $cms->spec_banner->getUrl() }}" alt="" class="img-fluid w-100">
+        <div class="container container--full-hd mt-5">
+            <img data-src="{{ $cms->spec_banner->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
         </div>
     @endif
     <div class="container mt-3">
@@ -55,8 +55,8 @@
                     @if($item->type == 'simple')
                         <div class="col-md-3 mb-4">
                             <figure class="figure text-center w-100 h-100">
-                                <img src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
-                                     class="figure-img img-fluid">
+                                <img data-src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid lazyload">
                                 <figcaption class="mt-5 fw-bolder">
                                     {{ $item->title }}
                                 </figcaption>
@@ -65,8 +65,8 @@
                     @elseif($item->type == 'full')
                         <div class="col-md-4 mb-4">
                             <figure class="figure figure--full p-3 w-100 h-100">
-                                <img src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
-                                     class="figure-img img-fluid">
+                                <img data-src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid lazyload">
                                 <figcaption class="text-center mt-5 fw-bolder">
                                     {{ $item->title }}
                                 </figcaption>
@@ -88,7 +88,7 @@
             <div class="row">
                 @foreach($cms->finishing_images as $image)
                     <div class="col-md-4">
-                        <img src="{{ $image->getUrl() }}" alt="" class="img-fluid">
+                        <img data-src="{{ $image->getUrl() }}" alt="" class="img-fluid lazyload">
                     </div>
                 @endforeach
             </div>
