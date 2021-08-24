@@ -13,7 +13,7 @@
 @section('content')
     <div class="hero-slider container--full-hd"
          style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom center/cover">
-        <div class="container px-0" data-slick>
+        <div class="container px-0 overflow-hidden" data-slick>
             @foreach($heroSlider as $route => $slide)
                 <a href="{{ is_int($route) ? '#' : $route }}" class="hero-slider__slide">
                     <img src="{{ $slide }}" alt="" class="img-fluid w-100">

@@ -57,7 +57,7 @@
                             <figure class="figure text-center w-100 h-100">
                                 <img data-src="{{ $item->image->getUrl('md') }}" alt="{{ $item->title }}"
                                      class="figure-img img-fluid lazyload">
-                                <figcaption class="mt-5 fw-bolder">
+                                <figcaption class="mt-3 mt-md-5 fw-bolder">
                                     {{ $item->title }}
                                 </figcaption>
                             </figure>
