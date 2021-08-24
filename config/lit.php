@@ -12,7 +12,19 @@ return [
     |
     */
 
-    'route_prefix' => 'admin',
+    'route_prefix' => env('LITSTACK_ROUTE_PREFIX', 'admin'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Lit Domain
+    |--------------------------------------------------------------------------
+    |
+    | You may wish do make the litstack admin panel accessible form a certain
+    | domain, e.g. http://admin.your-domain.tld
+    |
+    */
+
+    'domain' => env('LITSTACK_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -27,6 +39,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Lit Guard
+    |--------------------------------------------------------------------------
+    |
+    | The guard that is used to authenticate users that are allowed into the
+    | litstack application.
+    |
+    */
+
+    'guard' => 'lit',
+
+    /*
+    |--------------------------------------------------------------------------
     | Lit Login
     |--------------------------------------------------------------------------
     |
@@ -35,8 +59,33 @@ return [
     */
 
     'login' => [
-
         'username' => true,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Litstack Service Providers
+    |--------------------------------------------------------------------------
+    |
+    | The service providers listed here will be automatically loaded  if litstack is installed.
+    | Feel free to remove services if you don't need them.
+    |
+    */
+
+    'providers' => [
+        \Ignite\Config\ConfigServiceProvider::class,
+        \Ignite\Translation\TranslationServiceProvider::class,
+        \Ignite\Permissions\PermissionsServiceProvider::class,
+        \Ignite\Vue\VueServiceProvider::class,
+        \Ignite\Chart\ChartServiceProvider::class,
+        \Ignite\Crud\CrudServiceProvider::class,
+        \Ignite\User\UserServiceProvider::class,
+        \Ignite\Page\PageServiceProvider::class,
+        \Ignite\Search\SearchServiceProvider::class,
+        //\Ignite\Auth\PasswordResetServiceProvider::class,
+
+        // Uncomment to enable a link to your system info in the topbar navigation.
+        //\Ignite\Info\InfoServiceProvider::class,
     ],
 
     /*
@@ -63,14 +112,14 @@ return [
 
         'locale' => 'en',
 
-        'translatable' => true,
+        'translatable' => false,
 
         /**
          * The languages in which your litstack application should be displayed.
          */
         'locales' => [
             'en',
-            'de',
+            'id',
         ],
 
         'fallback_locale' => 'en',
@@ -94,6 +143,9 @@ return [
 
         'scripts' => [
             'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.0.2/addons/cleave-phone.de.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.0.2/addons/cleave-phone.us.js',
         ],
         'styles' => [
             //
@@ -139,6 +191,51 @@ return [
              * Available devices: mobile / tablet / desktop.
              */
             'default_device' => 'desktop',
+        ],
+
+        // Indicates how long forms are cached (in minutes). The form cache
+        // cleared everytime a form gets updated.
+        'form_ttl' => 60 * 24,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Lit Field-Settings
+    |--------------------------------------------------------------------------
+    |
+    | The customizable settings for fields
+    |
+    */
+
+    'fields' => [
+        /**
+         * Configuration for the WYSIWYG-Editor.
+         */
+        'wysiwyg' => [
+            /**
+             * The Headline-Levels that can be set.
+             */
+            'headingLevels' => [2, 3, 4],
+            /**
+             * Controls that should be shown in the WYSIWYG-Editor.
+             */
+            'controls' => [
+                'format',
+                'bold',
+                'italic',
+                'strike',
+                'underline',
+                'bullet_list',
+                'ordered_list',
+                'blockquote',
+                'href',
+                'colors',
+                'table',
+            ],
+            /**
+             * Font colors to chose from.
+             */
+            'colors' => ['#4951f2', '#f67693', '#f6ed76', '#9ff2ae', '#83c2ff', '#70859c'],
         ],
     ],
 ];
