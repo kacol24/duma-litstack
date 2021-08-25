@@ -27,13 +27,42 @@
             @foreach($projects as $project)
                 <div class="col-md-4">
                     <a href="{{ $project->thumbnail->getUrl() }}" class="d-block mb-4"
+                       @if($project->thumbnail->hasCustomProperty('title'))
+                       data-caption="{{ $project->thumbnail->getCustomProperty('title') }}"
+                       @endif
                        data-fancybox="project_{{ $project->id }}" title="{{ $project->title }}">
-                        <img src="{{ $project->thumbnail->getUrl('thumbnail') }}" alt="" class="img-fluid">
+                        <figure class="figure figure--full w-100 h-100">
+                            <img data-src="{{ $project->thumbnail->getUrl('thumbnail') }}" alt="{{ $project->title }}"
+                                 class="figure-img img-fluid lazyload">
+                            <figcaption class="text-center fw-bolder p-3 text-dark">
+                                {{ $project->title }}
+                            </figcaption>
+                            <div class="p-3 text-dark pt-0">
+                                <table class="w-100">
+                                    @if($project->location)
+                                        <tr>
+                                            <th>Location</th>
+                                            <td>: {{ $project->location }}</td>
+                                        </tr>
+                                    @endif
+                                    <tr>
+                                        <th>Distributor</th>
+                                        <td>: {{ $project->distributor->name }}</td>
+                                    </tr>
+                                </table>
+                                <div class="mt-3">
+                                    {!! $project->description !!}
+                                </div>
+                            </div>
+                        </figure>
                     </a>
                     <div class="d-none">
                         @foreach($project->images as $image)
                             @continue($loop->first)
                             <a href="{{ $image->getUrl() }}" class="d-block mb-4"
+                               @if($image->hasCustomProperty('title'))
+                               data-caption="{{ $image->getCustomProperty('title') }}"
+                               @endif
                                data-fancybox="project_{{ $project->id }}" title="{{ $project->title }}">
                                 <img src="{{ $image->getUrl('thumbnail') }}" alt="" class="img-fluid"></a>
                         @endforeach

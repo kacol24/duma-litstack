@@ -17,7 +17,14 @@ class Project extends Model implements HasMediaContract
      *
      * @var array
      */
-    protected $fillable = ['title'];
+    protected $fillable = [
+        'title',
+        'location',
+        'description',
+
+        'project_category_id',
+        'distributor_id',
+    ];
 
     /**
      * The accessors to append to the model's array form.
@@ -62,5 +69,10 @@ class Project extends Model implements HasMediaContract
                            ->sharpen(1);
 
         $this->applyCrop($conversion, $media);
+    }
+
+    public function distributor()
+    {
+        return $this->belongsTo(Distributor::class);
     }
 }

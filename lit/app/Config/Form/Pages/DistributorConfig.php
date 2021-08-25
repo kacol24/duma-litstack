@@ -2,6 +2,7 @@
 
 namespace Lit\Config\Form\Pages;
 
+use App\Models\Distributor;
 use Ignite\Crud\Config\FormConfig;
 use Ignite\Crud\CrudShow;
 use Lit\Http\Controllers\Form\Pages\DistributorController;
@@ -40,7 +41,7 @@ class DistributorConfig extends FormConfig
     /**
      * Setup form page.
      *
-     * @param \Lit\Crud\CrudShow $page
+     * @param  \Lit\Crud\CrudShow  $page
      * @return void
      */
     public function show(CrudShow $page)
@@ -50,18 +51,15 @@ class DistributorConfig extends FormConfig
             $form->image('banner')
                  ->maxFiles(1)
                  ->expand();
-            $form->block('distributors')
+            $form->manyRelation('distributors')
                  ->title('Distributors')
-                 ->repeatables(function ($repeatables) {
-                     $repeatables->add('distributor', function ($form, $preview) {
-                         $preview->col('{name}');
-
-                         $form->input('name')
-                              ->title('Distributor Name');
-                         $form->wysiwyg('details')
-                              ->title('Details');
-                     });
-                 });
+                 ->model(Distributor::class)
+                 ->sortable()
+                 ->small()
+                 ->createAndUpdateForm(function ($form) {
+                     $form->input('name');
+                 })
+                 ->use(\Lit\Config\Crud\DistributorConfig::class);
         });
     }
 }

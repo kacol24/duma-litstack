@@ -4,6 +4,7 @@ namespace Lit\Config;
 
 use Ignite\Application\Navigation\Config;
 use Ignite\Application\Navigation\Navigation;
+use Lit\Config\Crud\ProjectCategoryConfig;
 use Lit\Config\Form\Pages\DistributorConfig;
 use Lit\Config\Form\Pages\PricelistConfig;
 use Lit\Config\Form\Pages\ProductDeckConfig;
@@ -38,8 +39,8 @@ class NavigationConfig extends Config
 
             $nav->entry('Clear Cache', [
                 'link' => route('lit.cache.clear'),
-                'icon' => fa('database')
-            ])
+                'icon' => fa('database'),
+            ]),
         ]);
     }
 
@@ -66,7 +67,13 @@ class NavigationConfig extends Config
 
         $nav->section([
             $nav->title('Contents'),
-            $nav->preset(\Lit\Config\Crud\ProjectConfig::class),
+
+            $nav->group('Projects', [
+                $nav->preset(\Lit\Config\Crud\ProjectConfig::class),
+                $nav->preset(ProjectCategoryConfig::class),
+            ]),
+
+            $nav->preset(\Lit\Config\Crud\DistributorConfig::class),
         ]);
     }
 }
