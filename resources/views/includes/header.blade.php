@@ -25,11 +25,17 @@
                 {{--                </div>--}}
                 <div class="col-12 col-lg navbar-expand">
                     <ul class="navbar-nav justify-content-lg-end justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
+                        <li class="nav-item mb-3 mb-md-0">
+                            <a class="nav-link" href="#">Tentang Duma</a>
+                        </li>
+                        <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['posts.*']) ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('posts.index') }}">Berita & Acara</a>
+                        </li>
+                        <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['distributor']) ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('distributor') }}">Distributor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}">Hubungi Kami</a>
+                            <a class="nav-link" href="{{ route('faq') }}">FAQs</a>
                         </li>
                     </ul>
                 </div>
@@ -52,57 +58,43 @@
                     <li class="nav-item {{ request()->routeIs(['why_duma']) ? 'active' : '' }} my-3 my-md-0">
                         <a class="nav-link" href="{{ route('why_duma') }}">Mengapa Duma?</a>
                     </li>
-                    <li class="nav-item mb-3 mb-md-0 dropdown {{ request()->routeIs(['product.*', 'projects.*']) ? 'active' : '' }}">
+                    <li class="nav-item mb-3 mb-md-0 dropdown {{ request()->routeIs(['product.*']) ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle" href="#" id="product_projects_nav_dropdown"
                            role="button"
                            data-bs-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            Produk & Proyek
+                            Produk
                         </a>
                         <div class="dropdown-menu keep-open rounded-0 mt-0 p-0"
                              aria-labelledby="product_projects_nav_dropdown">
-                            <div class="dropdown-item p-0 dropend">
-                                <a href="#" class="dropdown-toggle nav-link" aria-haspopup="true"
-                                   data-bs-toggle="dropdown"
-                                   id="product_nav_dropdown" aria-expanded="false">
-                                    Produk
-                                </a>
-                                <div class="dropdown-menu keep-open rounded-0 ms-0 p-0"
-                                     aria-labelledby="product_nav_dropdown">
-                                    <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_panel']) ? 'active' : '' }}"
-                                       href="{{ route('product.duma_panel') }}">
-                                        Duma Panel
-                                    </a>
-                                    <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_door']) ? 'active' : '' }}"
-                                       href="{{ route('product.duma_door') }}">
-                                        Duma Door
-                                    </a>
-                                    <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_deck']) ? 'active' : '' }}"
-                                       href="{{ route('product.duma_deck') }}">
-                                        Duma Deck
-                                    </a>
-                                    <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_lisplank']) ? 'active' : '' }}"
-                                       href="{{ route('product.duma_lisplank') }}">
-                                        Duma Lisplank
-                                    </a>
-                                </div>
-                            </div>
-                            <a class="dropdown-item nav-link" href="{{ route('projects.index') }}">
-                                Proyek
+                            <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_panel']) ? 'active' : '' }}"
+                               href="{{ route('product.duma_panel') }}">
+                                Duma Panel
+                            </a>
+                            <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_door']) ? 'active' : '' }}"
+                               href="{{ route('product.duma_door') }}">
+                                Duma Door
+                            </a>
+                            <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_deck']) ? 'active' : '' }}"
+                               href="{{ route('product.duma_deck') }}">
+                                Duma Deck
+                            </a>
+                            <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_lisplank']) ? 'active' : '' }}"
+                               href="{{ route('product.duma_lisplank') }}">
+                                Duma Lisplank
                             </a>
                         </div>
+                    </li>
+                    <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['projects.*']) ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('projects.index') }}">
+                            Proyek
+                        </a>
                     </li>
                     <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['pricelist']) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('pricelist') }}">Daftar Harga & Dokumen Lain</a>
                     </li>
-                    <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['posts.*']) ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('posts.index') }}">Berita & Acara</a>
-                    </li>
-                    <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['distributor']) ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('distributor') }}">Distributor</a>
-                    </li>
-                    <li class="nav-item mb-3 mb-md-0">
-                        <a class="nav-link" href="#">Tentang Duma</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('contact.index') }}">Hubungi Kami</a>
                     </li>
                 </ul>
             </div>
