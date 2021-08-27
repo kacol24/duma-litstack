@@ -45,10 +45,12 @@
                                             <td>: {{ $project->location }}</td>
                                         </tr>
                                     @endif
-                                    <tr>
-                                        <th>Distributor</th>
-                                        <td>: {{ $project->distributor->name }}</td>
-                                    </tr>
+                                    @if($project->distributor)
+                                        <tr>
+                                            <th>Distributor</th>
+                                            <td>: {{ $project->distributor->name }}</td>
+                                        </tr>
+                                    @endif
                                 </table>
                                 <div class="mt-3">
                                     {!! $project->description !!}
