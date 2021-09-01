@@ -76,21 +76,34 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <table class="table">
-                                    <tr>
-                                        <th>Kategori</th>
-                                        <td x-text="$store.selectedProject.categoryName"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Location</th>
-                                        <td x-text="$store.selectedProject.location"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Distributor</th>
-                                        <td x-text="$store.selectedProject.distributorName"></td>
-                                    </tr>
-                                </table>
-                                <div x-html="$store.selectedProject.description"></div>
+                                <template x-if="$store.selectedProject.categoryName">
+                                    <dl class="row">
+                                        <dt class="col-md-3">Kategori</dt>
+                                        <dd class="col-sm-9" x-text="$store.selectedProject.categoryName">DUMA</dd>
+                                    </dl>
+                                </template>
+                                <template x-if="$store.selectedProject.location">
+                                    <dl class="row">
+                                        <hr>
+                                        <dt class="col-md-3">Lokasi</dt>
+                                        <dd class="col-sm-9" x-text="$store.selectedProject.location">Lokasi Proyek</dd>
+                                    </dl>
+                                </template>
+                                <template x-if="$store.selectedProject.distributorName">
+                                    <dl class="row">
+                                        <hr>
+                                        <dt class="col-md-3">Distributor</dt>
+                                        <dd class="col-md-9" x-text="$store.selectedProject.distributorName">Nama
+                                            Distributor
+                                        </dd>
+                                    </dl>
+                                </template>
+                                <template x-if="$store.selectedProject.description">
+                                    <div>
+                                        <hr>
+                                        <div x-html="$store.selectedProject.description"></div>
+                                    </div>
+                                </template>
                             </div>
                         </div>
                     </div>
@@ -108,6 +121,11 @@
 
 @push('before_styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@7.0.2/swiper-bundle.min.css">
+    <style>
+        :root {
+            --swiper-theme-color: #a1d364;
+        }
+    </style>
 @endpush
 
 @push('before_scripts')
