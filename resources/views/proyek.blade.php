@@ -75,7 +75,7 @@
                                     <div class="swiper-pagination"></div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-5 mt-md-0">
                                 <template x-if="$store.selectedProject.categoryName">
                                     <dl class="row">
                                         <dt class="col-md-3">Kategori</dt>
@@ -83,24 +83,32 @@
                                     </dl>
                                 </template>
                                 <template x-if="$store.selectedProject.location">
-                                    <hr>
-                                    <dl class="row">
-                                        <dt class="col-md-3">Lokasi</dt>
-                                        <dd class="col-sm-9" x-text="$store.selectedProject.location">Lokasi Proyek</dd>
-                                    </dl>
+                                    <div>
+                                        <hr>
+                                        <dl class="row">
+                                            <dt class="col-md-3">Lokasi</dt>
+                                            <dd class="col-sm-9" x-text="$store.selectedProject.location">Lokasi
+                                                Proyek
+                                            </dd>
+                                        </dl>
+                                    </div>
                                 </template>
                                 <template x-if="$store.selectedProject.distributorName">
-                                    <hr>
-                                    <dl class="row">
-                                        <dt class="col-md-3">Distributor</dt>
-                                        <dd class="col-md-9" x-text="$store.selectedProject.distributorName">Nama
-                                            Distributor
-                                        </dd>
-                                    </dl>
+                                    <div>
+                                        <hr>
+                                        <dl class="row">
+                                            <dt class="col-md-3">Distributor</dt>
+                                            <dd class="col-md-9" x-text="$store.selectedProject.distributorName">Nama
+                                                Distributor
+                                            </dd>
+                                        </dl>
+                                    </div>
                                 </template>
                                 <template x-if="$store.selectedProject.description">
-                                    <hr>
-                                    <div x-html="$store.selectedProject.description"></div>
+                                    <div>
+                                        <hr>
+                                        <div x-html="$store.selectedProject.description"></div>
+                                    </div>
                                 </template>
                             </div>
                         </div>
