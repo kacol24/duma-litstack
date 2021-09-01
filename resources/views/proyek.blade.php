@@ -83,15 +83,15 @@
                                     </dl>
                                 </template>
                                 <template x-if="$store.selectedProject.location">
+                                    <hr>
                                     <dl class="row">
-                                        <hr>
                                         <dt class="col-md-3">Lokasi</dt>
                                         <dd class="col-sm-9" x-text="$store.selectedProject.location">Lokasi Proyek</dd>
                                     </dl>
                                 </template>
                                 <template x-if="$store.selectedProject.distributorName">
+                                    <hr>
                                     <dl class="row">
-                                        <hr>
                                         <dt class="col-md-3">Distributor</dt>
                                         <dd class="col-md-9" x-text="$store.selectedProject.distributorName">Nama
                                             Distributor
@@ -99,10 +99,8 @@
                                     </dl>
                                 </template>
                                 <template x-if="$store.selectedProject.description">
-                                    <div>
-                                        <hr>
-                                        <div x-html="$store.selectedProject.description"></div>
-                                    </div>
+                                    <hr>
+                                    <div x-html="$store.selectedProject.description"></div>
                                 </template>
                             </div>
                         </div>
