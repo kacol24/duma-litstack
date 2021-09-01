@@ -144,28 +144,7 @@
             backdrop: 'static'
         });
 
-        document.addEventListener('alpine:init', function() {
-            Alpine.store('selectedProject', {
-                title: '',
-                location: '',
-                distributorName: '',
-                categoryName: '',
-                description: '',
-                images: [],
-                setProject: function(project) {
-                    this.title = project.title;
-                    this.location = project.location;
-                    this.distributorName = project.distributor_name;
-                    this.categoryName = project.category_name;
-                    this.description = project.description;
-                    this.images = project.images;
-
-                    ProjectModal.show();
-                }
-            });
-        });
-
-        new Swiper('.swiper', {
+        var swiper = new Swiper('.swiper', {
             mousewheel: true,
             zoom: true,
             grabcursor: true,
@@ -182,6 +161,28 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev'
             }
+        });
+
+        document.addEventListener('alpine:init', function() {
+            Alpine.store('selectedProject', {
+                title: '',
+                location: '',
+                distributorName: '',
+                categoryName: '',
+                description: '',
+                images: [],
+                setProject: function(project) {
+                    this.title = project.title;
+                    this.location = project.location;
+                    this.distributorName = project.distributor_name;
+                    this.categoryName = project.category_name;
+                    this.description = project.description;
+                    this.images = project.images;
+
+                    swiper.slideTo(0);
+                    ProjectModal.show();
+                }
+            });
         });
     </script>
 @endpush
