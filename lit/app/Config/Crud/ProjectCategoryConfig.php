@@ -72,5 +72,12 @@ class ProjectCategoryConfig extends CrudConfig
         $page->card(function ($form) {
             $form->input('title');
         });
+
+        $page->card(function ($form) {
+            $form->relation('projects')
+                 ->title('Projects')
+                 ->sortable()
+                 ->use(ProjectConfig::class);
+        });
     }
 }

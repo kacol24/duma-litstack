@@ -8,6 +8,7 @@ use App\Models\ProjectCategory;
 use Ignite\Crud\Config\CrudConfig;
 use Ignite\Crud\CrudIndex;
 use Ignite\Crud\CrudShow;
+use Lit\Actions\ManageProjectOrder;
 use Lit\Http\Controllers\Crud\ProjectController;
 
 class ProjectConfig extends CrudConfig
@@ -60,6 +61,7 @@ class ProjectConfig extends CrudConfig
     {
         $page->table(function ($table) {
             $table->col('Title')->value('{title}')->sortBy('title');
+            $table->field('Live')->boolean('is_active');
         })->search('title');
     }
 
@@ -71,6 +73,8 @@ class ProjectConfig extends CrudConfig
      */
     public function show(CrudShow $page)
     {
+        $page->headerRight()->action('Manage Order', ManageProjectOrder::class);
+
         $page->card(function ($form) {
             $form->input('title')
                  ->width(3 / 4);

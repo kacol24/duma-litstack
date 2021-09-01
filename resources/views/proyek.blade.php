@@ -2,7 +2,7 @@
 
 @section('seo_title', 'Mengapa Duma?')
 @php($cms = \Lit\Config\Form\Pages\ProjectConfig::load())
-@php($projects = App\Models\Project::active()->get())
+@php($projects = App\Models\Project::active()->ordered()->get())
 
 @section('content')
     <div class="container container--full-hd">
@@ -23,62 +23,141 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5" id="ProjectSelector" x-data>
             @foreach($projects as $project)
                 <div class="col-md-4">
-                    <a href="{{ $project->thumbnail->getUrl() }}" class="d-block mb-4"
-                       @if($project->thumbnail->hasCustomProperty('title'))
-                       data-caption="{{ $project->thumbnail->getCustomProperty('title') }}"
-                       @endif
-                       data-fancybox="project_{{ $project->id }}" title="{{ $project->title }}">
+                    <a href="#" class="d-block mb-4"
+                       @click.prevent='$store.selectedProject.setProject(@json($project))'>
                         <figure class="figure figure--full w-100 h-100">
                             <img data-src="{{ $project->thumbnail->getUrl('thumbnail') }}" alt="{{ $project->title }}"
                                  class="figure-img img-fluid lazyload">
                             <figcaption class="text-center fw-bolder p-3 text-dark">
                                 {{ $project->title }}
+                                <small class="fw-normal d-block">
+                                    {{ $project->category->title }}
+                                </small>
                             </figcaption>
-                            <div class="p-3 text-dark pt-0">
-                                <table class="w-100">
-                                    @if($project->location)
-                                        <tr>
-                                            <th>Location</th>
-                                            <td>: {{ $project->location }}</td>
-                                        </tr>
-                                    @endif
-                                    @if($project->distributor)
-                                        <tr>
-                                            <th>Distributor</th>
-                                            <td>: {{ $project->distributor->name }}</td>
-                                        </tr>
-                                    @endif
-                                </table>
-                                <div class="mt-3">
-                                    {!! $project->description !!}
-                                </div>
+                            <div class="p-3 text-end">
+                                Lihat Detail
+                                <i class="fas fa-arrow-right"></i>
                             </div>
                         </figure>
                     </a>
-                    <div class="d-none">
-                        @foreach($project->images as $image)
-                            @continue($loop->first)
-                            <a href="{{ $image->getUrl() }}" class="d-block mb-4"
-                               @if($image->hasCustomProperty('title'))
-                               data-caption="{{ $image->getCustomProperty('title') }}"
-                               @endif
-                               data-fancybox="project_{{ $project->id }}" title="{{ $project->title }}">
-                                <img src="{{ $image->getUrl('thumbnail') }}" alt="" class="img-fluid"></a>
-                        @endforeach
-                    </div>
                 </div>
             @endforeach
+        </div>
+    </div>
+    <div class="modal fade" id="project_detail_modal" tabindex="-1" aria-hidden="true" x-data>
+        <div class="modal-dialog modal-dialog-scrollable modal-xl modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" x-text="$store.selectedProject.title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="contaier-fluid">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="swiper">
+                                    <div class="swiper-wrapper">
+                                        <template x-for="image in $store.selectedProject.images">
+                                            <div class="swiper-slide">
+                                                <div class="swiper-zoom-container">
+                                                    <img
+                                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAAKCAQAAACNzrx7AAAAOklEQVR42u3VQREAAAzCsOHf9HTAJRL6aQ4AqBcJAMDQAQBDBwAMHQAwdAAwdADA0AEAQwcADB0Atjz8IAALxMx7mQAAAABJRU5ErkJggg=="
+                                                        alt="" :src="image.url" class="img-fluid user-select-none">
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table">
+                                    <tr>
+                                        <th>Kategori</th>
+                                        <td x-text="$store.selectedProject.categoryName"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Location</th>
+                                        <td x-text="$store.selectedProject.location"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Distributor</th>
+                                        <td x-text="$store.selectedProject.distributorName"></td>
+                                    </tr>
+                                </table>
+                                <div x-html="$store.selectedProject.description"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="position-fixed w-100 h-100 align-items-center justify-content-center text-white d-none"
+         style="top: 0;left: 0;background-color:rgba(0, 0, 0, 0.7);z-index:99999;">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-fw fa-lg fa-spin fa-sync me-2"></i> Loading...
         </div>
     </div>
 @endsection
 
 @push('before_styles')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0-beta.2/dist/fancybox.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@7.0.2/swiper-bundle.min.css">
 @endpush
 
 @push('before_scripts')
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0-beta.2/dist/fancybox.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@7.0.2/swiper-bundle.min.js"></script>
+@endpush
+
+@push('after_scripts')
+    <script>
+        var ProjectModal = new bootstrap.Modal(document.getElementById('project_detail_modal'), {
+            backdrop: 'static'
+        });
+
+        document.addEventListener('alpine:init', function() {
+            Alpine.store('selectedProject', {
+                title: '',
+                location: '',
+                distributorName: '',
+                categoryName: '',
+                description: '',
+                images: [],
+                setProject: function(project) {
+                    this.title = project.title;
+                    this.location = project.location;
+                    this.distributorName = project.distributor_name;
+                    this.categoryName = project.category_name;
+                    this.description = project.description;
+                    this.images = project.images;
+
+                    ProjectModal.show();
+                }
+            });
+        });
+
+        new Swiper('.swiper', {
+            mousewheel: true,
+            zoom: true,
+            grabcursor: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                dynamicBullets: true,
+                clickable: true
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            }
+        });
+    </script>
 @endpush

@@ -24,6 +24,7 @@ class Project extends Model implements HasMediaContract
 
         'project_category_id',
         'distributor_id',
+        'is_active'
     ];
 
     /**
@@ -31,7 +32,7 @@ class Project extends Model implements HasMediaContract
      *
      * @var array
      */
-    protected $appends = ['images', 'thumbnail'];
+    protected $appends = ['images', 'thumbnail', 'distributor_name', 'category_name'];
 
     /**
      * The relationships that should always be loaded.
@@ -44,9 +45,24 @@ class Project extends Model implements HasMediaContract
         'is_active' => 'boolean',
     ];
 
+    public function getDistributorNameAttribute()
+    {
+        return optional($this->distributor)->name;
+    }
+
+    public function getCategoryNameAttribute()
+    {
+        return optional($this->category)->title;
+    }
+
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
+    }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order_column', 'asc');
     }
 
     public function getImagesAttribute()
@@ -74,5 +90,10 @@ class Project extends Model implements HasMediaContract
     public function distributor()
     {
         return $this->belongsTo(Distributor::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(ProjectCategory::class, 'project_category_id');
     }
 }
