@@ -3,6 +3,20 @@
 @section('seo_title', 'Mengapa Duma?')
 @php($cms = \Lit\Config\Form\Pages\ProductPanelConfig::load())
 
+@push('after_scripts')
+    <style>
+        body {
+            position: relative;
+        }
+    </style>
+    <script>
+        var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+            offset: 200,
+            target: '#navigator'
+        });
+    </script>
+@endpush
+
 @section('content')
     <div class="container container--full-hd">
         @isset($cms->banner)
@@ -11,6 +25,44 @@
             </section>
         @endisset
     </div>
+    <div class="navigator sticky-top pb-3" id="navigator">
+        <div class="container" id="main_nav">
+            <div class="navigator__rail navbar-nav">
+                <ul class="nav nav-pills justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">
+                            Fitur & Keunggulan
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#specification">
+                            Spesifikasi Produk
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#finishing">
+                            Finishing
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#installation">
+                            Pemasangan
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#storage">
+                            Penanganan & Penyimpanan
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faqs">
+                            FAQs
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="text-center">
             <h1 class="h4 mb-3">
@@ -18,20 +70,24 @@
             </h1>
             {!! $cms->page_description !!}
         </div>
+        <div class="anchor" id="features"></div>
         <div class="text-center">
             <h2 class="h5">Fitur & Keunggulan</h2>
             <div class="mt-3" data-slick>
                 @foreach($cms->carousel as $slide)
                     <div class="slide">
-                        <img data-src="{{ $slide->getUrl() }}" class="img-fluid w-100 lazyload" alt="{{ $slide->title }}">
+                        <img data-src="{{ $slide->getUrl() }}" class="img-fluid w-100 lazyload"
+                             alt="{{ $slide->title }}">
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
     @if($cms->spec_banner)
+        <div class="anchor" id="specification"></div>
         <div class="container container--full-hd mt-5">
-            <img data-src="{{ $cms->spec_banner->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
+            <img data-src="{{ $cms->spec_banner->getUrl() }}" alt="specification banner"
+                 class="img-fluid w-100 lazyload">
         </div>
     @endif
     <div class="container mt-3">
@@ -80,12 +136,13 @@
             </div>
         @endforeach
         <hr>
+        <div class="anchor" id="finishing"></div>
         <div class="text-center">
             <h2 class="h5">
                 Finishing
             </h2>
             {!! $cms->finishing_description !!}
-            <div class="row">
+            <div class="row mb-5">
                 @foreach($cms->finishing_images as $image)
                     <div class="col-md-4">
                         <img data-src="{{ $image->getUrl() }}" alt="" class="img-fluid lazyload">
@@ -93,11 +150,12 @@
                 @endforeach
             </div>
 
-            <h2 class="h5 mt-5">
+            <div class="anchor" id="installation"></div>
+            <h2 class="h5">
                 Pemasangan
             </h2>
             {!! $cms->installation_description !!}
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mb-5">
                 @foreach($cms->installation_documents as $document)
                     <div class="col-md-6">
                         <div class="card pricelist-card border-0">
@@ -118,10 +176,11 @@
                 @endforeach
             </div>
 
-            <h2 class="h5 mt-5">
+            <div class="anchor" id="storage"></div>
+            <h2 class="h5">
                 Penanganan & Penyimpanan
             </h2>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mb-5">
                 @foreach($cms->storage_documents as $document)
                     <div class="col-md-6">
                         <div class="card pricelist-card border-0">
@@ -142,7 +201,8 @@
                 @endforeach
             </div>
 
-            <h2 class="h5 mt-5">
+            <div class="anchor" id="faqs"></div>
+            <h2 class="h5">
                 FAQs
             </h2>
             @foreach($cms->faqs as $faq)

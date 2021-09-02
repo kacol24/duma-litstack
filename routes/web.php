@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
+use Lit\Config\Form\Pages\ProjectConfig;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +39,13 @@ Route::view('hubungi-kami', 'hubungi-kami')
      ->name('contact.index');
 Route::view('kalkulator-biaya-duma', 'kalkulator')
      ->name('calculator.index');
-Route::view('contoh-proyek', 'proyek')
-     ->name('projects.index');
+Route::get('contoh-proyek', function () {
+    $cms = ProjectConfig::load();
+
+    $data = [
+        'cms'      => $cms,
+        'projects' => Project::active()->ordered()->get(),
+    ];
+
+    return view('proyek', $data);
+})->name('projects.index');

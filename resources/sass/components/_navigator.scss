@@ -1,0 +1,14 @@
+.navigator {
+    top: 132px;
+
+    &__rail {
+        border-bottom: 3px solid #e6e6e6;
+    }
+}
+
+.anchor {
+    display: block;
+    height: 230px;
+    margin-top: -230px;
+    visibility: hidden;
+}

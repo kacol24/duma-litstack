@@ -24,7 +24,7 @@
 
 <div class="flex-shrink-0">
     @include('includes.header')
-    <main>
+    <main id="site_main">
         @yield('content')
     </main>
 </div>

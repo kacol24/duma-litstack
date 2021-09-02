@@ -39,11 +39,19 @@
                     transition: transform 200ms, background-color 200ms;
                 }
 
-                &.show {
+                &.show, &.active {
                     background-color: #f2f2f2;
 
                     &:before {
                         transform: scaleX(1);
+                    }
+                }
+
+                &.active {
+                    background-color: #fff;
+
+                    &:before {
+                        bottom: -3px;
                     }
                 }
             }
@@ -90,7 +98,7 @@
             .nav-item {
                 display: flex;
                 align-items: center;
-                
+
                 & > .nav-link {
                     padding-top: 1.5rem;
                     padding-bottom: 1.5rem;
