@@ -44,7 +44,13 @@ Route::get('contoh-proyek', function () {
 
     $data = [
         'cms'      => $cms,
-        'projects' => Project::active()->ordered()->get(),
+        'projects' => Project::active()
+                             ->ordered()
+                             ->whereIn(
+                                 'project_category_id',
+                                 optional(optional($cms)->project_categories)->plucK('id') ?? []
+                             )
+                             ->get(),
     ];
 
     return view('proyek', $data);
