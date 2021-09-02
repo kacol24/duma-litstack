@@ -8,6 +8,14 @@
         body {
             position: relative;
         }
+
+        .slick-next {
+            right: 15px;
+        }
+
+        .slick-prev {
+            left: 15px;
+        }
     </style>
     <script>
         var scrollSpy = new bootstrap.ScrollSpy(document.body, {
