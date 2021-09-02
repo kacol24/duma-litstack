@@ -3,15 +3,16 @@
 @section('seo_title', 'Mengapa Duma?')
 @php($cms = \Lit\Config\Form\Pages\ProjectConfig::load())
 @php($projects = App\Models\Project::active()->ordered()->get())
+@php($categories = App\Models\ProjectCategory::get())
 
 @section('content')
-    <div class="container container--full-hd">
-        @isset($cms->banner)
+    @isset($cms->banner)
+        <div class="container container--full-hd">
             <section class="banner mb-5">
                 <img src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100">
             </section>
-        @endisset
-    </div>
+        </div>
+    @endisset
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -23,9 +24,25 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-5 justify-content-center"
+             x-data="{
+                categories: categories
+             }">
+            <template x-for="category in categories">
+                <div class="col-auto">
+                    <a href="#" class="btn btn-outline-brown fw-bolder rounded-pill"
+                       @click="$store.selectedCategory.setCategory(category.title)"
+                       :class="$store.selectedCategory.category == category.title ? 'active' : ''"
+                       x-text="category.title" :title="category.title"
+                    >
+                    </a>
+                </div>
+            </template>
+        </div>
         <div class="row mt-5" id="ProjectSelector" x-data>
             @foreach($projects as $project)
-                <div class="col-md-4">
+                <div class="col-md-4" x-show="$store.selectedCategory.category === '{{ $project->category->title }}'"
+                     x-transition x-transition:leave.duration="0">
                     <a href="#" class="d-block mb-4"
                        @click.prevent='$store.selectedProject.setProject(@json($project))'>
                         <figure class="figure figure--full w-100 h-100">
@@ -140,6 +157,8 @@
 
 @push('after_scripts')
     <script>
+        var categories = @json($categories);
+
         var ProjectModal = new bootstrap.Modal(document.getElementById('project_detail_modal'), {
             backdrop: 'static'
         });
@@ -181,6 +200,13 @@
 
                     swiper.slideTo(0);
                     ProjectModal.show();
+                }
+            });
+            Alpine.store('selectedCategory', {
+                category: categories[0].title,
+
+                setCategory: function(category) {
+                    this.category = category;
                 }
             });
         });

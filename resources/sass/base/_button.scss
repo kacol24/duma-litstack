@@ -9,3 +9,14 @@
     color: $theme-secondary;
   }
 }
+
+.btn-outline-brown {
+    background-color: #fff;
+    color: $theme-secondary;
+    border-color: $theme-secondary;
+
+    &:hover, &.active {
+        color: #fff;
+        background-color: $theme-secondary;
+    }
+}
