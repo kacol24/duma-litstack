@@ -63,9 +63,6 @@ class ProjectConfig extends FormConfig
                  ->model(ProjectCategory::class)
                  ->sortable()
                  ->small()
-                 ->createAndUpdateForm(function ($form) {
-                     $form->input('title');
-                 })
                  ->use(ProjectCategoryConfig::class);
         });
     }
