@@ -73,7 +73,9 @@
         <div class="anchor" id="features"></div>
         <div class="text-center">
             <h2 class="h5">Fitur & Keunggulan</h2>
-            <div class="mt-3" data-slick>
+            <div class="mt-3" data-slick='{
+                "dots": true
+            }'>
                 @foreach($cms->carousel as $slide)
                     <div class="slide">
                         <img data-src="{{ $slide->getUrl() }}" class="img-fluid w-100 lazyload"
