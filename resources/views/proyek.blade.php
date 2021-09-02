@@ -2,7 +2,7 @@
 
 @section('seo_title', 'Mengapa Duma?')
 
-@php($projectCategories = $cms->project_categories->sortBy('order_column'))
+@php($projectCategories = optional($cms->project_categories)->sortBy('order_column'))
 
 @section('content')
     @isset($cms->banner)
