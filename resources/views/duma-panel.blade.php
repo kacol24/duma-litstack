@@ -15,6 +15,7 @@
 
         .slick-prev {
             left: 15px;
+            z-index: 1;
         }
     </style>
     <script>
