@@ -1,9 +1,8 @@
 @extends('layouts.master')
 
 @section('seo_title', 'Mengapa Duma?')
-@php($cms = \Lit\Config\Form\Pages\ProjectConfig::load())
-@php($projects = App\Models\Project::active()->ordered()->get())
-@php($categories = App\Models\ProjectCategory::get())
+
+@php($projectCategories = $cms->project_categories)
 
 @section('content')
     @isset($cms->banner)
@@ -157,7 +156,7 @@
 
 @push('after_scripts')
     <script>
-        var categories = @json($categories);
+        var categories = @json($projectCategories);
 
         var ProjectModal = new bootstrap.Modal(document.getElementById('project_detail_modal'), {
             backdrop: 'static'

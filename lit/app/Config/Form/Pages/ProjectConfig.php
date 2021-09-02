@@ -2,8 +2,10 @@
 
 namespace Lit\Config\Form\Pages;
 
+use App\Models\ProjectCategory;
 use Ignite\Crud\Config\FormConfig;
 use Ignite\Crud\CrudShow;
+use Lit\Config\Crud\ProjectCategoryConfig;
 use Lit\Config\Seoable;
 use Lit\Http\Controllers\Form\Pages\ProjectController;
 
@@ -56,6 +58,15 @@ class ProjectConfig extends FormConfig
                  ->maxFiles(1);
             $form->input('page_title');
             $form->wysiwyg('page_description');
+            $form->manyRelation('project_categories')
+                 ->title('Displayed Project Catgories')
+                 ->model(ProjectCategory::class)
+                 ->sortable()
+                 ->small()
+                 ->createAndUpdateForm(function ($form) {
+                     $form->input('title');
+                 })
+                 ->use(ProjectCategoryConfig::class);
         });
     }
 }
