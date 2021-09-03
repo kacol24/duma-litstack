@@ -34,9 +34,9 @@
     </div>
     <section class="intro my-md-5 py-5">
         <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-6 col-md-4 mb-3 mb-md-0">
-                    <img src="{{ asset('images/logo@3x.png') }}" alt="" class="img-fluid">
+            <div class="row justify-content-around">
+                <div class="col-6 col-md-3 mb-3 mb-md-0">
+                    <img src="{{ asset('images/logo@3x.png') }}" alt="" class="img-fluid w-100">
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
                     <div>
