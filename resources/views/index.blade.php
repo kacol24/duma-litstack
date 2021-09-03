@@ -162,7 +162,7 @@
     </section>
     <section class="carousel-links pt-5">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-between align-items-end">
                 <div class="col-md-4">
                     <h3>
                         Lebih Dekat Dengan DUMA<sup>®</sup>?
@@ -172,6 +172,14 @@
                         adalah
                         pilihan yang tepat untuk Anda.
                     </p>
+                </div>
+                <div class="col-md-auto d-none d-md-block">
+                    <div class="mt-4 text-center text-md-end">
+                        <a href="{{ route('projects.index') }}" class="btn btn-brown fw-bolder">
+                            Lihat Semua Proyek
+                            <i class="fas fa-fw fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="row mt-4">
@@ -186,13 +194,15 @@
                                     {{ $project->category->title }}
                                 </small>
                             </figcaption>
-                            <div class="p-3 text-end">
-                                Lihat Detail
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
                         </figure>
                     </div>
                 @endforeach
+            </div>
+            <div class="mt-4 text-center text-md-end d-block d-md-none">
+                <a href="{{ route('projects.index') }}" class="btn btn-brown fw-bolder">
+                    Lihat Semua Proyek
+                    <i class="fas fa-fw fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
