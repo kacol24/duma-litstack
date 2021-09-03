@@ -54,7 +54,7 @@
         <div class="row mt-md-5 mt-3">
             @foreach(array_chunk($whyDuma, 4, true) as $benefits)
                 @foreach($benefits as $icon => $benefit)
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-6">
                         <figure class="w-100 figure text-center">
                             <img src="{{ asset('images/icons/' . $icon) }}"
                                  alt="icon {{ $benefit[0] }}"
@@ -77,8 +77,8 @@
                         <div class="col-md-3">
                             <img src="{{ asset('images/why-duma-' . $loop->iteration . '.jpg') }}" alt="" class="img-fluid w-100">
                         </div>
-                        <div class="col-md-8 border-bottom border-primary-green border-lg {{ $loop->first ? 'border-top' : '' }}">
-                            <div class="h-100 border-lg py-3">
+                        <div class="col-md-8">
+                            <div class="h-100 py-3 border-bottom border-primary-green border-lg {{ $loop->first ? 'border-top' : '' }}">
                                 <strong class="text-color-secondary">
                                     {{ $benefit[0] }}
                                 </strong>
