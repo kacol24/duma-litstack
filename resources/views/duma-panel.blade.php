@@ -163,7 +163,7 @@
             {!! $cms->finishing_description !!}
             <div class="row mb-5">
                 @foreach($cms->finishing_images as $image)
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-3 mb-md-0">
                         <img data-src="{{ $image->getUrl() }}" alt="" class="img-fluid lazyload">
                     </div>
                 @endforeach
@@ -225,7 +225,7 @@
                 FAQs
             </h2>
             @foreach($cms->faqs as $faq)
-                <div class="faq text-start">
+                <div class="faq text-start mb-3 mb-md-5">
                     <div class="faq__question collapsed" data-bs-toggle="collapse"
                          data-bs-target="#faq_{{ $loop->iteration }}">
                         {{ $faq->question }}
