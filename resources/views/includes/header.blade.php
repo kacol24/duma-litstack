@@ -1,4 +1,4 @@
-<header class="sticky-top" style="z-index: 1100">
+<header class="sticky-top" style="z-index: 1050">
     <nav class="top-bar d-none d-lg-block">
         <div class="container">
             <div class="row">
