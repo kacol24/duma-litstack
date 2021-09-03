@@ -65,10 +65,10 @@
                 <div class="offcanvas-body pt-0">
                     <ul class="navbar-nav w-100 justify-content-end text-start text-lg-center">
                         <li class="nav-item {{ request()->routeIs(['why_duma']) ? 'active' : '' }} my-3 my-md-0">
-                            <a class="nav-link" href="{{ route('why_duma') }}">Mengapa Duma?</a>
+                            <a class="nav-link px-0 px-lg-3" href="{{ route('why_duma') }}">Mengapa Duma?</a>
                         </li>
                         <li class="nav-item mb-3 mb-md-0 dropdown {{ request()->routeIs(['product.*']) ? 'active' : '' }}">
-                            <a class="nav-link dropdown-toggle" href="#" id="product_projects_nav_dropdown"
+                            <a class="nav-link px-0 px-lg-3 dropdown-toggle" href="#" id="product_projects_nav_dropdown"
                                role="button"
                                data-bs-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
@@ -95,29 +95,29 @@
                             </div>
                         </li>
                         <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['projects.*']) ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('projects.index') }}">
+                            <a class="nav-link px-0 px-lg-3" href="{{ route('projects.index') }}">
                                 Proyek
                             </a>
                         </li>
                         <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['pricelist']) ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('pricelist') }}">Daftar Harga & Dokumen Lain</a>
+                            <a class="nav-link px-0 px-lg-3" href="{{ route('pricelist') }}">Daftar Harga & Dokumen Lain</a>
                         </li>
                         <li class="nav-item mb-3 mb-md-0">
-                            <a class="nav-link" href="{{ route('contact.index') }}">Hubungi Kami</a>
+                            <a class="nav-link px-0 px-lg-3" href="{{ route('contact.index') }}">Hubungi Kami</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav d-flex d-lg-none">
                         <li class="nav-item mb-3 mb-md-0">
-                            <a class="nav-link" href="#">Tentang Duma</a>
+                            <a class="nav-link px-0 px-lg-3" href="#">Tentang Duma</a>
                         </li>
                         <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['posts.*']) ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('posts.index') }}">Berita & Acara</a>
+                            <a class="nav-link px-0 px-lg-3" href="{{ route('posts.index') }}">Berita & Acara</a>
                         </li>
                         <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['distributor']) ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('distributor') }}">Distributor</a>
+                            <a class="nav-link px-0 px-lg-3" href="{{ route('distributor') }}">Distributor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('faq') }}">FAQs</a>
+                            <a class="nav-link px-0 px-lg-3" href="{{ route('faq') }}">FAQs</a>
                         </li>
                     </ul>
                 </div>
