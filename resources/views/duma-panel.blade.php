@@ -235,7 +235,7 @@
             @endforeach
         </div>
     </div>
-    <div class="navigator sticky-top" style="top:auto;bottom: 0;" id="navigator_bottom">
+    <div class="navigator sticky-top d-block d-lg-none" style="top:auto;bottom: 0;z-index:1010" id="navigator_bottom">
         <div class="container">
             <div class="navigator__rail main_nav navbar-expand-lg shadow-sm">
                 <ul class="navbar-nav justify-content-center">
