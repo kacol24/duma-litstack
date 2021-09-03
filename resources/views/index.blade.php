@@ -10,6 +10,8 @@
     asset('images/hero-5-why-duma-lisplank.png'),
 ])
 
+@php($featuredProjects = App\Models\Project::active()->inRandomOrder()->limit(2)->get())
+
 @section('content')
     <div class="hero-slider container--full-hd"
          style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom center/cover">
@@ -30,10 +32,10 @@
             </div>
         </div>
     </div>
-    <section class="intro my-5 py-5">
+    <section class="intro my-md-5 py-5">
         <div class="container">
             <div class="row justify-content-between">
-                <div class="col-md-4">
+                <div class="col-6 col-md-4 mb-3 mb-md-0">
                     <img src="{{ asset('images/logo@3x.png') }}" alt="" class="img-fluid">
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
@@ -46,54 +48,54 @@
             </div>
         </div>
     </section>
-    <section class="features my-5 py-5">
+    <section class="features my-md-5 py-5">
         <div class="container">
-            <h2 class="text-center mb-lg-5 fw-bolder">
+            <h2 class="text-center mb-5 fw-bolder">
                 Apa Itu DUMA<sup>&reg;</sup>?
             </h2>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="blurb">
-                        <div class="blurb__image">
+                <div class="col-md-4 mb-5 mb-md-0">
+                    <div class="blurb text-center text-md-start">
+                        <div class="blurb__image mb-2 mb-md-4">
                             <img src="{{ asset('images/icons/icon-check.png') }}" alt=""
                                  class="img-fluid mx-auto d-block">
                         </div>
                         <h3 class="blurb__title">
                             Pengolahan Bahan Ideal
                         </h3>
-                        <div class="blurb__content">
+                        <div class="blurb__content mt-2 mt-md-3">
                             Serbuk kayu DUMA<sup>®</sup> diperoleh dari limbah kayu yang dihasilkan dari produsen kayu,
                             sehingga
                             kita hanya menggunakan limbah kayu yang seharusnya akan dibuang di tempat pembuangan sampah.
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="blurb">
-                        <div class="blurb__image">
+                <div class="col-md-4 mb-5 mb-md-0">
+                    <div class="blurb text-center text-md-start">
+                        <div class="blurb__image mb-2 mb-md-4">
                             <img src="{{ asset('images/icons/icon-lightbulb.png') }}" alt=""
                                  class="img-fluid mx-auto d-block">
                         </div>
                         <h3 class="blurb__title">
                             Campuran Orisinilitas
                         </h3>
-                        <div class="blurb__content">
+                        <div class="blurb__content mt-2 mt-md-3">
                             DUMA<sup>®</sup> menggunakan campuran bahan plastik PVC orisinil dan daur ulang untuk
                             menciptakan
                             produk dengan kekuatan dan performa terbaik.
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="blurb">
-                        <div class="blurb__image">
+                <div class="col-md-4 mb-5 mb-md-0">
+                    <div class="blurb text-center text-md-start">
+                        <div class="blurb__image mb-2 mb-md-4">
                             <img src="{{ asset('images/icons/icon-hourglass.png') }}" alt=""
                                  class="img-fluid mx-auto d-block">
                         </div>
                         <h3 class="blurb__title">
                             Kualitas Terbaik
                         </h3>
-                        <div class="blurb__content">
+                        <div class="blurb__content mt-2 mt-md-3">
                             DUMA<sup>®</sup> menggunakan campuran bahan plastik PVC orisinil dan daur ulang untuk
                             menciptakan
                             produk dengan kekuatan dan performa terbaik.
@@ -173,16 +175,24 @@
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-md-6">
-                    <a href="">
-                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid w-100">
-                    </a>
-                </div>
-                <div class="col-md-6 mt-3 mt-md-0">
-                    <a href="">
-                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid w-100">
-                    </a>
-                </div>
+                @foreach($featuredProjects as $project)
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <figure class="figure figure--full w-100 h-100">
+                            <img data-src="{{ $project->thumbnail->getUrl('thumbnail') }}" alt="{{ $project->title }}"
+                                 class="figure-img img-fluid lazyload">
+                            <figcaption class="text-center fw-bolder p-3 text-dark">
+                                {{ $project->title }}
+                                <small class="fw-normal d-block">
+                                    {{ $project->category->title }}
+                                </small>
+                            </figcaption>
+                            <div class="p-3 text-end">
+                                Lihat Detail
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </figure>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
