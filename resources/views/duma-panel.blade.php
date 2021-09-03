@@ -86,7 +86,7 @@
         <div class="text-center">
             <h2 class="h5">Fitur & Keunggulan</h2>
             <div class="mt-3">
-                <div class="swiper swiper-carousel">
+                <div class="swiper" data-swiper>
                     <div class="swiper-wrapper">
                         @foreach($cms->carousel as $slide)
                             <div class="swiper-slide">
