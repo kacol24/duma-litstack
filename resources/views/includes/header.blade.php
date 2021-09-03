@@ -42,7 +42,7 @@
             </div>
         </div>
     </nav>
-    <nav class="navbar navbar-expand-lg shadow-sm" id="main_nav">
+    <nav class="navbar navbar-expand-lg shadow-sm main_nav">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ asset('images/logo.png') }}" alt="" class="img-fluid" width="130">

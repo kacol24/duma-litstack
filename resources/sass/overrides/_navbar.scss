@@ -1,4 +1,4 @@
-#main_nav {
+.main_nav {
     background-color: $navbar-bg;
 
     .navbar-toggler {
@@ -90,7 +90,7 @@
 }
 
 @media (min-width: 992px) {
-    #main_nav {
+    .main_nav {
         padding-top: 0;
         padding-bottom: 0;
 

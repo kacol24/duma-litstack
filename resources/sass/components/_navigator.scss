@@ -1,5 +1,6 @@
 .navigator {
-    top: 132px;
+    top: auto;
+    bottom: 0;
 
     &__rail {
         border-bottom: 3px solid #e6e6e6;
@@ -8,7 +9,19 @@
 
 .anchor {
     display: block;
-    height: 230px;
-    margin-top: -230px;
+    height: 190px;
+    margin-top: -190px;
     visibility: hidden;
+}
+
+@media (min-width: 768px) {
+    .navigator {
+        top: 132px;
+        bottom: auto;
+    }
+
+    .anchor {
+        height: 230px;
+        margin-top: -230px;
+    }
 }

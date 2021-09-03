@@ -19,9 +19,12 @@
         }
     </style>
     <script>
-        var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+        new bootstrap.ScrollSpy(document.body, {
             offset: 200,
-            target: '#navigator'
+            target: '#navigator_top'
+        });
+        new bootstrap.ScrollSpy(document.body, {
+            target: '#navigator_bottom'
         });
     </script>
 @endpush
@@ -34,10 +37,10 @@
             </section>
         @endisset
     </div>
-    <div class="navigator sticky-top pb-3" id="navigator">
-        <div class="container" id="main_nav">
-            <div class="navigator__rail navbar-nav">
-                <ul class="nav nav-pills justify-content-center">
+    <div class="navigator sticky-top mb-md-3 d-none d-md-block" id="navigator_top">
+        <div class="container">
+            <div class="navigator__rail main_nav navbar-expand-lg">
+                <ul class="navbar-nav justify-content-center">
                     <li class="nav-item">
                         <a class="nav-link" href="#features">
                             Fitur & Keunggulan
@@ -71,7 +74,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>l
     <div class="container">
         <div class="text-center">
             <h1 class="h4 mb-3">
@@ -230,6 +233,51 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div>
+    <div class="navigator sticky-top" style="top:auto;bottom: 0;" id="navigator_bottom">
+        <div class="container">
+            <div class="navigator__rail main_nav navbar-expand-lg shadow-sm">
+                <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           data-bs-toggle="dropdown" href="#" role="button"
+                           aria-expanded="false">Navigasi</a>
+                        <ul class="dropdown-menu w-100">
+                            <li>
+                                <a class="dropdown-item nav-link" href="#features">
+                                    Fitur & Keunggulan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link" href="#specification">
+                                    Spesifikasi Produk
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link" href="#finishing">
+                                    Finishing
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link" href="#installation">
+                                    Pemasangan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link" href="#storage">
+                                    Penanganan & Penyimpanan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link" href="#faqs">
+                                    FAQs
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 @endsection
