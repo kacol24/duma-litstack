@@ -29,7 +29,7 @@
              }">
             <template x-for="category in categories">
                 <div class="col-auto">
-                    <a href="#" class="btn btn-outline-brown fw-bolder rounded-pill"
+                    <a href="#" class="btn btn-outline-brown fw-bolder rounded-pill mb-3"
                        @click="$store.selectedCategory.setCategory(category.title)"
                        :class="$store.selectedCategory.category == category.title ? 'active' : ''"
                        x-text="category.title" :title="category.title"
