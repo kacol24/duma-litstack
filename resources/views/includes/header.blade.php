@@ -1,4 +1,4 @@
-<header class="sticky-top">
+<header class="sticky-top" style="z-index: 1100">
     <nav class="top-bar d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -74,7 +74,7 @@
                                aria-haspopup="true" aria-expanded="false">
                                 Produk
                             </a>
-                            <div class="dropdown-menu keep-open rounded-0 mt-0 p-0"
+                            <div class="dropdown-menu rounded-0 mt-0 p-0" style="z-index: 1030"
                                  aria-labelledby="product_projects_nav_dropdown">
                                 <a class="dropdown-item nav-link {{ request()->routeIs(['product.duma_panel']) ? 'active' : '' }}"
                                    href="{{ route('product.duma_panel') }}">
@@ -100,7 +100,8 @@
                             </a>
                         </li>
                         <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['pricelist']) ? 'active' : '' }}">
-                            <a class="nav-link px-0 px-lg-3" href="{{ route('pricelist') }}">Daftar Harga & Dokumen Lain</a>
+                            <a class="nav-link px-0 px-lg-3" href="{{ route('pricelist') }}">Daftar Harga & Dokumen
+                                Lain</a>
                         </li>
                         <li class="nav-item mb-3 mb-md-0">
                             <a class="nav-link px-0 px-lg-3" href="{{ route('contact.index') }}">Hubungi Kami</a>

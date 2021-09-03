@@ -9,11 +9,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@7.0.2/swiper-bundle.min.css">
     @stack('before_styles')
     <link rel="stylesheet" href="{{ mix('css/app.css', '../public') }}">
     @stack('after_styles')
+    <style>
+        :root {
+            --swiper-theme-color: #93ba5a;
+        }
+    </style>
 
     <title>@yield('seo_title') | @yield('site_title', 'DUMA - Material Bangunan Masa Depan')</title>
 
@@ -37,15 +41,31 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@7.0.2/swiper-bundle.min.js"></script>
 @stack('before_scripts')
 @stack('after_scripts')
 
 <script>
-    $('.dropdown-menu.keep-open').click(function(e) {
-        e.stopPropagation();
+    var carousel = document.querySelectorAll('[data-swiper]');
+
+    carousel.forEach(function(e) {
+        new Swiper(e, {
+            grabcursor: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                dynamicBullets: true,
+                clickable: true
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            }
+        });
     });
-    $('[data-slick]').slick();
 </script>
 </body>
 </html>

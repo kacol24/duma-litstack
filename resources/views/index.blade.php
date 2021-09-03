@@ -13,12 +13,21 @@
 @section('content')
     <div class="hero-slider container--full-hd"
          style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom center/cover">
-        <div class="container px-0 overflow-hidden" data-slick>
-            @foreach($heroSlider as $route => $slide)
-                <a href="{{ is_int($route) ? '#' : $route }}" class="hero-slider__slide">
-                    <img src="{{ $slide }}" alt="" class="img-fluid w-100">
-                </a>
-            @endforeach
+        <div class="container px-0 overflow-hidden">
+            <div class="swiper" data-swiper>
+                <div class="swiper-wrapper">
+                    @foreach($heroSlider as $route => $slide)
+                        <div class="swiper-slide">
+                            <a href="{{ is_int($route) ? '#' : $route }}" class="hero-slider__slide">
+                                <img src="{{ $slide }}" alt="" class="img-fluid w-100">
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
     </div>
     <section class="intro my-5 py-5">

@@ -85,15 +85,20 @@
         <div class="anchor" id="features"></div>
         <div class="text-center">
             <h2 class="h5">Fitur & Keunggulan</h2>
-            <div class="mt-3" data-slick='{
-                "dots": true
-            }'>
-                @foreach($cms->carousel as $slide)
-                    <div class="slide">
-                        <img data-src="{{ $slide->getUrl() }}" class="img-fluid w-100 lazyload"
-                             alt="{{ $slide->title }}">
+            <div class="mt-3">
+                <div class="swiper swiper-carousel">
+                    <div class="swiper-wrapper">
+                        @foreach($cms->carousel as $slide)
+                            <div class="swiper-slide">
+                                <img data-src="{{ $slide->getUrl() }}" class="img-fluid w-100 lazyload"
+                                     alt="{{ $slide->title }}">
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
             </div>
         </div>
     </div>

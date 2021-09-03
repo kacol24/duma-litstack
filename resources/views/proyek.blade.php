@@ -141,19 +141,6 @@
     </div>
 @endsection
 
-@push('before_styles')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@7.0.2/swiper-bundle.min.css">
-    <style>
-        :root {
-            --swiper-theme-color: #a1d364;
-        }
-    </style>
-@endpush
-
-@push('before_scripts')
-    <script src="https://cdn.jsdelivr.net/npm/swiper@7.0.2/swiper-bundle.min.js"></script>
-@endpush
-
 @push('after_scripts')
     <script>
         var categories = @json($projectCategories);
