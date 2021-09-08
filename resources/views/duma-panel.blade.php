@@ -1,21 +1,12 @@
 @extends('layouts.master')
 
-@section('seo_title', 'Mengapa Duma?')
 @php($cms = \Lit\Config\Form\Pages\ProductPanelConfig::load())
+@section('seo_title', $cms->page_title)
 
 @push('after_scripts')
     <style>
         body {
             position: relative;
-        }
-
-        .slick-next {
-            right: 15px;
-        }
-
-        .slick-prev {
-            left: 15px;
-            z-index: 1;
         }
     </style>
     <script>

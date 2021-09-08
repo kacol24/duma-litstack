@@ -43,7 +43,7 @@ class ProductDoorConfig extends FormConfig
     /**
      * Setup form page.
      *
-     * @param \Lit\Crud\CrudShow $page
+     * @param  \Lit\Crud\CrudShow  $page
      * @return void
      */
     public function show(CrudShow $page)
@@ -65,6 +65,37 @@ class ProductDoorConfig extends FormConfig
                  ->expand()
                  ->maxFiles(1);
             $form->wysiwyg('spec_description');
+            $form->block('spec_items')
+                 ->title('Items')
+                 ->repeatables(function ($repeatables) {
+                     $repeatables->add('spec', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->image('image')
+                              ->translatable()
+                              ->title('Image')
+                              ->expand()
+                              ->maxFiles(1);
+                         $form->input('title')
+                              ->title('Title');
+                         $form->wysiwyg('spec')
+                              ->title('Spec');
+                     });
+                 })->blockWidth(4);
+            $form->list('compare')
+                 ->title('Compare')
+                 ->maxDepth(1)
+                 ->previewTitle('{property}')
+                 ->form(function ($form) {
+                     $form->input('property')
+                          ->title('Property');
+                     $form->input('duma')
+                          ->width(6)
+                          ->title('DUMA');
+                     $form->input('other')
+                          ->width(6)
+                          ->title('Other');
+                 });
             $form->block('content')
                  ->title('Content')
                  ->repeatables(function ($repeatables) {
@@ -75,8 +106,6 @@ class ProductDoorConfig extends FormConfig
 
                          $form->input('title')
                               ->title('Title');
-                         $form->input('subtitle')
-                              ->title('Subtitle');
                          $form->wysiwyg('description')
                               ->title('Description');
 
@@ -107,17 +136,69 @@ class ProductDoorConfig extends FormConfig
                                            ->title('Title');
                                       $form->wysiwyg('spec')
                                            ->title('Spec');
+                                      $form->boolean('text_center')
+                                           ->title('Align Text Center');
+                                      $form->boolean('image_last')
+                                           ->title('Image Last')
+                                           ->hint('Image appear at the bottom of text.');
+                                      $form->boolean('remove_bg')
+                                           ->title('Remove Background Color');
+                                      $form->boolean('full_width')
+                                           ->title('Full Width');
                                   });
                               })->blockWidth(4);
                      });
                  });
         })->title('Specifications');
         $page->card(function ($form) {
-            $form->wysiwyg('finishing_description')
-                 ->title('Description');
-            $form->image('finishing_images')
-                 ->title('Images')
-                 ->maxFiles(3);
+            $form->input('finishing_title')->title('Title');
+            $form->wysiwyg('finishing_description');
+            $form->block('finishing_content')
+                 ->title('Content')
+                 ->repeatables(function ($repeatables) {
+                     $repeatables->add('block', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->input('title')
+                              ->title('Title');
+                         $form->input('subtitle')
+                              ->title('Subtitle');
+                         $form->wysiwyg('description')
+                              ->title('Description');
+
+                         $form->block('items')
+                              ->title('Items')
+                              ->repeatables(function ($repeatables) {
+                                  $repeatables->add('simple', function ($form, $preview) {
+                                      $preview->col('{title}');
+
+                                      $form->image('image')
+                                           ->translatable()
+                                           ->title('Image')
+                                           ->expand()
+                                           ->crop(1)
+                                           ->maxFiles(1);
+                                      $form->input('title')
+                                           ->title('Title');
+                                  });
+
+                                  $repeatables->add('full', function ($form, $preview) {
+                                      $preview->col('{title}');
+
+                                      $form->image('image')
+                                           ->translatable()
+                                           ->title('Image')
+                                           ->crop(1)
+                                           ->expand()
+                                           ->maxFiles(1);
+                                      $form->input('title')
+                                           ->title('Title');
+                                      $form->wysiwyg('spec')
+                                           ->title('Spec');
+                                  });
+                              })->blockWidth(4);
+                     });
+                 });
         })->title('Finishing');
 
         $page->card(function ($form) {
