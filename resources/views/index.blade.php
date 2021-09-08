@@ -187,7 +187,7 @@
                     <div class="col-md-6 mb-3 mb-md-0">
                         <figure class="figure figure--full w-100 h-100">
                             <img data-src="{{ $project->thumbnail->getUrl('thumbnail') }}" alt="{{ $project->title }}"
-                                 class="figure-img img-fluid lazyload">
+                                 class="figure-img img-fluid lazyload w-100">
                             <figcaption class="text-center fw-bolder p-3 text-dark">
                                 {{ $project->title }}
                                 <small class="fw-normal d-block">
