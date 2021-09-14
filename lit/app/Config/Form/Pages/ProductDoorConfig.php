@@ -82,8 +82,9 @@ class ProductDoorConfig extends FormConfig
                               ->title('Spec');
                      });
                  })->blockWidth(4);
+
             $form->list('compare')
-                 ->title('Compare')
+                 ->title('Spesifikasi Teknis')
                  ->maxDepth(1)
                  ->previewTitle('{property}')
                  ->form(function ($form) {
@@ -96,6 +97,15 @@ class ProductDoorConfig extends FormConfig
                           ->width(6)
                           ->title('Other');
                  });
+            $form->input('compare_heading_1')
+                 ->title('Table Heading 1')
+                 ->width(1 / 3);
+            $form->input('compare_heading_2')
+                 ->title('Table Heading 2')
+                 ->width(1 / 3);
+            $form->input('compare_heading_3')
+                 ->title('Table Heading 3')
+                 ->width(1 / 3);
             $form->block('content')
                  ->title('Content')
                  ->repeatables(function ($repeatables) {

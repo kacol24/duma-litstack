@@ -24,7 +24,7 @@
     <div class="container container--full-hd">
         @isset($cms->banner)
             <section class="banner mb-5">
-                <img data-src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
+                <img data-src="{{ optional($cms->banner)->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
             </section>
         @endisset
     </div>
@@ -81,7 +81,7 @@
                     <div class="swiper-wrapper">
                         @foreach($cms->carousel as $slide)
                             <div class="swiper-slide">
-                                <img data-src="{{ $slide->getUrl() }}" class="img-fluid w-100 lazyload"
+                                <img data-src="{{ optional($slide)->getUrl() }}" class="img-fluid w-100 lazyload"
                                      alt="{{ $slide->title }}">
                             </div>
                         @endforeach
@@ -96,7 +96,7 @@
     @if($cms->spec_banner)
         <div class="anchor" id="specification"></div>
         <div class="container container--full-hd mt-5">
-            <img data-src="{{ $cms->spec_banner->getUrl() }}" alt="specification banner"
+            <img data-src="{{ optional($cms->spec_banner)->getUrl() }}" alt="specification banner"
                  class="img-fluid w-100 lazyload">
         </div>
     @endif
@@ -126,9 +126,9 @@
                 <table class="table table-bordered">
                     <thead class="bg-primary-green text-center">
                     <tr>
-                        <th>Properti</th>
-                        <th>DUMA&reg; Premium Composite Door</th>
-                        <th>Kayu Trpois Umum</th>
+                        <th>{{ $cms->compare_heading_1 }}</th>
+                        <th>{{ $cms->compare_heading_2 }}</th>
+                        <th>{{ $cms->compare_heading_3 }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -196,53 +196,6 @@
         @endforeach
     </div>
     <div class="container mt-3">
-        <div class="text-center">
-            {!! $cms->spec_description !!}
-        </div>
-        @foreach($cms->content as $content)
-            <div class="row justify-content-between mt-5">
-                <div class="col-md-4">
-                    <h3 class="h5">{{ $content->title }}</h3>
-                    <div class="text-color-secondary">
-                        {{ $content->subtitle }}
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    {!! $content->description !!}
-                </div>
-            </div>
-            <div class="row mt-3">
-                @foreach($content->items as $item)
-                    @if($item->type == 'simple')
-                        <div class="col-6 col-md-3 mb-4">
-                            <figure class="figure text-center w-100 h-100">
-                                <img data-src="{{ $item->image->getUrl('md') }}" alt="{{ $item->title }}"
-                                     class="figure-img img-fluid lazyload">
-                                <figcaption class="mt-3 mt-md-5 fw-bolder">
-                                    {{ $item->title }}
-                                </figcaption>
-                            </figure>
-                        </div>
-                    @elseif($item->type == 'full')
-                        <div class="col-md-4 mb-4">
-                            <figure class="figure figure--full p-3 w-100 h-100">
-                                <img data-src="{{ $item->image->getUrl('md') }}" alt="{{ $item->title }}"
-                                     class="figure-img img-fluid lazyload">
-                                <figcaption class="text-center mt-5 fw-bolder">
-                                    {{ $item->title }}
-                                </figcaption>
-                                <div class="mt-3">
-                                    {!! $item->spec !!}
-                                </div>
-                            </figure>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
-        @endforeach
-    </div>
-
-    <div class="container mt-3">
         <div class="anchor" id="finishing"></div>
         <div class="text-center">
             <h3 class="h5">{{ $cms->finishing_title }}</h3>
@@ -265,7 +218,7 @@
                     @if($item->type == 'simple')
                         <div class="col-6 col-md-3 mb-4">
                             <figure class="figure text-center w-100 h-100 bg-white">
-                                <img data-src="{{ $item->image->getUrl('md') }}" alt="{{ $item->title }}"
+                                <img data-src="{{ optional($item->image)->getUrl('md') }}" alt="{{ $item->title }}"
                                      class="figure-img img-fluid lazyload">
                                 <figcaption class="mt-3 fw-bolder">
                                     {{ $item->title }}
@@ -275,7 +228,7 @@
                     @elseif($item->type == 'full')
                         <div class="col-md-4 mb-4">
                             <figure class="figure figure--full p-3 w-100 h-100">
-                                <img data-src="{{ $item->image->getUrl('md') }}" alt="{{ $item->title }}"
+                                <img data-src="{{ optional($item->image)->getUrl('md') }}" alt="{{ $item->title }}"
                                      class="figure-img img-fluid lazyload">
                                 <figcaption class="text-center mt-5 fw-bolder">
                                     {{ $item->title }}
