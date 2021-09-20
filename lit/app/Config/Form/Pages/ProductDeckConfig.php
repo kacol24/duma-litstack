@@ -43,7 +43,7 @@ class ProductDeckConfig extends FormConfig
     /**
      * Setup form page.
      *
-     * @param \Lit\Crud\CrudShow $page
+     * @param  \Lit\Crud\CrudShow  $page
      * @return void
      */
     public function show(CrudShow $page)
@@ -64,6 +64,12 @@ class ProductDeckConfig extends FormConfig
             $form->image('spec_banner')
                  ->expand()
                  ->maxFiles(1);
+            $form->image('spec_mini_banner')
+                 ->maxFiles(1)
+                 ->width(6);
+            $form->image('spec_table')
+                 ->maxFiles(1)
+                 ->width(6);
             $form->wysiwyg('spec_description');
             $form->block('content')
                  ->title('Content')
@@ -112,13 +118,38 @@ class ProductDeckConfig extends FormConfig
                      });
                  });
         })->title('Specifications');
+
         $page->card(function ($form) {
-            $form->wysiwyg('finishing_description')
-                 ->title('Description');
-            $form->image('finishing_images')
-                 ->title('Images')
-                 ->maxFiles(3);
-        })->title('Finishing');
+            $form->block('accessories')
+                 ->title('Items')
+                 ->repeatables(function ($repeatables) {
+                     $repeatables->add('simple', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->image('image')
+                              ->translatable()
+                              ->title('Image')
+                              ->expand()
+                              ->maxFiles(1);
+                         $form->input('title')
+                              ->title('Title');
+                     });
+
+                     $repeatables->add('full', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->image('image')
+                              ->translatable()
+                              ->title('Image')
+                              ->expand()
+                              ->maxFiles(1);
+                         $form->input('title')
+                              ->title('Title');
+                         $form->wysiwyg('spec')
+                              ->title('Spec');
+                     });
+                 })->blockWidth(4);
+        })->title('Aksesoris');
 
         $page->card(function ($form) {
             $form->wysiwyg('installation_description')
@@ -136,21 +167,6 @@ class ProductDeckConfig extends FormConfig
                      });
                  })->blockWidth(6);
         })->title('Pemasangan');
-
-        $page->card(function ($form) {
-            $form->block('storage_documents')
-                 ->title('Documents')
-                 ->repeatables(function ($repeatables) {
-                     $repeatables->add('document', function ($form, $preview) {
-                         $preview->col('{title}');
-
-                         $form->input('title')
-                              ->title('Title');
-                         $form->file('file')
-                              ->title('File');
-                     });
-                 })->blockWidth(6);
-        })->title('Storage & Handling');
 
         $page->card(function ($form) {
             $form->block('faqs')
