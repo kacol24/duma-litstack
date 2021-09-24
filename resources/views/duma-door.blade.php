@@ -104,7 +104,7 @@
         <div class="text-center">
             {!! $cms->spec_description !!}
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 justify-content-center">
             @foreach($cms->spec_items as $item)
                 <div class="col-md-4 mb-4">
                     <figure class="figure figure--full p-3 w-100 h-100 bg-white text-center">
