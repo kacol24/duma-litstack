@@ -90,7 +90,7 @@
                  class="img-fluid w-100 lazyload">
         </div>
     @endif
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
                 <img data-src="{{ optional($cms->spec_mini_banner)->getUrl() }}" alt="specification mini banner"
@@ -118,7 +118,7 @@
                     {!! $content->description !!}
                 </div>
             </div>
-            <div class="row mt-3 justify-content-center">
+            <div class="row mt-3 justify-content-between">
                 @foreach($content->items as $item)
                     @if($item->type == 'simple')
                         <div class="col-6 col-md-3 mb-4">
