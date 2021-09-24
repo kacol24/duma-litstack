@@ -3,6 +3,14 @@
 @php($cms = \Lit\Config\Form\Pages\ProductDeckConfig::load())
 @section('seo_title', $cms->page_title)
 
+@php($onpageNavigation = [
+    'features' => 'Fitur & Keunggulan',
+    'specification' => 'Spesifikasi Produk',
+    'installation' => 'Pemasangan',
+    'accessories' => 'Aksesoris Produk',
+    'faqs' => 'FAQs'
+])
+
 @push('after_scripts')
     <style>
         body {
@@ -28,34 +36,7 @@
             </section>
         @endisset
     </div>
-    <div class="navigator sticky-top mb-md-3 d-none d-md-block" id="navigator_top">
-        <div class="container">
-            <div class="navigator__rail main_nav navbar-expand-lg">
-                <ul class="navbar-nav justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">
-                            Fitur & Keunggulan
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#specification">
-                            Spesifikasi Produk
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#installation">
-                            Pemasangan
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#faqs">
-                            FAQs
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>l
+    @include('components.onpageNavigation', ['items' => $onpageNavigation, 'type' => 'top'])
     <div class="container">
         <div class="text-center">
             <h1 class="h4 mb-3">
@@ -148,7 +129,7 @@
             </div>
         @endforeach
         <div class="text-center">
-            <div class="anchor" id="installation"></div>
+            <div class="anchor" id="accessories"></div>
             <h2 class="h5">
                 Aksesoris Produk
             </h2>
@@ -230,39 +211,5 @@
             @endforeach
         </div>
     </div>
-    <div class="navigator sticky-top d-block d-lg-none" style="top:auto;bottom: 0;z-index:1010" id="navigator_bottom">
-        <div class="container">
-            <div class="navigator__rail main_nav navbar-expand-lg shadow-sm border-0">
-                <ul class="navbar-nav justify-content-center">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle py-3 before-none"
-                           data-bs-toggle="dropdown" href="#" role="button"
-                           aria-expanded="false">Navigasi</a>
-                        <ul class="dropdown-menu w-100">
-                            <li>
-                                <a class="dropdown-item nav-link" href="#features">
-                                    Fitur & Keunggulan
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link" href="#specification">
-                                    Spesifikasi Produk
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link" href="#installation">
-                                    Pemasangan
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link" href="#faqs">
-                                    FAQs
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    @include('components.onpageNavigation', ['items' => $onpageNavigation])
 @endsection
