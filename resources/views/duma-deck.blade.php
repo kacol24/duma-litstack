@@ -91,12 +91,12 @@
         </div>
     @endif
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row justify-content-between">
+            <div class="col-md-6 d-flex align-items-center">
                 <img data-src="{{ optional($cms->spec_mini_banner)->getUrl() }}" alt="specification mini banner"
                      class="img-fluid w-100 lazyload">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <img data-src="{{ optional($cms->spec_table)->getUrl() }}" alt="specification table"
                      class="img-fluid w-100 lazyload">
             </div>
