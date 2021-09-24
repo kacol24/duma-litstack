@@ -90,6 +90,18 @@
                  class="img-fluid w-100 lazyload">
         </div>
     @endif
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img data-src="{{ optional($cms->spec_mini_banner)->getUrl() }}" alt="specification mini banner"
+                     class="img-fluid w-100 lazyload">
+            </div>
+            <div class="col-md-6">
+                <img data-src="{{ optional($cms->spec_table)->getUrl() }}" alt="specification table"
+                     class="img-fluid w-100 lazyload">
+            </div>
+        </div>
+    </div>
     <div class="container mt-3">
         <div class="text-center">
             {!! $cms->spec_description !!}
