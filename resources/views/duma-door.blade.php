@@ -195,6 +195,7 @@
             </div>
         @endforeach
     </div>
+
     <div class="container mt-3">
         <div class="anchor" id="finishing"></div>
         <div class="text-center">
@@ -242,6 +243,65 @@
                 @endforeach
             </div>
         @endforeach
+    </div>
+
+    <div class="container">
+        <div class="text-center">
+            <div class="anchor" id="installation"></div>
+            <h2 class="h5">
+                Pemasangan
+            </h2>
+            {!! $cms->installation_description !!}
+            <div class="row justify-content-center mb-5">
+                @foreach($cms->installation_documents as $document)
+                    <div class="col-md-6">
+                        <div class="card pricelist-card border-0">
+                            <div class="card-header text-center border-0 pt-4">
+                                <h5 class="card-title m-0">
+                                    {{ $document->title }}
+                                </h5>
+                            </div>
+                            @if($document->file->count())
+                                <div class="card-body bg-primary-green mt-n1 pb-4">
+                                    <div class="text-center">
+                                        <a href="{{ $document->file->getUrl() }}" target="_blank" class="btn btn-brown">
+                                            Unduh
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center mt-3">
+        <div class="anchor" id="storage"></div>
+        <h2 class="h5">
+            Penanganan & Penyimpanan
+        </h2>
+        <div class="row justify-content-center mb-5">
+            @foreach($cms->storage_documents as $document)
+                <div class="col-md-6">
+                    <div class="card pricelist-card border-0">
+                        <div class="card-header text-center border-0 pt-4">
+                            <h5 class="card-title m-0">
+                                {{ $document->title }}
+                            </h5>
+                        </div>
+                        <div class="card-body bg-primary-green mt-n1 pb-4">
+                            <div class="text-center">
+                                <a href="{{ $document->file->getUrl() }}" target="_blank" class="btn btn-brown">
+                                    Unduh
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 
     <div class="navigator sticky-top d-block d-lg-none" style="top:auto;bottom: 0;z-index:1010" id="navigator_bottom">
