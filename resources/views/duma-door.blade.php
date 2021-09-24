@@ -304,6 +304,29 @@
         </div>
     </div>
 
+    <div class="text-center">
+        <div class="container">
+            <div class="anchor" id="faqs"></div>
+            <h2 class="h5">
+                FAQs
+            </h2>
+            @foreach($cms->faqs as $faq)
+                <div class="faq text-start mb-3 mb-md-5">
+                    <div class="faq__question collapsed" data-bs-toggle="collapse"
+                         data-bs-target="#faq_{{ $loop->iteration }}">
+                        {{ $faq->question }}
+                        <i class="fas fa-minus"></i>
+                    </div>
+                    <div class="collapse" id="faq_{{ $loop->iteration }}">
+                        <div class="faq__answer">
+                            {!! $faq->answer !!}
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
     <div class="navigator sticky-top d-block d-lg-none" style="top:auto;bottom: 0;z-index:1010" id="navigator_bottom">
         <div class="container">
             <div class="navigator__rail main_nav navbar-expand-lg shadow-sm border-0">
