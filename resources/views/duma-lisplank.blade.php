@@ -1,14 +1,42 @@
 @extends('layouts.master')
 
-@section('seo_title', 'Mengapa Duma?')
 @php($cms = \Lit\Config\Form\Pages\ProductLisplankConfig::load())
+@section('seo_title', $cms->page_title)
+
+@php($onpageNavigation = [
+    'features' => 'Fitur & Keunggulan',
+    'specification' => 'Spesifikasi Produk',
+    'installation' => 'Pemasangan',
+    'accessories' => 'Aksesoris Produk',
+    'faqs' => 'FAQs'
+])
+
+@push('after_scripts')
+    <style>
+        body {
+            position: relative;
+        }
+    </style>
+    <script>
+        new bootstrap.ScrollSpy(document.body, {
+            offset: 200,
+            target: '#navigator_top'
+        });
+        new bootstrap.ScrollSpy(document.body, {
+            target: '#navigator_bottom'
+        });
+    </script>
+@endpush
 
 @section('content')
-    @isset($cms->banner)
-        <section class="banner mb-5">
-            <img src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100">
-        </section>
-    @endisset
+    <div class="container container--full-hd">
+        @isset($cms->banner)
+            <section class="banner mb-5">
+                <img data-src="{{ optional($cms->banner)->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
+            </section>
+        @endisset
+    </div>
+    @include('components.onpageNavigation', ['items' => $onpageNavigation, 'type' => 'top'])
     <div class="container">
         <div class="text-center">
             <h1 class="h4 mb-3">
@@ -16,95 +44,46 @@
             </h1>
             {!! $cms->page_description !!}
         </div>
+        <div class="anchor" id="features"></div>
         <div class="text-center">
             <h2 class="h5">Fitur & Keunggulan</h2>
-            <div class="mt-3" data-slick>
-                @foreach($cms->carousel as $slide)
-                    <div class="slide">
-                        <img src="{{ $slide->getUrl() }}" class="img-fluid">
+            <div class="mt-3">
+                <div class="swiper" data-swiper>
+                    <div class="swiper-wrapper">
+                        @foreach($cms->carousel as $slide)
+                            <div class="swiper-slide">
+                                <img data-src="{{ optional($slide)->getUrl() }}" class="img-fluid w-100 lazyload"
+                                     alt="{{ $slide->title }}">
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="anchor" id="specification"></div>
     @if($cms->spec_banner)
-        <img src="{{ $cms->spec_banner->getUrl() }}" alt="" class="img-fluid">
+        <div class="container container--full-hd mt-5">
+            <img data-src="{{ optional($cms->spec_banner)->getUrl() }}" alt="specification banner"
+                 class="img-fluid w-100 lazyload">
+        </div>
     @endif
-    <div class="container">
+
+    <div class="container mt-3">
         <div class="text-center">
             {!! $cms->spec_description !!}
             <h2 class="h5">
-                Dua Tipe Duma Lisplank
+                {{ $cms->spec_type_intro_title }}
             </h2>
-            <img src="{{ asset('images/tipe-emboss.png') }}" alt="" class="img-fluid">
-            <div class="row justify-content-between">
-                <div class="col-md-5">
-                    <figure class="figure text-center">
-                        <figcaption>
-                            Lisplank Polos
-                        </figcaption>
-                        <img src="{{ asset('images/lisplank-polos.png') }}" alt=""
-                             class="figure-img img-fluid">
-                        <div class="mt-3">
-                            <table>
-                                <tr>
-                                    <td>
-                                        Lebar
-                                    </td>
-                                    <td>: 17 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>Lebar (efektif)</td>
-                                    <td>: 15 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>Panjang</td>
-                                    <td>: 3 M</td>
-                                </tr>
-                                <tr>
-                                    <td>Tebal</td>
-                                    <td>: 1,5 cm</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </figure>
-                </div>
-                <div class="col-md-5">
-                    <figure class="figure text-center">
-                        <figcaption>
-                            Lisplank Emboss
-                        </figcaption>
-                        <img src="{{ asset('images/lisplank-emboss.png') }}" alt=""
-                             class="figure-img img-fluid">
-                        <div class="mt-3">
-                            <table>
-                                <tr>
-                                    <td>
-                                        Lebar
-                                    </td>
-                                    <td>: 17 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>Lebar (efektif)</td>
-                                    <td>: 15 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>Panjang</td>
-                                    <td>: 3 M</td>
-                                </tr>
-                                <tr>
-                                    <td>Tebal</td>
-                                    <td>: 1,5 cm</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </figure>
-                </div>
-            </div>
+            <img data-src="{{ optional($cms->spec_type_intro_image)->getUrl() }}" alt="specification type image"
+                 class="img-fluid w-100 lazyload">
         </div>
         @foreach($cms->content as $content)
-            <div class="row justify-content-between">
-                <div class="col-md-5">
+            <div class="row justify-content-between mt-5">
+                <div class="col-md-4">
                     <h3 class="h5">{{ $content->title }}</h3>
                     <div class="text-color-secondary">
                         {{ $content->subtitle }}
@@ -114,24 +93,24 @@
                     {!! $content->description !!}
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3 justify-content-between">
                 @foreach($content->items as $item)
                     @if($item->type == 'simple')
-                        <div class="col-md-3">
-                            <figure class="figure text-center">
-                                <img src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
-                                     class="figure-img img-fluid">
-                                <figcaption>
+                        <div class="col-6 col-md-3 mb-4">
+                            <figure class="figure text-center w-100 h-100">
+                                <img data-src="{{ optional($item->image)->getUrl('md') }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid lazyload">
+                                <figcaption class="mt-3 mt-md-5 fw-bolder">
                                     {{ $item->title }}
                                 </figcaption>
                             </figure>
                         </div>
                     @elseif($item->type == 'full')
-                        <div class="col-md-4">
-                            <figure class="figure figure--full p-3">
-                                <img src="{{ $item->image->getUrl() }}" alt="{{ $item->title }}"
-                                     class="figure-img img-fluid">
-                                <figcaption class="text-center">
+                        <div class="col-md-4 mb-4">
+                            <figure class="figure figure--full p-3 w-100 h-100">
+                                <img data-src="{{ optional($item->image)->getUrl('md') }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid lazyload">
+                                <figcaption class="text-center mt-5 fw-bolder">
                                     {{ $item->title }}
                                 </figcaption>
                                 <div class="mt-3">
@@ -143,25 +122,52 @@
                 @endforeach
             </div>
         @endforeach
-        <hr>
+
         <div class="text-center">
+            <div class="anchor" id="accessories"></div>
             <h2 class="h5">
-                Finishing
+                Aksesoris Produk
             </h2>
-            {!! $cms->finishing_description !!}
-            <div class="row">
-                @foreach($cms->finishing_images as $image)
-                    <div class="col-md-4">
-                        <img src="{{ $image->getUrl() }}" alt="" class="img-fluid">
-                    </div>
+            <p>
+                {{ nl2br($cms->accessories_description) }}
+            </p>
+            <div class="row mt-3">
+                @foreach($cms->accessories as $item)
+                    @if($item->type == 'simple')
+                        <div class="col-6 col-md-3 mb-4">
+                            <figure class="figure text-center w-100 h-100">
+                                <img data-src="{{ optional($item->image)->getUrl('md') }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid lazyload">
+                                <figcaption class="mt-3 mt-md-5 fw-bolder">
+                                    {{ $item->title }}
+                                </figcaption>
+                            </figure>
+                        </div>
+                    @elseif($item->type == 'full')
+                        <div class="col-md-4 mb-4">
+                            <figure class="figure figure--full p-3 w-100 h-100">
+                                <img data-src="{{ optional($item->image)->getUrl('md') }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid lazyload">
+                                <figcaption class="text-center mt-5 fw-bolder">
+                                    {{ $item->title }}
+                                </figcaption>
+                                <div class="mt-3">
+                                    {!! $item->spec !!}
+                                </div>
+                            </figure>
+                        </div>
+                    @endif
                 @endforeach
             </div>
+        </div>
 
-            <h2 class="h5 mt-5">
+        <div class="text-center">
+            <div class="anchor" id="installation"></div>
+            <h2 class="h5">
                 Pemasangan
             </h2>
             {!! $cms->installation_description !!}
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mb-5">
                 @foreach($cms->installation_documents as $document)
                     <div class="col-md-6">
                         <div class="card pricelist-card border-0">
@@ -170,25 +176,28 @@
                                     {{ $document->title }}
                                 </h5>
                             </div>
-                            <div class="card-body bg-primary-green mt-n1 pb-4">
-                                <div class="text-center">
-                                    <a href="{{ $document->file->getUrl() }}" target="_blank" class="btn btn-brown">
-                                        Unduh
-                                    </a>
+                            @if($document->file->count())
+                                <div class="card-body bg-primary-green mt-n1 pb-4">
+                                    <div class="text-center">
+                                        <a href="{{ $document->file->getUrl() }}" target="_blank" class="btn btn-brown">
+                                            Unduh
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            <h2 class="h5 mt-5">
+            <div class="anchor" id="faqs"></div>
+            <h2 class="h5">
                 FAQs
             </h2>
             @foreach($cms->faqs as $faq)
-                <div class="faq">
-                    <div class="faq__question collapsed" data-toggle="collapse"
-                         data-target="#faq_{{ $loop->iteration }}">
+                <div class="faq text-start mb-3 mb-md-5">
+                    <div class="faq__question collapsed" data-bs-toggle="collapse"
+                         data-bs-target="#faq_{{ $loop->iteration }}">
                         {{ $faq->question }}
                         <i class="fas fa-minus"></i>
                     </div>
@@ -201,4 +210,5 @@
             @endforeach
         </div>
     </div>
+    @include('components.onpageNavigation', ['items' => $onpageNavigation])
 @endsection

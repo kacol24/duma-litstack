@@ -43,7 +43,7 @@ class ProductLisplankConfig extends FormConfig
     /**
      * Setup form page.
      *
-     * @param \Lit\Crud\CrudShow $page
+     * @param  \Lit\Crud\CrudShow  $page
      * @return void
      */
     public function show(CrudShow $page)
@@ -65,6 +65,9 @@ class ProductLisplankConfig extends FormConfig
                  ->expand()
                  ->maxFiles(1);
             $form->wysiwyg('spec_description');
+            $form->input('spec_type_intro_title');
+            $form->image('spec_type_intro_image')
+                 ->maxFiles(1);
             $form->block('content')
                  ->title('Content')
                  ->repeatables(function ($repeatables) {
@@ -112,6 +115,40 @@ class ProductLisplankConfig extends FormConfig
                      });
                  });
         })->title('Specifications');
+
+        $page->card(function ($form) {
+            $form->text('accessories_description');
+            $form->block('accessories')
+                 ->title('Items')
+                 ->repeatables(function ($repeatables) {
+                     $repeatables->add('simple', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->image('image')
+                              ->translatable()
+                              ->title('Image')
+                              ->expand()
+                              ->maxFiles(1);
+                         $form->input('title')
+                              ->title('Title');
+                     });
+
+                     $repeatables->add('full', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->image('image')
+                              ->translatable()
+                              ->title('Image')
+                              ->expand()
+                              ->maxFiles(1);
+                         $form->input('title')
+                              ->title('Title');
+                         $form->wysiwyg('spec')
+                              ->title('Spec');
+                     });
+                 })->blockWidth(4);
+        })->title('Aksesoris');
+
         $page->card(function ($form) {
             $form->wysiwyg('finishing_description')
                  ->title('Description');
