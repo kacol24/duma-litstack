@@ -106,7 +106,7 @@
                     {!! $content->description !!}
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-3 justify-content-center">
                 @foreach($content->items as $item)
                     @if($item->type == 'simple')
                         <div class="col-6 col-md-3 mb-4">
