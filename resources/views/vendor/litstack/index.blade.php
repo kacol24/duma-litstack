@@ -37,6 +37,14 @@
         }
     </script>
 
+    <style>
+        @media (min-width: 993px) {
+            .lit-draggable.lit-block {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    </style>
 </head>
 
 <body style="overflow-x: hidden;">
