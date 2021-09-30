@@ -51,6 +51,7 @@ class DistributorConfig extends FormConfig
             $form->image('banner')
                  ->maxFiles(1)
                  ->expand();
+            $form->input('page_title');
             $form->manyRelation('distributors')
                  ->title('Distributors')
                  ->model(Distributor::class)

@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
-@section('seo_title', 'Mengapa Duma?')
-@php($cms = \Lit\Config\Form\Pages\DistributorConfig::load())
+@section('seo_title', $cms->page_title)
 
 @section('content')
     @isset($cms->banner)
@@ -10,21 +9,16 @@
         </section>
     @endisset
     <div class="container">
-        <div class="text-center">
-            {{--            <h2 class="h5 mb-3">--}}
-            {{--                Select Your City--}}
-            {{--            </h2>--}}
-            {{--            <p>--}}
-            {{--                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut--}}
-            {{--                laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation--}}
-            {{--                ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor--}}
-            {{--                in hendrerit in vulputate velit esse molestie consequat.--}}
-            {{--            </p>--}}
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-center">
+                    <h1 class="h4 mb-3">
+                        {!! $cms->page_title !!}
+                    </h1>
+                </div>
+            </div>
         </div>
         <div class="row mt-5">
-            <div class="col-12 my-5 text-center">
-                Distributors
-            </div>
             @isset($cms->distributors)
                 @foreach($cms->distributors as $distributor)
                     <div class="col-md-6 mb-4">
