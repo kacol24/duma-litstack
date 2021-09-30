@@ -31,8 +31,13 @@ Route::view('daftar-harga-dan-dokumen-lain', 'daftar-harga-dan-dokumen-lain')
      ->name('pricelist');
 Route::view('berita-dan-acara', 'berita-dan-acara')
      ->name('posts.index');
-Route::view('distributor', 'distributor')
-     ->name('distributor');
+Route::get('distributor', function () {
+    $data = [
+        'cms' => \Lit\Config\Form\Pages\DistributorConfig::load(),
+    ];
+
+    return view('distributor', $data);
+})->name('distributor');
 Route::view('faq', 'faq')
      ->name('faq');
 Route::view('hubungi-kami', 'hubungi-kami')
