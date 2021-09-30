@@ -224,6 +224,7 @@
                 FAQs
             </h2>
             @foreach($cms->faqs as $faq)
+                @continue(!$faq->question)
                 <div class="faq text-start mb-3 mb-md-5">
                     <div class="faq__question collapsed" data-bs-toggle="collapse"
                          data-bs-target="#faq_{{ $loop->iteration }}">
