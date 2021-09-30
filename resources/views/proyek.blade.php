@@ -8,7 +8,7 @@
     @isset($cms->banner)
         <div class="container container--full-hd">
             <section class="banner mb-5">
-                <img src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100">
+                <img src="{{ optional($cms->banner)->getUrl() }}" alt="" class="img-fluid w-100">
             </section>
         </div>
     @endisset
