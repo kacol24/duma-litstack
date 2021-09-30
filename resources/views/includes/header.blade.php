@@ -34,9 +34,9 @@
                         <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['distributor']) ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('distributor') }}">Distributor</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('faq') }}">FAQs</a>
-                        </li>
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a class="nav-link" href="{{ route('faq') }}">FAQs</a>--}}
+                        {{--                        </li>--}}
                     </ul>
                 </div>
             </div>
@@ -117,9 +117,9 @@
                         <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['distributor']) ? 'active' : '' }}">
                             <a class="nav-link px-0 px-lg-3" href="{{ route('distributor') }}">Distributor</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-0 px-lg-3" href="{{ route('faq') }}">FAQs</a>
-                        </li>
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a class="nav-link px-0 px-lg-3" href="{{ route('faq') }}">FAQs</a>--}}
+                        {{--                        </li>--}}
                     </ul>
                 </div>
             </div>
