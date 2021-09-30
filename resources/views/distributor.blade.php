@@ -6,7 +6,7 @@
 @section('content')
     @isset($cms->banner)
         <section class="banner mb-5">
-            <img src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100">
+            <img src="{{ optional($cms->banner)->getUrl() }}" alt="" class="img-fluid w-100">
         </section>
     @endisset
     <div class="container">
