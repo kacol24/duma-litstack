@@ -155,7 +155,7 @@ class ProductDeckConfig extends FormConfig
             $form->wysiwyg('installation_description')
                  ->title('Description');
             $form->block('installation_documents')
-                 ->title('Documents')
+                 ->title('Installation')
                  ->repeatables(function ($repeatables) {
                      $repeatables->add('document', function ($form, $preview) {
                          $preview->col('{title}');
@@ -163,7 +163,18 @@ class ProductDeckConfig extends FormConfig
                          $form->input('title')
                               ->title('Title');
                          $form->file('file')
+                              ->maxFiles(1)
                               ->title('File');
+                     });
+                     $repeatables->add('youtube', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->input('title')
+                              ->title('Title');
+                         $form->input('url')
+                              ->type('url')
+                              ->placeholder('https://www.youtube.com/embed/zpOULjyy-n8')
+                              ->title('URL');
                      });
                  })->blockWidth(6);
         })->title('Pemasangan');

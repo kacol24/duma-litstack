@@ -168,23 +168,30 @@
             </h2>
             {!! $cms->installation_description !!}
             <div class="row justify-content-center mb-5">
-                @foreach($cms->installation_documents as $document)
+                @foreach($cms->installation_documents as $installation)
                     <div class="col-md-6">
                         <div class="card pricelist-card border-0">
                             <div class="card-header text-center border-0 pt-4">
                                 <h5 class="card-title m-0">
-                                    {{ $document->title }}
+                                    {{ $installation->title }}
                                 </h5>
                             </div>
-                            @if($document->file->count())
-                                <div class="card-body bg-primary-green mt-n1 pb-4">
+                            <div class="card-body bg-primary-green mt-n1 pb-4">
+                                @if($installation->type === 'document')
                                     <div class="text-center">
-                                        <a href="{{ $document->file->getUrl() }}" target="_blank" class="btn btn-brown">
+                                        <a href="{{ optional($installation->file)->getUrl() }}" target="_blank"
+                                           class="btn btn-brown">
                                             Unduh
                                         </a>
                                     </div>
-                                </div>
-                            @endif
+                                @elseif($installation->type === 'youtube')
+                                    <div class="ratio ratio-16x9">
+                                        <iframe data-src="{{ $installation->url }}" title="{{ $installation->title }}"
+                                                class="lazyload"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach
