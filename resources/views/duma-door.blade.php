@@ -300,7 +300,7 @@
                         </div>
                         <div class="card-body bg-primary-green mt-n1 pb-4">
                             <div class="text-center">
-                                <a href="{{ $document->file->getUrl() }}" target="_blank" class="btn btn-brown">
+                                <a href="{{ optional($document->file)->getUrl() }}" target="_blank" class="btn btn-brown">
                                     Unduh
                                 </a>
                             </div>

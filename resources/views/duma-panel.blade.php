@@ -24,7 +24,7 @@
     <div class="container container--full-hd">
         @isset($cms->banner)
             <section class="banner mb-5">
-                <img data-src="{{ $cms->banner->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
+                <img data-src="{{ optional($cms->banner)->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
             </section>
         @endisset
     </div>
@@ -81,7 +81,7 @@
                     <div class="swiper-wrapper">
                         @foreach($cms->carousel as $slide)
                             <div class="swiper-slide">
-                                <img data-src="{{ $slide->getUrl() }}" class="img-fluid w-100 lazyload"
+                                <img data-src="{{ optional($slide)->getUrl() }}" class="img-fluid w-100 lazyload"
                                      alt="{{ $slide->title }}">
                             </div>
                         @endforeach
@@ -96,7 +96,7 @@
     @if($cms->spec_banner)
         <div class="anchor" id="specification"></div>
         <div class="container container--full-hd mt-5">
-            <img data-src="{{ $cms->spec_banner->getUrl() }}" alt="specification banner"
+            <img data-src="{{ optional($cms->spec_banner)->getUrl() }}" alt="specification banner"
                  class="img-fluid w-100 lazyload">
         </div>
     @endif
@@ -155,7 +155,7 @@
             <div class="row mb-5">
                 @foreach($cms->finishing_images as $image)
                     <div class="col-md-4 mb-3 mb-md-0">
-                        <img data-src="{{ $image->getUrl() }}" alt="" class="img-fluid lazyload">
+                        <img data-src="{{ optional($image)->getUrl() }}" alt="" class="img-fluid lazyload">
                     </div>
                 @endforeach
             </div>
@@ -209,7 +209,7 @@
                             </div>
                             <div class="card-body bg-primary-green mt-n1 pb-4">
                                 <div class="text-center">
-                                    <a href="{{ $document->file->getUrl() }}" target="_blank" class="btn btn-brown">
+                                    <a href="{{ optional($document->file)->getUrl() }}" target="_blank" class="btn btn-brown">
                                         Unduh
                                     </a>
                                 </div>
