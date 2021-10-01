@@ -322,7 +322,8 @@
                                 <div class="card-body bg-primary-green mt-n1 pb-4">
                                     @if($installation->type === 'document')
                                         <div class="text-center">
-                                            <a href="{{ optional(optional($installation->file)->first())->getUrl() }}" target="_blank"
+                                            <a href="{{ optional(optional($installation->file)->first())->getUrl() }}"
+                                               target="_blank"
                                                class="btn btn-brown">
                                                 Unduh
                                             </a>
@@ -361,7 +362,8 @@
                             </div>
                             <div class="card-body bg-primary-green mt-n1 pb-4">
                                 <div class="text-center">
-                                    <a href="{{ optional(optional($document->file)->first())->getUrl() }}" target="_blank"
+                                    <a href="{{ optional(optional($document->file)->first())->getUrl() }}"
+                                       target="_blank"
                                        class="btn btn-brown">
                                         Unduh
                                     </a>
