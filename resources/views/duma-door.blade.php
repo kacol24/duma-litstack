@@ -246,6 +246,45 @@
     </div>
 
     <div class="container">
+        <div class="text-center my-5">
+            <h3 class="h5">{{ $cms->doorjamb_title }}</h3>
+            {!! $cms->doorjamb_description !!}
+        </div>
+        <div class="row mt-3">
+            @foreach($cms->doorjamb_items as $item)
+                @if($item->type == 'simple')
+                    <div class="col-6 col-md-3 mb-4">
+                        <figure class="figure text-center w-100 h-100">
+                            @if($item->image)
+                                <img data-src="{{ optional($item->image)->getUrl('md') }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid lazyload mb-3 mb-md-5">
+                            @endif
+                            <figcaption class="fw-bolder">
+                                {{ $item->title }}
+                            </figcaption>
+                        </figure>
+                    </div>
+                @elseif($item->type == 'full')
+                    <div class="col-md-4 mb-4">
+                        <figure class="figure figure--full p-3 w-100 h-100">
+                            @if($item->image)
+                                <img data-src="{{ optional($item->image)->getUrl('md') }}" alt="{{ $item->title }}"
+                                     class="figure-img img-fluid mb-5 lazyload">
+                            @endif
+                            <figcaption class="text-center fw-bolder">
+                                {{ $item->title }}
+                            </figcaption>
+                            <div class="mt-3">
+                                {!! $item->spec !!}
+                            </div>
+                        </figure>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+
+    <div class="container">
         <div class="text-center">
             <div class="anchor" id="installation"></div>
             <h2 class="h5">
@@ -300,7 +339,8 @@
                         </div>
                         <div class="card-body bg-primary-green mt-n1 pb-4">
                             <div class="text-center">
-                                <a href="{{ optional($document->file)->getUrl() }}" target="_blank" class="btn btn-brown">
+                                <a href="{{ optional($document->file)->getUrl() }}" target="_blank"
+                                   class="btn btn-brown">
                                     Unduh
                                 </a>
                             </div>

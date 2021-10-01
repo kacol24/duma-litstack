@@ -212,6 +212,45 @@ class ProductDoorConfig extends FormConfig
         })->title('Finishing');
 
         $page->card(function ($form) {
+            $form->input('doorjamb_title')
+                 ->title('Title');
+            $form->wysiwyg('doorjamb_description')
+                 ->title('Description');
+
+            $form->block('doorjamb_items')
+                 ->title('Items')
+                 ->repeatables(function ($repeatables) {
+                     $repeatables->add('simple', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->image('image')
+                              ->translatable()
+                              ->title('Image')
+                              ->expand()
+                              ->crop(1)
+                              ->maxFiles(1);
+                         $form->input('title')
+                              ->title('Title');
+                     });
+
+                     $repeatables->add('full', function ($form, $preview) {
+                         $preview->col('{title}');
+
+                         $form->image('image')
+                              ->translatable()
+                              ->title('Image')
+                              ->crop(1)
+                              ->expand()
+                              ->maxFiles(1);
+                         $form->input('title')
+                              ->title('Title');
+                         $form->wysiwyg('spec')
+                              ->title('Spec');
+                     });
+                 })->blockWidth(4);
+        })->title('Kusen');
+
+        $page->card(function ($form) {
             $form->wysiwyg('installation_description')
                  ->title('Description');
             $form->block('installation_documents')
