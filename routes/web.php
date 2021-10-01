@@ -23,7 +23,11 @@ Route::view('duma-panel', 'duma-panel')
      ->name('product.duma_panel');
 Route::view('duma-lisplank', 'duma-lisplank')
      ->name('product.duma_lisplank');
-Route::view('duma-door', 'duma-door')
+Route::get('duma-door', function () {
+    $cms = \Lit\Config\Form\Pages\ProductDoorConfig::load();
+
+    return view('duma-door', compact('cms'));
+})
      ->name('product.duma_door');
 Route::view('duma-deck', 'duma-deck')
      ->name('product.duma_deck');

@@ -1,6 +1,5 @@
 @extends('layouts.master')
 
-@php($cms = \Lit\Config\Form\Pages\ProductDoorConfig::load())
 @section('seo_title', $cms->page_title)
 
 @push('after_scripts')
