@@ -176,15 +176,21 @@
                             </div>
                             <div class="card-body bg-primary-green mt-n1 pb-4">
                                 @if($installation->type === 'document')
-                                    <a href="{{ optional($installation->file)->getUrl() }}" target="_blank"
-                                       class="position-relative d-block document-downloader">
-                                        <img src="{{ asset('images/test.png') }}" class="img-fluid w-100" alt="">
-                                        <div
-                                            class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center overlay"
-                                            style="top: 0;left: 0;background-color:rgba(0, 0, 0, 0.3);">
-                                            <i class="fas fa-download fa-fw fa-2x text-white"></i>
-                                        </div>
-                                    </a>
+                                    @if($installation->thumbnail)
+                                        <a href="{{ optional($installation->file)->getUrl() }}" target="_blank"
+                                           class="position-relative d-block document-downloader">
+                                            <img src="{{ optional($installation->thumbnail)->getUrl() }}"
+                                                 class="img-fluid w-100" alt="">
+                                            <div class="overlay">
+                                                <i class="fas fa-download fa-fw fa-2x text-white"></i>
+                                            </div>
+                                        </a>
+                                    @else
+                                        <a href="{{ optional($installation->file)->getUrl() }}" target="_blank"
+                                           class="btn btn-brown">
+                                            Unduh
+                                        </a>
+                                    @endif
                                 @elseif($installation->type === 'youtube')
                                     <div class="ratio ratio-16x9">
                                         <iframe data-src="{{ $installation->url }}" title="{{ $installation->title }}"
@@ -296,7 +302,17 @@
         .document-downloader .overlay {
             opacity: 0;
             transition: opacity 200ms;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .document-downloader:hover .overlay {
             opacity: 1;
         }
