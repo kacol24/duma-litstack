@@ -176,12 +176,15 @@
                             </div>
                             <div class="card-body bg-primary-green mt-n1 pb-4">
                                 @if($installation->type === 'document')
-                                    <div class="text-center">
-                                        <a href="{{ optional($installation->file)->getUrl() }}" target="_blank"
-                                           class="">
-                                            <img src="{{ asset('images/test.png') }}" class="img-fluid w-100">
-                                        </a>
-                                    </div>
+                                    <a href="{{ optional($installation->file)->getUrl() }}" target="_blank"
+                                       class="position-relative d-block document-downloader">
+                                        <img src="{{ asset('images/test.png') }}" class="img-fluid w-100" alt="">
+                                        <div
+                                            class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center overlay"
+                                            style="top: 0;left: 0;background-color:rgba(0, 0, 0, 0.3);">
+                                            <i class="fas fa-download fa-fw fa-2x text-white"></i>
+                                        </div>
+                                    </a>
                                 @elseif($installation->type === 'youtube')
                                     <div class="ratio ratio-16x9">
                                         <iframe data-src="{{ $installation->url }}" title="{{ $installation->title }}"
@@ -287,3 +290,15 @@
         </div>
     </div>
 @endsection
+
+@push('after_styles')
+    <style>
+        .document-downloader .overlay {
+            opacity: 0;
+            transition: opacity 200ms;
+        }
+        .document-downloader:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+@endpush
