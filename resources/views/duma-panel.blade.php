@@ -168,7 +168,7 @@
             <div class="row justify-content-center mb-5">
                 @foreach($cms->installation_documents as $installation)
                     <div class="col-md-6">
-                        <div class="card pricelist-card border-0 mb-3 h-100">
+                        <div class="card pricelist-card border-0 pb-3 h-100">
                             <div class="card-header text-center border-0 pt-4">
                                 <h5 class="card-title m-0">
                                     {{ $installation->title }}
