@@ -178,20 +178,15 @@
                                 @if($installation->type === 'document')
                                     <div class="text-center">
                                         <a href="{{ optional($installation->file)->getUrl() }}" target="_blank"
-                                           class="btn btn-brown">
-                                            Unduh
+                                           class="">
+                                            <img src="{{ asset('images/test.png') }}" class="img-fluid w-100">
                                         </a>
                                     </div>
                                 @elseif($installation->type === 'youtube')
-                                    <div class="text-center">
-                                        <a href="https://youtu.be/zpOULjyy-n8" data-fancybox class="btn btn-brown">
-                                            Lihat Video
-                                        </a>
+                                    <div class="ratio ratio-16x9">
+                                        <iframe data-src="{{ $installation->url }}" title="{{ $installation->title }}"
+                                                class="lazyload" allowfullscreen></iframe>
                                     </div>
-{{--                                    <div class="ratio ratio-16x9">--}}
-{{--                                        <iframe data-src="{{ $installation->url }}" title="{{ $installation->title }}" class="lazyload"--}}
-{{--                                                allowfullscreen></iframe>--}}
-{{--                                    </div>--}}
                                 @endif
                             </div>
                         </div>
@@ -214,7 +209,8 @@
                             </div>
                             <div class="card-body bg-primary-green mt-n1 pb-4">
                                 <div class="text-center">
-                                    <a href="{{ optional($document->file)->getUrl() }}" target="_blank" class="btn btn-brown">
+                                    <a href="{{ optional($document->file)->getUrl() }}" target="_blank"
+                                       class="btn btn-brown">
                                         Unduh
                                     </a>
                                 </div>
