@@ -25,6 +25,13 @@ class Post extends Model implements HasMediaContract
         'body',
         'is_active',
         'is_featured',
+        'published_at',
+    ];
+
+    protected $casts = [
+        'is_active'    => 'boolean',
+        'is_featured'  => 'boolean',
+        'published_at' => 'datetime',
     ];
 
     /**
@@ -32,7 +39,7 @@ class Post extends Model implements HasMediaContract
      *
      * @var array
      */
-    protected $appends = ['image'];
+    protected $appends = ['images', 'thumbnail'];
 
     /**
      * The relationships that should always be loaded.
@@ -50,13 +57,28 @@ class Post extends Model implements HasMediaContract
         ];
     }
 
-    public function getFeaturedImageAttribute()
+    public function scopeActive($query)
     {
-        return $this->getMedia('image')->first();
+        return $query->where('is_active', true);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->whereNull('published_at')->orWhere('published_at', '<=', now());
+    }
+
+    public function scopeWhereSlug($query, $slug)
+    {
+        return $query->where('slug', $slug);
+    }
+
+    public function getThumbnailAttribute()
+    {
+        return $this->getMedia('images')->first();
     }
 
     public function getImagesAttribute()
     {
-        return $this->getMedia('image');
+        return $this->getMedia('images');
     }
 }

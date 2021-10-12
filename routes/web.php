@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Post;
 use App\Models\Project;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Lit\Config\Form\Pages\ProjectConfig;
 
@@ -33,8 +35,13 @@ Route::view('duma-deck', 'duma-deck')
      ->name('product.duma_deck');
 Route::view('daftar-harga-dan-dokumen-lain', 'daftar-harga-dan-dokumen-lain')
      ->name('pricelist');
-Route::view('berita-dan-acara', 'berita-dan-acara')
-     ->name('posts.index');
+Route::get('berita-dan-acara', function () {
+    $data = [
+        'posts' => Post::active()->published()->get(),
+    ];
+
+    return view('berita-dan-acara', $data);
+})->name('posts.index');
 Route::get('distributor', function () {
     $data = [
         'cms' => \Lit\Config\Form\Pages\DistributorConfig::load(),
@@ -64,3 +71,15 @@ Route::get('contoh-proyek', function () {
 
     return view('proyek', $data);
 })->name('projects.index');
+
+Route::get('{slug}', function (Request $request) {
+    $post = Post::whereSlug($request->slug)->active()->published()->first();
+
+    abort_if(! $post, 404);
+
+    $data = [
+        'post' => $post,
+    ];
+
+    return view('blog-detail', $data);
+})->name('posts.show');

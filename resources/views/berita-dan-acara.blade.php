@@ -19,10 +19,21 @@
             </p>
         </div>
         <div class="row mt-5">
-            @foreach(range(1, 9) as $post)
+            @foreach($posts as $post)
                 <div class="col-md-4">
-                    <a href="" class="d-block mb-4">
-                        <img src="{{ asset('images/carousel-link.jpg') }}" alt="" class="img-fluid">
+                    <a href="{{ route('posts.show', $post->slug) }}">
+                        <figure class="figure figure--full w-100 h-100 mb-0">
+                            <img data-src="{{ optional($post->thumbnail)->getUrl() }}"
+                                 alt="{{ $post->title }}"
+                                 class="figure-img img-fluid lazyload">
+                            <figcaption class="fw-bolder p-3 text-dark">
+                                {{ $post->title }}
+                            </figcaption>
+                            <div class="p-3 pt-0 text-end">
+                                Lihat Detail
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </figure>
                     </a>
                 </div>
             @endforeach

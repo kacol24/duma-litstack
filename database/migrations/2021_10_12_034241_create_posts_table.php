@@ -20,9 +20,10 @@ class CreatePostsTable extends Migration
             $table->string('slug')->nullable();
             $table->text('excerpt')->nullable();
             $table->longText('body')->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->boolean('is_featured')->default(false);
 
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

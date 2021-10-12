@@ -69,10 +69,34 @@ class PostConfig extends CrudConfig
      */
     public function show(CrudShow $page)
     {
-        $page->card(function ($form) {
-            $form->input('title');
-            $form->textarea('excerpt')
-                 ->max('255');
-        });
+        $page->expand();
+
+        $page->group(function ($page) {
+            $page->card(function ($form) {
+                $form->group(function ($form) {
+                    $form->input('title')
+                         ->max(60);
+                    $form->textarea('excerpt')
+                         ->maxChars(250);
+                    $form->wysiwyg('body');
+                    $form->image('images')
+                         ->firstBig();
+                });
+            });
+        })->width(8);
+
+        $page->group(function ($page) {
+            $page->card(function ($form) {
+                $form->boolean('is_active')
+                     ->title('Active?')
+                     ->width(6);
+                $form->boolean('is_featured')
+                     ->title('Featured?')
+                     ->width(6);
+                $form->datetime('published_at')
+                     ->formatted('lll')
+                     ->onlyDate(false);
+            })->title('Meta');
+        })->width(4);
     }
 }
