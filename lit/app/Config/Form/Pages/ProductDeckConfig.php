@@ -165,6 +165,10 @@ class ProductDeckConfig extends FormConfig
                          $form->file('file')
                               ->maxFiles(1)
                               ->title('File');
+                         $form->image('thumbnail')
+                              ->crop(16 / 9)
+                              ->maxFiles(1)
+                              ->title('Thumbnail');
                      });
                      $repeatables->add('youtube', function ($form, $preview) {
                          $preview->col('{title}');

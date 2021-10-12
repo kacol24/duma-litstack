@@ -170,7 +170,7 @@
             <div class="row justify-content-center mb-5">
                 @foreach($cms->installation_documents as $installation)
                     <div class="col-md-6">
-                        <div class="card pricelist-card border-0">
+                        <div class="card pricelist-card border-0 pb-3 h-100">
                             <div class="card-header text-center border-0 pt-4">
                                 <h5 class="card-title m-0">
                                     {{ $installation->title }}
@@ -178,17 +178,25 @@
                             </div>
                             <div class="card-body bg-primary-green mt-n1 pb-4">
                                 @if($installation->type === 'document')
-                                    <div class="text-center">
-                                        <a href="{{ optional(optional($installation->file)->first())->getUrl() }}" target="_blank"
+                                    @if($installation->thumbnail)
+                                        <a href="{{ optional($installation->file)->getUrl() }}" target="_blank"
+                                           class="position-relative d-block document-downloader">
+                                            <img src="{{ optional($installation->thumbnail)->getUrl() }}"
+                                                 class="img-fluid w-100" alt="">
+                                            <div class="overlay">
+                                                <i class="fas fa-download fa-fw fa-2x text-white"></i>
+                                            </div>
+                                        </a>
+                                    @else
+                                        <a href="{{ optional($installation->file)->getUrl() }}" target="_blank"
                                            class="btn btn-brown">
                                             Unduh
                                         </a>
-                                    </div>
+                                    @endif
                                 @elseif($installation->type === 'youtube')
                                     <div class="ratio ratio-16x9">
                                         <iframe data-src="{{ $installation->url }}" title="{{ $installation->title }}"
-                                                class="lazyload"
-                                                allowfullscreen></iframe>
+                                                class="lazyload" allowfullscreen></iframe>
                                     </div>
                                 @endif
                             </div>
