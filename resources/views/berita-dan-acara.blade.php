@@ -1,22 +1,21 @@
 @extends('layouts.master')
 
-@section('seo_title', 'Mengapa Duma?')
+@section('seo_title', $cms->page_title)
 
 @section('content')
-    <section class="banner mb-5">
-        <img src="{{ asset('images/banner-pricelist.png') }}" alt="" class="img-fluid w-100">
-    </section>
+    @isset($cms->banner)
+        <div class="container container--full-hd">
+            <section class="banner mb-5">
+                <img data-src="{{ optional($cms->banner)->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
+            </section>
+        </div>
+    @endisset
     <div class="container">
         <div class="text-center">
             <h2 class="h5 mb-3">
-                Berita dan Acara
+                {{ $cms->page_title }}
             </h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
-                in hendrerit in vulputate velit esse molestie consequat.
-            </p>
+            {!! $cms->page_description !!}
         </div>
         <div class="row mt-5">
             @foreach($posts as $post)

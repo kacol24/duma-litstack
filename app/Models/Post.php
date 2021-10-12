@@ -6,7 +6,9 @@ use Ignite\Crud\Models\Traits\HasMedia;
 use Ignite\Crud\Models\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia as HasMediaContract;
+use Spatie\MediaLibrary\MediaCollections\Models\Media as SpatieMedia;
 
 class Post extends Model implements HasMediaContract
 {
@@ -80,5 +82,15 @@ class Post extends Model implements HasMediaContract
     public function getImagesAttribute()
     {
         return $this->getMedia('images');
+    }
+
+    public function registerMediaConversions(SpatieMedia $media = null): void
+    {
+        $this->applyCrop($this->addMediaConversion('preview'), $media);
+
+        $conversion = $this->addMediaConversion('thumbnail')
+                           ->keepOriginalImageFormat()
+                           ->fit(Manipulations::FIT_CROP, 1300, 650);
+        $this->applyCrop($conversion, $media);
     }
 }

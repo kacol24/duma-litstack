@@ -4,6 +4,7 @@ use App\Models\Post;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Lit\Config\Form\Pages\PostsConfig;
 use Lit\Config\Form\Pages\ProjectConfig;
 
 /*
@@ -37,6 +38,7 @@ Route::view('daftar-harga-dan-dokumen-lain', 'daftar-harga-dan-dokumen-lain')
      ->name('pricelist');
 Route::get('berita-dan-acara', function () {
     $data = [
+        'cms'   => PostsConfig::load(),
         'posts' => Post::active()->published()->get(),
     ];
 
