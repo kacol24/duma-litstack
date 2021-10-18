@@ -14,10 +14,19 @@ class Distributor extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'city_id', 'description'];
+
+    protected $with = [
+        'city',
+    ];
 
     public function projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }

@@ -3,19 +3,19 @@
 namespace Lit\Http\Controllers\Form\Pages;
 
 use Ignite\Crud\Controllers\FormController;
-use Lit\Models\User;
+use Illuminate\Contracts\Auth\Access\Authorizable;
 
-class DistributorController extends FormController
+class DistributorsController extends FormController
 {
     /**
      * Authorize request for authenticated lit-user and permission operation.
      * Operations: read, update
      *
-     * @param User $user
+     * @param Authorizable $user
      * @param string $operation
      * @return boolean
      */
-    public function authorize(User $user, string $operation): bool
+    public function authorize(Authorizable $user, string $operation): bool
     {
         return true;
     }

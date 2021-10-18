@@ -3,39 +3,38 @@
 namespace Lit\Config\Crud;
 
 use App\Models\City;
-use App\Models\Distributor;
 use Ignite\Crud\Config\CrudConfig;
 use Ignite\Crud\CrudIndex;
 use Ignite\Crud\CrudShow;
-use Lit\Http\Controllers\Crud\DistributorController;
+use Lit\Http\Controllers\Crud\CityController;
 
-class DistributorConfig extends CrudConfig
+class CityConfig extends CrudConfig
 {
     /**
      * Model class.
      *
      * @var string
      */
-    public $model = Distributor::class;
+    public $model = City::class;
 
     /**
      * Controller class.
      *
      * @var string
      */
-    public $controller = DistributorController::class;
+    public $controller = CityController::class;
 
     /**
      * Model singular and plural name.
      *
-     * @param  Distributor|null distributor
+     * @param  City|null city
      * @return array
      */
-    public function names(Distributor $distributor = null)
+    public function names(City $city = null)
     {
         return [
-            'singular' => 'Distributor',
-            'plural'   => 'Distributors',
+            'singular' => 'City',
+            'plural'   => 'Cities',
         ];
     }
 
@@ -46,7 +45,7 @@ class DistributorConfig extends CrudConfig
      */
     public function routePrefix()
     {
-        return 'distributors';
+        return 'cities';
     }
 
     /**
@@ -59,9 +58,6 @@ class DistributorConfig extends CrudConfig
     {
         $page->table(function ($table) {
             $table->col('Name')->value('{name}')->sortBy('name');
-            $table->relation('city', CityConfig::class)
-                  ->value('{city.name}')
-                  ->sortBy('city.name');
         })->search('name');
     }
 
@@ -74,13 +70,14 @@ class DistributorConfig extends CrudConfig
     public function show(CrudShow $page)
     {
         $page->card(function ($form) {
-            $form->input('name')->width(8);
-            $form->select('city_id')
-                 ->title('City')
-                 ->options(City::get()->pluck('name', 'id')->toArray())
-                 ->width(4);
-            $form->wysiwyg('description')
-                 ->title('Description');
+            $form->input('name')
+                 ->title('Name')
+                 ->width(6);
+            $form->relation('distributors')
+                 ->title('Distributors')
+                 ->sortable()
+                 ->showTableHead()
+                 ->use(DistributorConfig::class);
         });
     }
 }

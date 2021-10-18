@@ -4,9 +4,11 @@ namespace Lit\Config;
 
 use Ignite\Application\Navigation\Config;
 use Ignite\Application\Navigation\Navigation;
+use Lit\Config\Crud\CityConfig;
 use Lit\Config\Crud\PostConfig;
 use Lit\Config\Crud\ProjectCategoryConfig;
 use Lit\Config\Form\Pages\DistributorConfig;
+use Lit\Config\Form\Pages\DistributorsConfig;
 use Lit\Config\Form\Pages\PostsConfig;
 use Lit\Config\Form\Pages\PricelistConfig;
 use Lit\Config\Form\Pages\ProductDeckConfig;
@@ -67,7 +69,7 @@ class NavigationConfig extends Config
 
             $nav->title('Top Bar'),
             $nav->preset(PostsConfig::class),
-            $nav->preset(DistributorConfig::class),
+            $nav->preset(DistributorsConfig::class),
         ]);
 
         $nav->section([
@@ -82,7 +84,10 @@ class NavigationConfig extends Config
                 $nav->preset(PostConfig::class),
             ]),
 
-            $nav->preset(\Lit\Config\Crud\DistributorConfig::class),
+            $nav->group('Distributors', [
+                $nav->preset(\Lit\Config\Crud\DistributorConfig::class),
+                $nav->preset(CityConfig::class),
+            ]),
         ]);
     }
 }

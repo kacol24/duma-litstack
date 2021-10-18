@@ -2,19 +2,19 @@
 
 namespace Lit\Config\Form\Pages;
 
-use App\Models\Distributor;
+use App\Models\City;
 use Ignite\Crud\Config\FormConfig;
 use Ignite\Crud\CrudShow;
-use Lit\Http\Controllers\Form\Pages\DistributorController;
+use Lit\Http\Controllers\Form\Pages\DistributorsController;
 
-class DistributorConfig extends FormConfig
+class DistributorsConfig extends FormConfig
 {
     /**
      * Controller class.
      *
      * @var string
      */
-    public $controller = DistributorController::class;
+    public $controller = DistributorsController::class;
 
     /**
      * Form route prefix.
@@ -23,7 +23,7 @@ class DistributorConfig extends FormConfig
      */
     public function routePrefix()
     {
-        return "pages/distributor";
+        return "pages/distributors";
     }
 
     /**
@@ -34,7 +34,7 @@ class DistributorConfig extends FormConfig
     public function names()
     {
         return [
-            'singular' => 'Distributor',
+            'singular' => 'Distributors',
         ];
     }
 
@@ -46,21 +46,20 @@ class DistributorConfig extends FormConfig
      */
     public function show(CrudShow $page)
     {
-        $page->expand();
         $page->card(function ($form) {
             $form->image('banner')
-                 ->maxFiles(1)
-                 ->expand();
-            $form->input('page_title');
-            $form->manyRelation('distributors')
-                 ->title('Distributors')
-                 ->model(Distributor::class)
+                 ->expand()
+                 ->maxFiles(1);
+            $form->input('page_title')->title('Page Title');
+        });
+        $page->card(function ($form) {
+            $form->manyRelation('cities')
+                 ->title('Displayed Cities')
+                 ->model(City::class)
                  ->sortable()
-                 ->small()
-                 ->createAndUpdateForm(function ($form) {
-                     $form->input('name');
-                 })
-                 ->use(\Lit\Config\Crud\DistributorConfig::class);
+                 ->preview(function ($preview) {
+                     $preview->col('{name}');
+                 });
         });
     }
 }

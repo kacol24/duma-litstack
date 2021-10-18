@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Distributor;
 use App\Models\Post;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Lit\Config\Form\Pages\DistributorsConfig;
 use Lit\Config\Form\Pages\PostsConfig;
 use Lit\Config\Form\Pages\ProjectConfig;
 
@@ -46,7 +48,7 @@ Route::get('berita-dan-acara', function () {
 })->name('posts.index');
 Route::get('distributor', function () {
     $data = [
-        'cms' => \Lit\Config\Form\Pages\DistributorConfig::load(),
+        'cms' => DistributorsConfig::load(),
     ];
 
     return view('distributor', $data);
