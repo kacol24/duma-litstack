@@ -25,8 +25,10 @@
                 {{--                </div>--}}
                 <div class="col-12 col-lg navbar-expand">
                     <ul class="navbar-nav justify-content-lg-end justify-content-center">
-                        <li class="nav-item mb-3 mb-md-0">
-                            <a class="nav-link" href="#">Tentang Duma</a>
+                        <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['about']) ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('about') }}">
+                                Tentang Duma
+                            </a>
                         </li>
                         <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['posts.*']) ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('posts.index') }}">Berita & Acara</a>
@@ -108,8 +110,10 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav d-flex d-lg-none">
-                        <li class="nav-item mb-3 mb-md-0">
-                            <a class="nav-link px-0 px-lg-3" href="#">Tentang Duma</a>
+                        <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['about']) ? 'active' : '' }}">
+                            <a class="nav-link px-0 px-lg-3" href="{{ route('about') }}">
+                                Tentang Duma
+                            </a>
                         </li>
                         <li class="nav-item mb-3 mb-md-0 {{ request()->routeIs(['posts.*']) ? 'active' : '' }}">
                             <a class="nav-link px-0 px-lg-3" href="{{ route('posts.index') }}">Berita & Acara</a>

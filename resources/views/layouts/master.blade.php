@@ -33,7 +33,7 @@
     <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.4.2/dist/cdn.min.js" defer></script>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100" @stack('body_attributes')>
 
 <div class="flex-shrink-0">
     @include('includes.header')

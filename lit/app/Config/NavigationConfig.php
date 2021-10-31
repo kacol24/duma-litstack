@@ -7,6 +7,7 @@ use Ignite\Application\Navigation\Navigation;
 use Lit\Config\Crud\CityConfig;
 use Lit\Config\Crud\PostConfig;
 use Lit\Config\Crud\ProjectCategoryConfig;
+use Lit\Config\Form\Pages\AboutConfig;
 use Lit\Config\Form\Pages\ContactConfig;
 use Lit\Config\Form\Pages\DistributorConfig;
 use Lit\Config\Form\Pages\DistributorsConfig;
@@ -70,6 +71,7 @@ class NavigationConfig extends Config
             $nav->preset(ContactConfig::class),
 
             $nav->title('Top Bar'),
+            $nav->preset(AboutConfig::class),
             $nav->preset(PostsConfig::class),
             $nav->preset(DistributorsConfig::class),
         ]);

@@ -75,6 +75,7 @@ Route::get('contoh-proyek', function () {
 
     return view('proyek', $data);
 })->name('projects.index');
+Route::view('tentang-duma', 'about')->name('about');
 
 Route::get('{slug}', function (Request $request) {
     $post = Post::whereSlug($request->slug)->active()->published()->first();
