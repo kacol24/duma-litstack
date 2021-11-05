@@ -1,0 +1,65 @@
+.timeline {
+    display: flex;
+    flex-direction: column;
+
+    &__year-container {
+        top: 80px;
+    }
+
+    &__year {
+        width: 100px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #222;
+        background-color: $theme-primary;
+        border-radius: 7px;
+        margin-bottom: 15px;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .timeline {
+        flex-direction: row;
+
+        &__year-container {
+            flex: 1 0 200px;
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 20px;
+                right: 0;
+                bottom: -20px;
+                width: 2px;
+                background-color: $theme-primary;
+            }
+        }
+
+        &__content {
+            padding-left: 15px;
+        }
+
+        &__year {
+            top: 147px;
+
+            &:after {
+                content: '';
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                position: absolute;
+                top: 13px;
+                right: -106px;
+                background-color: $theme-secondary;
+            }
+        }
+    }
+}
