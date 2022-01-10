@@ -81,7 +81,7 @@
                                                 <div class="swiper-zoom-container">
                                                     <img
                                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAAKCAQAAACNzrx7AAAAOklEQVR42u3VQREAAAzCsOHf9HTAJRL6aQ4AqBcJAMDQAQBDBwAMHQAwdAAwdADA0AEAQwcADB0Atjz8IAALxMx7mQAAAABJRU5ErkJggg=="
-                                                        alt="" :src="image.url" class="img-fluid user-select-none">
+                                                        alt="" :src="image.original_url" class="img-fluid user-select-none">
                                                 </div>
                                             </div>
                                         </template>
