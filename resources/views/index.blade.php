@@ -3,19 +3,19 @@
 @section('seo_title', 'Home')
 
 @php($heroSlider = [
-    route('why_duma') => asset('images/hero-1-why-duma.png'),
-    asset('images/hero-2-duma-panel.png'),
-    asset('images/hero-3-duma-door.png'),
-    asset('images/hero-4-why-duma-deck.png'),
-    asset('images/hero-5-why-duma-lisplank.png'),
+    asset('images/banners/SlideDumaLunarNewYear.jpg'),
+    route('why_duma') => asset('images/banners/SlideBannerMaterialBangunan.jpg'),
+    route('product.duma_panel') => asset('images/banners/SlideBannerPanel.jpg'),
+    route('product.duma_door') => asset('images/banners/SlideBannerPintukusen.jpg'),
+    route('product.duma_deck') => asset('images/banners/SlideBannerDumaDeck.jpg'),
+    route('product.duma_lisplank') => asset('images/banners/SlideBannerLisplank.jpg'),
 ])
 
 @php($featuredProjects = App\Models\Project::active()->inRandomOrder()->limit(2)->get())
 
 @section('content')
-    <div class="hero-slider container--full-hd"
-         style="background: url({{ asset('images/bg-hero-slider.png') }}) no-repeat bottom center/cover">
-        <div class="container px-0 overflow-hidden">
+    <div class="hero-slider container--full-hd">
+        <div class="px-0 overflow-hidden">
             <div class="swiper" data-swiper>
                 <div class="swiper-wrapper">
                     @foreach($heroSlider as $route => $slide)
