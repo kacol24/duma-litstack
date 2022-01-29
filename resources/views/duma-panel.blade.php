@@ -21,7 +21,7 @@
 @endpush
 
 @section('content')
-    <div class="container container--full-hd">
+    <div class="container container--full-hd px-0">
         @isset($cms->banner)
             <section class="banner mb-5">
                 <img data-src="{{ optional($cms->banner)->getUrl() }}" alt="" class="img-fluid w-100 lazyload">
@@ -95,7 +95,7 @@
     </div>
     @if($cms->spec_banner)
         <div class="anchor" id="specification"></div>
-        <div class="container container--full-hd mt-5">
+        <div class="container container--full-hd mt-5 px-0">
             <img data-src="{{ optional($cms->spec_banner)->getUrl() }}" alt="specification banner"
                  class="img-fluid w-100 lazyload">
         </div>
